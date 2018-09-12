@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Companhia
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page1">
+  
+  <ion-searchbar [(ngModel)]="searchString" name="searchString" placeholder="Digite a companhia"></ion-searchbar>
+  
+  <button *ngFor="let c of companhias | myfilter:searchString"  ion-item outline>
+    {{c.nome}}
+    
+</button>
+
+  <button id="companhia-button4" ion-button color="positive" block on-click="goToProblema()">
+    Prosseguir
+  </button>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Primeira Entrevista
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page5">
+  <!-- <h3 id="primeiraEntrevista-heading2" style="color:#000000;">
+    deverão ser listados asentrevistas referente ao problema selecionado
+  </h3> -->
+
+  <button *ngFor="let d of entrevistas" ion-item outline>
+    <ion-icon name="sad" item-left color="danger"></ion-icon>
+    {{d.idpergunta}}
+  </button>
+  <button id="primeiraEntrevista-button6" ion-button color="positive" block on-click="goToOutrosProblemas()">
+    Prosseguir
+  </button>
+</ion-content>

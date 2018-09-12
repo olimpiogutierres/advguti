@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Problema
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page4">
+  <!-- <ion-list id="problema-list4">
+    <ion-item color="none" id="problema-list-item19">
+      Não embarquei
+    </ion-item>
+    <ion-item color="none" id="problema-list-item20">
+      Cancelaram meu voo
+    </ion-item>
+    <ion-item color="none" id="problema-list-item21">
+      Problemas com bagagem
+    </ion-item>
+    <ion-item color="none" id="problema-list-item22">
+      Atrasaram meu voo
+    </ion-item>
+  </ion-list> -->
+
+  <button *ngFor="let p of problemas" (click)="goToPrimeiraEntrevista(p);" ion-item outline> 
+    <ion-icon [name]="p.icon" item-left color="danger"></ion-icon>
+    {{p.titulo}}
+  </button>
+
+  <button id="problema-button5" ion-button color="positive" block >
+    Prosseguir
+  </button>
+</ion-content>
