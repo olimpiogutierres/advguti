@@ -21,12 +21,12 @@
       <ion-item id="login-input10">
         <ion-label>
           Telefone
-        </ion-label> 
+        </ion-label>
         <ion-input type="tel" placeholder="" formControlName="telefone"></ion-input>
       </ion-item>
     </ion-list>
     <div class="spacer" style="width:300px;height:66px;" id="login-spacer1"></div>
-    <button id="login-button17" ion-button color="stable" (click)="goToDominios();" block> 
+    <button id="login-button17" ion-button color="stable" [disabled]="signupForm.invalid" (click)="goToDominios();" block>
       Prosseguir
     </button>
     <!-- <button id="login-button18" ion-button clear color="positive" block href-inappbrowser="/signup">

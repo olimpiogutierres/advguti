@@ -1,10 +1,11 @@
 import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AuthService } from '../auth/auth.service';
 import { BaseService } from '../base/base.service';
 import { AngularFireObject } from 'angularfire2/database';
+
 
 /*
   Generated class for the DominioProvider provider.
@@ -15,8 +16,8 @@ import { AngularFireObject } from 'angularfire2/database';
 @Injectable()
 export class DominioService extends BaseService {
 
-
-
+  public api: string = '/api/dominios/';
+  // public api: string = 'https://webapplicationadvogados.azurewebsites.net/api/dominios/';
   public dominioCollection: AngularFirestoreCollection<Dominio>;
   items: Observable<Dominio[]>;
   // public items: Observable<{}[]>; // read collection
@@ -37,10 +38,7 @@ export class DominioService extends BaseService {
 
 
   list(): Observable<Dominio[]> {
-    this.dominioCollection = this.db.collection('dominio');
-    this.items = this.dominioCollection.valueChanges();
-
-      return this.items;
+    return this.http.get<Dominio[]>(this.api, this.optionsHttp);
   }
 
 }

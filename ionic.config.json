@@ -4,5 +4,9 @@
     "cordova": {}
   },
   "type": "ionic-angular",
-  "pro_id": "e74d0054"
-}
+  "pro_id": "e74d0054",
+  "proxies": [{
+    "path": "/api",
+    "proxyUrl": "https://webapplicationadvogados.azurewebsites.net/api"   
+}]
+} 

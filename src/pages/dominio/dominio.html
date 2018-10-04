@@ -20,7 +20,7 @@
       <ul>
         <li *ngFor="let item of list">
           {{item.nome}}
-        </li>
+        </li> 
       </ul>
     </div>
   
@@ -29,7 +29,7 @@
 
     <button *ngFor="let d of dominios" ion-item outline (click)="goToProblema(d)">
       <ion-icon name="sad" item-left color="danger"></ion-icon>
-      {{d.nome}}
+      {{d.descricao}}
     </button>
 
   <!-- <button id="problema-button5" ion-button color="positive" block (click)="goToProblemas()">

@@ -30,7 +30,7 @@ export class ProblemasService extends BaseService {
 
 
   list(dominio: Dominio): AngularFirestoreCollection<Problema> {
-    return this.db.doc(`/problemas/${dominio.nome}`).collection<Problema>('problemas');
+    return this.db.doc(`/problemas/${dominio.descricao}`).collection<Problema>('problemas');
   }
 
 }

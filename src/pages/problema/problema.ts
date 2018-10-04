@@ -29,20 +29,21 @@ export class ProblemaPage {
     this.problemas = this.usuario.dominio.problemas;
   }
   goToPrimeiraEntrevista(problema: Problema) {
-    this.entrevistaService.list().subscribe(((d: Entrevista[]) => {
-      this.entrevista = d;
+    // this.entrevistaService.list(problema).subscribe(((d: Entrevista[]) => {
+    //   this.entrevista = d;
+    //   console.log(this.entrevista);
       
-      // this.entrevista.forEach(element => {
-      //   element.
-      // });
+    //   // this.entrevista.forEach(element => {
+    //   //   element.
+    //   // });
 
-      this.navCtrl.push(PrimeiraEntrevistaPage,
-        {
-          problema: problema,
-          usuario: this.usuario, 
-          entrevista: this.entrevista
-        });
-    }));
+    //   this.navCtrl.push(PrimeiraEntrevistaPage,
+    //     {
+    //       problema: problema,
+    //       usuario: this.usuario, 
+    //       entrevista: this.entrevista
+    //     });
+    // }));
 
     
   }

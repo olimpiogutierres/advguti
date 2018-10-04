@@ -17,12 +17,12 @@ export class PrimeiraEntrevistaPage {
 
   public usuario: Usuario;
   public problema: Problema;
-  public entrevistas: Entrevista[];
+  public entrevistas: Entrevista;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     this.usuario = this.navParams.get('usuario') as Usuario;
     this.problema = this.navParams.get('problema') as Problema;
-    this.entrevistas = this.navParams.get('entrevista') as Entrevista[];
+    this.entrevistas = this.navParams.get('entrevista') as Entrevista;
 
     
 

@@ -38,12 +38,21 @@ export class LogonPage {
 
   goToDominios() {
     let usuario: Usuario = this.signupForm.value;
+    usuario.Nome = '';
+    usuario.Logradouro = '';
+    usuario.Numero = '';
+    usuario.Complemento = '';
+    usuario.Bairro = '';
+    usuario.Cidade = '';
+    usuario.Estado = '';
+    usuario.Pais = '';
+    usuario.CEP = '';
 
 
     console.log('creating');
     let a = this.usuarioService.create(usuario);
     console.log('usuario criadooo:', a);
-    console.log('created' );
+    console.log('created');
 
     console.log('goToDominios;', usuario.id);
 

@@ -1,3 +1,4 @@
+import { PerguntaService } from './../providers/pergunta/pergunta.service';
 import { EntrevistaService } from './../providers/entrevista/entrevista.service';
 import { UsuarioService } from './../providers/usuario/usuario.service';
 
@@ -36,6 +37,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 import { AuthService } from '../providers/auth/auth.service';
+
 
 
 // import { AngularFireDatabaseModule } from '../../node_modules/angularfire2/database';
@@ -130,7 +132,8 @@ export class MyErrorHandler implements ErrorHandler {
     ProblemasService,
     AuthService,
     UsuarioService,
-    EntrevistaService
+    EntrevistaService,
+    PerguntaService
 
     // AuthProvider
   ]

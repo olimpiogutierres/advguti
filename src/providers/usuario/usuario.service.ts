@@ -34,39 +34,46 @@ export class UsuarioService extends BaseService {
     return this.items;
   }
 
-  public create(usuario: Usuario): Promise<void> {
-    let a;
-    // if (usuario.id == null)
+  public create(usuario: Usuario) {
+    // let a;
+    // // if (usuario.id == null)
+    // //   a = this.usuariosCollection.add(usuario).then((documentSnapshot) => {
+    // //     usuario.id = documentSnapshot.id;
+    // //   }).catch(this.handlePromiseError);
+
+    // // else
+    // // a = this.usuariosCollection.
+
+    // usuario.id = this.db.createId();
+    // console.log('usuarioidcreated',usuario.id);
+    // if (usuario.id == null) {
     //   a = this.usuariosCollection.add(usuario).then((documentSnapshot) => {
     //     usuario.id = documentSnapshot.id;
     //   }).catch(this.handlePromiseError);
+    // }
+    // else {
 
-    // else
-    // a = this.usuariosCollection.
+    //   a = this.usuariosCollection.doc(`${usuario.id}`)
+    //     .set({ usuario })
+    //     .then(() => { console.log('deu certo') })
+    //     .catch((error) => {
+    //       console.log('deu erro')
+    //       // console.log('Error updating user', error); // (document does not exists)
+    //       // this.db.collection('usuario').doc(`${usuario.id}`)
+    //       //   .set({ usuario });
+    //     });
+    //   // this.items.subscribe((d: Usuario[]) => { console.log(d) });
+    //   // usuario.id = this.db.createId();    
+    // }
+    // console.log('usuarioid', usuario);
+    console.log('usuario', usuario);
 
-    usuario.id = this.db.createId();
-    console.log('usuarioidcreated',usuario.id);
-    if (usuario.id == null) {
-      a = this.usuariosCollection.add(usuario).then((documentSnapshot) => {
-        usuario.id = documentSnapshot.id;
-      }).catch(this.handlePromiseError);
-    }
-    else {
+    this.optionsHttp.body = { usuario };
 
-      a = this.usuariosCollection.doc(`${usuario.id}`)
-        .set({ usuario })
-        .then(() => { console.log('deu certo') })
-        .catch((error) => {
-          console.log('deu erro')
-          // console.log('Error updating user', error); // (document does not exists)
-          // this.db.collection('usuario').doc(`${usuario.id}`)
-          //   .set({ usuario });
-        });
-      // this.items.subscribe((d: Usuario[]) => { console.log(d) });
-      // usuario.id = this.db.createId();    
-    }
-    console.log('usuarioid', usuario);
-    return a;
+    console.log('JSON.stringify(usuario)', JSON.stringify(usuario));
+
+    var a = this.http.post('/api/usuarios/', usuario, { headers: this.optionsHttp.headers }).toPromise();
+    console.log(a);
   }
   public update(game) {
     return this.usuariosCollection.doc(game.$key).update(game);
