@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { BaseService } from '../base/base.service';
 import { AuthService } from '../auth/auth.service';
+import { Observable } from '../../../node_modules/rxjs/Observable';
 
 
 /*
@@ -29,8 +30,13 @@ export class ProblemasService extends BaseService {
 
 
 
-  list(dominio: Dominio): AngularFirestoreCollection<Problema> {
-    return this.db.doc(`/problemas/${dominio.descricao}`).collection<Problema>('problemas');
+  // list(dominio: Dominio): AngularFirestoreCollection<Problema> {
+  //   return this.db.doc(`/problemas/${dominio.descricao}`).collection<Problema>('problemas');
+  // }
+
+
+  list(dominio: Dominio): Observable<Problema[]> {
+    return this.http.get<Problema[]>('/api/problemas/dominio/' + dominio.id, this.optionsHttp);
   }
 
 }

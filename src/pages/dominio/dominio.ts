@@ -44,12 +44,6 @@ export class DominioPage {
       this.dominios = d;
     }));
 
-// this.dominios = this.http.get('https://webapplicationadvogados.azurewebsites.net/api/dominios')
-// .subscribe((data:List<Dominio>) => {
-//   this.data = data;
-//   resolve(this.data);
-// });
-
 
   }
 
@@ -68,7 +62,10 @@ export class DominioPage {
     this.usuarioService.create(usuario);
 
 
-    this.navCtrl.push(ProblemaPage, usuario);
+    this.navCtrl.push(ProblemaPage, {
+            dominio: dominio,
+            usuario: usuario
+          });
   }
 
 

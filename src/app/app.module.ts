@@ -1,4 +1,4 @@
-import { PerguntaService } from './../providers/pergunta/pergunta.service';
+// import { PerguntaService } from './../providers/pergunta/pergunta.service';
 import { EntrevistaService } from './../providers/entrevista/entrevista.service';
 import { UsuarioService } from './../providers/usuario/usuario.service';
 
@@ -7,7 +7,7 @@ import { DominioService } from '../providers/dominio/dominio.service';
 import { ProblemasService } from '../providers/problemas/problemas.service';
 import { LogonPage } from '../pages/logon/logon';
 import { MyFilterPipe } from '../pipes/filter.pipe';
-
+ 
 import { ProcuracaoPage } from '../pages/procuracao/procuracao';
 import { NgModule, ErrorHandler, Injectable, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -132,8 +132,7 @@ export class MyErrorHandler implements ErrorHandler {
     ProblemasService,
     AuthService,
     UsuarioService,
-    EntrevistaService,
-    PerguntaService
+    EntrevistaService
 
     // AuthProvider
   ]

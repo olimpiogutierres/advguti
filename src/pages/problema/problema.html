@@ -8,7 +8,7 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page4">
+<ion-content padding id="page4"> 
   <!-- <ion-list id="problema-list4">
     <ion-item color="none" id="problema-list-item19">
       Não embarquei
@@ -26,7 +26,7 @@
 
   <button *ngFor="let p of problemas" (click)="goToPrimeiraEntrevista(p);" ion-item outline> 
     <ion-icon [name]="p.icon" item-left color="danger"></ion-icon>
-    {{p.titulo}}
+    {{p.descricao}}
   </button>
 
   <button id="problema-button5" ion-button color="positive" block >

@@ -1,3 +1,4 @@
+import { ProblemasService } from './../../providers/problemas/problemas.service';
 import { EntrevistaService } from './../../providers/entrevista/entrevista.service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -16,23 +17,31 @@ import { Usuario } from '../../models/usuario';
 })
 export class ProblemaPage {
 
-  problemas: Array<Problema>;
+  problemas: Problema[];
   usuario: Usuario;
+  dominio: Dominio;
   public entrevista: Entrevista[];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public entrevistaService: EntrevistaService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public problemaService: ProblemasService) {
 
-    this.usuario = this.navParams.data as Usuario;
+    this.usuario = this.navParams.get('usuario') as Usuario;
+    this.dominio = this.navParams.get('dominio') as Dominio;    
     console.log(navParams);
   }
 
   ionViewDidLoad() {
-    this.problemas = this.usuario.dominio.problemas;
+    this.problemaService.list(this.dominio).subscribe(((d: Problema[]) => {
+      this.problemas = d;
+
+      console.log('this.problemas',this.problemas);
+    }));
+
+
   }
   goToPrimeiraEntrevista(problema: Problema) {
     // this.entrevistaService.list(problema).subscribe(((d: Entrevista[]) => {
     //   this.entrevista = d;
     //   console.log(this.entrevista);
-      
+
     //   // this.entrevista.forEach(element => {
     //   //   element.
     //   // });
@@ -45,6 +54,6 @@ export class ProblemaPage {
     //     });
     // }));
 
-    
+
   }
 }
