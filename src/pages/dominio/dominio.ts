@@ -1,3 +1,4 @@
+import { ProblemasService } from './../../providers/problemas/problemas.service';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from './../../providers/usuario/usuario.service';
 import { Usuario } from './../../models/usuario';
@@ -23,7 +24,8 @@ import { Http } from '@angular/http';
 export class DominioPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private dominioService: DominioService, private usuarioService: UsuarioService
+    private dominioService: DominioService, private usuarioService: UsuarioService,
+    private problemasService: ProblemasService
   ) {
     this.dominioService.list().subscribe((d: Dominio[]) => {
       this.dominios = d;
@@ -44,11 +46,11 @@ export class DominioPage {
       this.dominios = d;
     }));
 
-// this.dominios = this.http.get('https://webapplicationadvogados.azurewebsites.net/api/dominios')
-// .subscribe((data:List<Dominio>) => {
-//   this.data = data;
-//   resolve(this.data);
-// });
+    // this.dominios = this.http.get('https://webapplicationadvogados.azurewebsites.net/api/dominios')
+    // .subscribe((data:List<Dominio>) => {
+    //   this.data = data;
+    //   resolve(this.data);
+    // });
 
 
   }
@@ -67,8 +69,16 @@ export class DominioPage {
 
     this.usuarioService.create(usuario);
 
+    let problemas: Problema[];
 
-    this.navCtrl.push(ProblemaPage, usuario);
+    this.problemasService.list(dominio).subscribe((data: Problema[]) => {
+      this.navCtrl.push(ProblemaPage, {
+        problema: data,
+        usuario: usuario
+      });
+    });
+
+
   }
 
 

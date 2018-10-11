@@ -7,6 +7,6 @@
   "pro_id": "e74d0054",
   "proxies": [{
     "path": "/api",
-    "proxyUrl": "https://webapplicationadvogados.azurewebsites.net/api"   
+    "proxyUrl": "https://webapplicationadvogados.azurewebsites.net/api"    
 }]
 } 

@@ -21,15 +21,55 @@
     </ion-item>
     <ion-item color="none" id="problema-list-item22">
       Atrasaram meu voo
-    </ion-item>
+    </ion-item> 
   </ion-list> -->
 
-  <button *ngFor="let p of problemas" (click)="goToPrimeiraEntrevista(p);" ion-item outline> 
-    <ion-icon [name]="p.icon" item-left color="danger"></ion-icon>
-    {{p.titulo}}
-  </button>
+  <!-- <div class="list listbox">
+    <div class="item" *ngFor="let p of problemas" ng-click="escolherProblemas(p);" ng-class="{ active: p.selected }" >
+      <input type="checkbox" checked={{p.selected}} /> 
+      <ion-icon [name]="p.icon" item-left color="danger"></ion-icon>
 
-  <button id="problema-button5" ion-button color="positive" block >
+      {{p.descricao}}
+    </div>
+  </div> -->
+
+  <!-- <div> -->
+  <!-- <div ng-app="sampleApp" ng-controller="MainCtrl"> -->
+  <!-- <ion-content > -->
+  <!-- <div class="list listbox">
+    <div class="item" *ngFor="let item of problemas" (click)="escolherProblemas(item)" ng-class="{ active: item.selected }" ion-item
+    outline>
+      {{ item.descricao }}
+    </div>
+  </div> -->
+
+  <!-- <ion-item>
+      <ion-label>Toppings</ion-label> -->
+  <!-- <ion-select [(ngModel)]="toppings" multiple="true">
+        <ion-option>Bacon</ion-option>
+        <ion-option>Black Olives</ion-option>
+        <ion-option>Extra Cheese</ion-option>
+        <ion-option>Mushrooms</ion-option>
+        <ion-option>Pepperoni</ion-option>
+        <ion-option>Sausage</ion-option>
+      </ion-select> -->
+  <!-- </ion-item> -->
+
+  <ion-list>
+    <ion-item *ngFor="let item of problemas">
+      <ion-label>{{item.descricao}}</ion-label>
+      <ion-checkbox [checked]="item.selected" (click)="escolherProblemas(item)"></ion-checkbox>
+
+    </ion-item>
+  </ion-list>
+
+
+  <!-- </ion-content> -->
+  <!-- </div> -->
+  <!-- </div> -->
+
+
+  <button id="problema-button5" ion-button color="positive" block>
     Prosseguir
   </button>
 </ion-content>
