@@ -13,10 +13,91 @@
     deverão ser listados asentrevistas referente ao problema selecionado
   </h3> -->
 
-  <button *ngFor="let d of entrevistas" ion-item outline>
+  <!-- <div class="list"> -->
+  <!-- <ul *ngFor="let d of perguntas" class="list-group">
+    {{d.descricao}}
+
+    <li class="item" *ngFor="let r of d.resposta" class="list-group-item">
+     
+         {{r.descricaoApp}}
+    </li>
+  </ul> -->
+  <!--  
+ <ion-list>
+  <ion-item *ngFor="let d of perguntas" class="list-group">
+    {{d.descricao}}
+
+    <li class="item" *ngFor="let r of d.resposta" class="list-group-item">
+     
+         {{r.descricaoApp}}
+    </li>
+  </ion-item>
+ </ion-list>
+</div> -->
+
+  <!-- <button *ngFor="let d of perguntas" ion-item outline>
     <ion-icon name="sad" item-left color="danger"></ion-icon>
-    {{d.idpergunta}}
-  </button>
+    {{d.descricao}}
+
+{{d.respostas}}
+
+  </button> -->
+
+
+  <ion-card>
+
+
+    <ion-list>
+
+
+
+      <ion-item-divider *ngFor="let d of perguntas">
+
+        <ion-list-header>
+          {{d.descricao}}
+        </ion-list-header>
+
+        <ion-item *ngFor="let r of d.resposta">
+          {{r.descricaoApp}}
+        </ion-item>
+
+        
+
+        
+      </ion-item-divider>
+
+      <!-- <button ion-item>
+        <ion-icon name="cart" item-start></ion-icon>
+        Shopping
+      </button>
+
+      <button ion-item>
+        <ion-icon name="medical" item-start></ion-icon>
+        Hospital
+      </button>
+
+      <button ion-item>
+        <ion-icon name="cafe" item-start></ion-icon>
+        Cafe
+      </button>
+
+      <button ion-item>
+        <ion-icon name="paw" item-start></ion-icon>
+        Dog Park
+      </button>
+
+      <button ion-item>
+        <ion-icon name="beer" item-start></ion-icon>
+        Pub
+      </button>
+
+      <button ion-item>
+        <ion-icon name="planet" item-start></ion-icon>
+        Space
+      </button> -->
+
+    </ion-list>
+  </ion-card>
   <button id="primeiraEntrevista-button6" ion-button color="positive" block on-click="goToOutrosProblemas()">
     Prosseguir
   </button>

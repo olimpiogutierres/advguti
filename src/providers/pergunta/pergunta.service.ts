@@ -21,14 +21,19 @@ export class PerguntaService extends BaseService {
     console.log('Hello PerguntaProvider Provider');
   }
 
-  list(entrevista: Entrevista): Observable<Pergunta[]> {
-    this.itemsCollection = this.db.collection('pergunta',
-      ref => ref.where('identrevista', '==', entrevista.id));
+  // list(entrevista: Entrevista): Observable<Pergunta[]> {
+  //   this.itemsCollection = this.db.collection('pergunta',
+  //     ref => ref.where('identrevista', '==', entrevista.id));
 
-    //this.items = this.mapListKeys(this.itemsCollection);
+  //   //this.items = this.mapListKeys(this.itemsCollection);
 
 
-    return this.items;
+  //   return this.items;
+  // }
+
+
+  list(problema: Problema): Observable<Pergunta[]> {
+    return this.http.get<Pergunta[]>('/api/problemas/perguntas/' + problema.id, this.optionsHttp);
   }
 
 }

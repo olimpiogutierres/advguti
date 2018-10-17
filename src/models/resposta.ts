@@ -1,5 +1,5 @@
 class Resposta {
-    public descricaoapp: string;
-    public descricaoprocuracao: string;
-    public descricaocontrato: string;
+    public descricaoApp: string;
+    public descricaoProcuracao: string;
+    public descricaoContrato: string;
 }

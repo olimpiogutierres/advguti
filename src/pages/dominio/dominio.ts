@@ -71,12 +71,21 @@ export class DominioPage {
 
     let problemas: Problema[];
 
-    this.problemasService.list(dominio).subscribe((data: Problema[]) => {
-      this.navCtrl.push(ProblemaPage, {
-        problema: data,
-        usuario: usuario
-      });
+    
+
+    console.log('dominio.problema',dominio.problema);
+    this.navCtrl.push(ProblemaPage, {
+      problema: dominio.problema,
+      usuario: usuario
     });
+
+
+    // this.problemasService.list(dominio).subscribe((data: Problema[]) => {
+    //   this.navCtrl.push(ProblemaPage, {
+    //     problema: data,
+    //     usuario: usuario
+    //   });
+    // });
 
 
   }

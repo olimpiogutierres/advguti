@@ -1,3 +1,4 @@
+import { PerguntaService } from './../../providers/pergunta/pergunta.service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { OutrosProblemasPage } from '../outros-problemas/outros-problemas';
@@ -8,6 +9,7 @@ import { DocumentosPage } from '../documentos/documentos';
 import { FeitoPage } from '../feito/feito';
 import { Usuario } from '../../models/usuario';
 import { EntrevistaService } from '../../providers/entrevista/entrevista.service';
+import { forEach } from '@firebase/util';
 
 @Component({
   selector: 'page-primeira-entrevista',
@@ -16,20 +18,35 @@ import { EntrevistaService } from '../../providers/entrevista/entrevista.service
 export class PrimeiraEntrevistaPage {
 
   public usuario: Usuario;
-  public problema: Problema;
-  public entrevistas: Entrevista;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public problemas: Problema[];
+  public perguntas: Pergunta[] = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public perguntaService: PerguntaService) {
 
     this.usuario = this.navParams.get('usuario') as Usuario;
-    this.problema = this.navParams.get('problema') as Problema;
-    this.entrevistas = this.navParams.get('entrevista') as Entrevista;
+    this.problemas = this.navParams.get('problema') as Problema[];
+    // this.entrevistas = this.navParams.get('entrevista') as Entrevista;
 
-    
 
-    console.log('this.', this.navParams);
+    for (let key of this.problemas) {
+
+      this.perguntaService.list(key as Problema).subscribe((data: Pergunta[]) => {
+
+        for (let pergunta of data) {
+          this.perguntas.push(pergunta);
+        }
+ 
+      });
+
+
+    }
+
+    console.log('this.perguntas', this.perguntas);
   }
-  ionViewDidLoad(){
-   
+
+
+  ionViewDidLoad() {
+
+
   }
   goToOutrosProblemas() {
     this.navCtrl.push(OutrosProblemasPage);

@@ -7,7 +7,7 @@ import { DominioService } from '../providers/dominio/dominio.service';
 import { ProblemasService } from '../providers/problemas/problemas.service';
 import { LogonPage } from '../pages/logon/logon';
 import { MyFilterPipe } from '../pipes/filter.pipe';
- 
+
 import { ProcuracaoPage } from '../pages/procuracao/procuracao';
 import { NgModule, ErrorHandler, Injectable, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -37,6 +37,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 import { AuthService } from '../providers/auth/auth.service';
+import { PerguntaService } from '../providers/pergunta/pergunta.service';
 
 
 
@@ -132,8 +133,8 @@ export class MyErrorHandler implements ErrorHandler {
     ProblemasService,
     AuthService,
     UsuarioService,
-    EntrevistaService
-
+    EntrevistaService,
+    PerguntaService
     // AuthProvider
   ]
 })

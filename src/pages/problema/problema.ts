@@ -19,7 +19,7 @@ export class ProblemaPage {
   problemas: Problema[];
   problemasSelecionados: Problema[] = [];
   usuario: Usuario;
-  public entrevista: Entrevista[];
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public entrevistaService: EntrevistaService) {
 
 
@@ -65,6 +65,16 @@ export class ProblemaPage {
     // }
     // }
   }
+
+  irParaEntrevista() {
+    this.navCtrl.push(PrimeiraEntrevistaPage,
+      {
+        problema: this.problemasSelecionados,
+        usuario: this.usuario
+      });
+
+  }
+ 
 
   goToPrimeiraEntrevista(problema: Problema) {
     // this.entrevistaService.list(problema).subscribe(((d: Entrevista[]) => {
