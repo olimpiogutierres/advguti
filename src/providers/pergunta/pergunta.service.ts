@@ -31,9 +31,9 @@ export class PerguntaService extends BaseService {
   //   return this.items;
   // }
 
-
+ 
   list(problema: Problema): Observable<Pergunta[]> {
-    return this.http.get<Pergunta[]>('/api/problemas/perguntas/' + problema.id, this.optionsHttp);
+    return this.http.get<Pergunta[]>('https://webapplicationadvogados.azurewebsites.net/api/problemas/perguntas/' + problema.id, this.optionsHttp);
   }
 
 }

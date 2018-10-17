@@ -30,7 +30,7 @@ export class ProblemasService extends BaseService {
 
 
   list(dominio: Dominio): Observable<Problema[]> {
-    return this.http.get<Problema[]>('/api/problemas/dominio/' + dominio.id, this.optionsHttp);
+    return this.http.get<Problema[]>('https://webapplicationadvogados.azurewebsites.net/api/problemas/dominio/' + dominio.id, this.optionsHttp);
   }
 
 }

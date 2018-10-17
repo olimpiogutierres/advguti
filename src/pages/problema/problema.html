@@ -58,7 +58,7 @@
   <ion-list>
     <ion-item *ngFor="let item of problemas">
       <ion-label>{{item.descricao}}</ion-label>
-      <ion-checkbox [checked]="item.selected" (click)="escolherProblemas(item)"></ion-checkbox>
+      <ion-checkbox [checked]="item.selected" color="secondary" (click)="escolherProblemas(item)"></ion-checkbox>
 
     </ion-item>
   </ion-list>

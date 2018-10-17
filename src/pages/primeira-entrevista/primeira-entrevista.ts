@@ -32,16 +32,21 @@ export class PrimeiraEntrevistaPage {
       this.perguntaService.list(key as Problema).subscribe((data: Pergunta[]) => {
 
         for (let pergunta of data) {
-          this.perguntas.push(pergunta);
+
+          if (!this.perguntas.find(d => d.id == pergunta.id))
+            this.perguntas.push(pergunta);
         }
- 
+
       });
 
 
+      // this.perguntas = Array.from(new Set(this.perguntas));
     }
 
     console.log('this.perguntas', this.perguntas);
   }
+
+
 
 
   ionViewDidLoad() {
