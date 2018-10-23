@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>dominio</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title>Que área tem dúvida?</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -28,7 +28,7 @@
   </div> -->
 
     <button *ngFor="let d of dominios" ion-item outline (click)="goToProblema(d)">
-      <ion-icon name="sad" item-left color="danger"></ion-icon>
+      <ion-icon name="happy" item-left color="primary"></ion-icon>
       {{d.descricao}}
     </button>
 

@@ -72,7 +72,7 @@ export class UsuarioService extends BaseService {
 
     console.log('JSON.stringify(usuario)', JSON.stringify(usuario));
 
-    var a = this.http.post('/api/usuarios/', usuario, { headers: this.optionsHttp.headers }).toPromise();
+    var a = this.http.post('https://webapplicationadvogados.azurewebsites.net/api/usuarios/', usuario, { headers: this.optionsHttp.headers }).toPromise();
     console.log(a);
   }
   public update(game) {

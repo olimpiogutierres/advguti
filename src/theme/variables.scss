@@ -34,11 +34,24 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  // primary:    #488aff,
+  // secondary:  #32db64,
+  // danger:     #f53d3d,
+  // light:      #f4f4f4,
+  // dark:       #222
+
+
+//   $color1: rgba(1, 22, 39, 1);
+// $color2: rgba(253, 255, 252, 1);
+// $color3: rgba(46, 196, 182, 1);
+// $color4: rgba(231, 29, 54, 1);
+// $color5: rgba(255, 159, 28, 1);
+
+  primary:    #2ec4b6,
+  secondary:  #ff9f1c,
+  danger:     #e71d36,
+  light:      #fdfffc,
+  dark:       #011627
 ); 
 
 
