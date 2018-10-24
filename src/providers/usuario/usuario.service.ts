@@ -34,7 +34,19 @@ export class UsuarioService extends BaseService {
     return this.items;
   }
 
-  public create(usuario: Usuario) {
+  public update(usuario: Usuario): void {
+
+    console.log('http://localhost:18092/api/usuarios/ + usuario.id', 'http://localhost:18092/api/usuarios/' + usuario.id);
+    console.log('http://localhost:18092/api/usuarios/ + usuario.id', usuario);
+
+    console.log('json', JSON.stringify(usuario));
+    var a = this.http.put('http://localhost:18092/api/Usuarios/' + usuario.id, JSON.stringify(usuario), { headers: this.optionsHttp.headers })
+      .map((res: Response) => res.json());
+
+    console.log(a);
+  }
+
+  public create(usuario: Usuario): Observable<Usuario> {
     // let a;
     // // if (usuario.id == null)
     // //   a = this.usuariosCollection.add(usuario).then((documentSnapshot) => {
@@ -66,18 +78,27 @@ export class UsuarioService extends BaseService {
     //   // usuario.id = this.db.createId();    
     // }
     // console.log('usuarioid', usuario);
-    console.log('usuario', usuario);
+    // console.log('usuario', usuario);
 
     this.optionsHttp.body = { usuario };
 
-    console.log('JSON.stringify(usuario)', JSON.stringify(usuario));
+    // console.log('JSON.stringify(usuario)', JSON.stringify(usuario));
 
-    var a = this.http.post('https://webapplicationadvogados.azurewebsites.net/api/usuarios/', usuario, { headers: this.optionsHttp.headers }).toPromise();
-    console.log(a);
+
+
+
+    return this.http.post<Usuario>('https://webapplicationadvogados.azurewebsites.net/api/usuarios/', usuario, { headers: this.optionsHttp.headers });
+
+
+
+
+
+
+    // console.log(a);
   }
-  public update(game) {
-    return this.usuariosCollection.doc(game.$key).update(game);
-  }
+  // public update(game) {
+  //   return this.usuariosCollection.doc(game.$key).update(game);
+  // }
 
   // public update(usuario: Usuario): Promise<void> {
   //   return this.db.collection('usuario').get().

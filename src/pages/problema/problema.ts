@@ -1,3 +1,4 @@
+import { UsuarioService } from './../../providers/usuario/usuario.service';
 import { EntrevistaService } from './../../providers/entrevista/entrevista.service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -19,14 +20,15 @@ export class ProblemaPage {
   problemas: Problema[];
   problemasSelecionados: Problema[] = [];
   usuario: Usuario;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, public entrevistaService: EntrevistaService) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public entrevistaService: EntrevistaService, public usuarioService: UsuarioService) {
 
 
     this.usuario = this.navParams.get('usuario') as Usuario;
     this.problemas = this.navParams.get('problema') as Problema[];
     // this.problemasSelecionados = this.problemas;
 
+    console.log('usuarioid problemas', this.usuario);
     console.log(navParams);
   }
 
@@ -67,6 +69,13 @@ export class ProblemaPage {
   }
 
   irParaEntrevista() {
+
+
+    this.usuario.problemas = this.problemasSelecionados;
+
+    this.usuario.Logradouro = 'teste';
+    this.usuarioService.update(this.usuario); 
+
     this.navCtrl.push(PrimeiraEntrevistaPage,
       {
         problema: this.problemasSelecionados,
@@ -74,7 +83,7 @@ export class ProblemaPage {
       });
 
   }
- 
+
 
   goToPrimeiraEntrevista(problema: Problema) {
     // this.entrevistaService.list(problema).subscribe(((d: Entrevista[]) => {

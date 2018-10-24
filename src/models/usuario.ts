@@ -21,6 +21,9 @@ export class Usuario {
     public Estado: string;
     public Pais: string;
     public CEP: string;
+
+
+    public problemas: Problema[];
     // public Salvar() {
     //     this.usuarioService.create(this);
     // }

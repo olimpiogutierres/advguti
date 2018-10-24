@@ -65,15 +65,15 @@ export class DominioPage {
 
     console.log('this.usuarioService.getKeys;', dominio);
 
-    //usuario.dominio = dominio;
+    //usuario.dominio = dominio; 
 
-    this.usuarioService.create(usuario);
+    this.usuarioService.update(usuario); 
 
-    let problemas: Problema[];
+    let problemas: Problema[]; 
 
-    
 
-    console.log('dominio.problema',dominio.problema);
+
+    console.log('dominio.problema', dominio.problema);
     this.navCtrl.push(ProblemaPage, {
       problema: dominio.problema,
       usuario: usuario

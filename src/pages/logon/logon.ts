@@ -50,15 +50,15 @@ export class LogonPage {
 
 
     console.log('creating');
-    let a = this.usuarioService.create(usuario);
-    console.log('usuario criadooo:', a);
-    console.log('created');
+    this.usuarioService.create(usuario).subscribe((u: Usuario) => {
 
-    console.log('goToDominios;', usuario.id);
+      console.log('logon u', u);
+
+      usuario.id = u.id;
 
 
-
-    this.navCtrl.setRoot(DominioPage, usuario);
+      this.navCtrl.setRoot(DominioPage, usuario);
+    });
   }
 
 }
