@@ -1,3 +1,4 @@
+import { AdminProblemasPage } from './../pages/admin-problemas/admin-problemas';
 // import { PerguntaService } from './../providers/pergunta/pergunta.service';
 import { EntrevistaService } from './../providers/entrevista/entrevista.service';
 import { UsuarioService } from './../providers/usuario/usuario.service';
@@ -96,6 +97,7 @@ export class MyErrorHandler implements ErrorHandler {
     DocumentosPage,
     FeitoPage,
     MyFilterPipe, LogonPage, DominioPage,
+    AdminProblemasPage,
   ],
   imports: [
     HttpClientModule,
@@ -109,7 +111,7 @@ export class MyErrorHandler implements ErrorHandler {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    CompanhiaPage,
+    CompanhiaPage, 
     ProblemaPage,
     PrimeiraEntrevistaPage,
     OutrosProblemasPage,
@@ -119,7 +121,8 @@ export class MyErrorHandler implements ErrorHandler {
     DocumentosPage,
     FeitoPage,
     LogonPage,
-    DominioPage
+    DominioPage,
+    AdminProblemasPage
   ],
   providers: [
     StatusBar,

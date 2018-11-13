@@ -21,9 +21,24 @@ export class Usuario {
     public Estado: string;
     public Pais: string;
     public CEP: string;
+    public usuarioProblema: UsuarioProblema[];
+
+    // public problemas: Problema[];
+
+    // get problemas(): Problema[] {
+    //     return this._problemas;
+    // }
+
+    // set problemas(problemas: Problema[]) {
 
 
-    public problemas: Problema[];
+
+    //     this._problemas = problemas;
+    // }
+
+
+
+
     // public Salvar() {
     //     this.usuarioService.create(this);
     // }

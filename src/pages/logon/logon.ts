@@ -1,3 +1,4 @@
+import { AdminProblemasPage } from './../admin-problemas/admin-problemas';
 import { Usuario } from './../../models/usuario';
 import { UsuarioService } from './../../providers/usuario/usuario.service';
 import { DominioPage } from '../dominio/dominio';
@@ -36,6 +37,9 @@ export class LogonPage {
     console.log('ionViewDidLoad LogonPage');
   }
 
+  goToAdminProblema(){
+    this.navCtrl.push(AdminProblemasPage);
+  }
   goToDominios() {
     let usuario: Usuario = this.signupForm.value;
     usuario.Nome = '';
@@ -43,7 +47,7 @@ export class LogonPage {
     usuario.Numero = '';
     usuario.Complemento = '';
     usuario.Bairro = '';
-    usuario.Cidade = '';
+    usuario.Cidade = ''; 
     usuario.Estado = '';
     usuario.Pais = '';
     usuario.CEP = '';
@@ -59,6 +63,7 @@ export class LogonPage {
 
       this.navCtrl.setRoot(DominioPage, usuario);
     });
+    
   }
 
 }

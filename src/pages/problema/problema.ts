@@ -3,12 +3,6 @@ import { EntrevistaService } from './../../providers/entrevista/entrevista.servi
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PrimeiraEntrevistaPage } from '../primeira-entrevista/primeira-entrevista';
-import { OutrosProblemasPage } from '../outros-problemas/outros-problemas';
-import { DadosPessoaisPage } from '../dados-pessoais/dados-pessoais';
-import { ProcuracaoPage } from '../procuracao/procuracao';
-import { AssinaturaPage } from '../assinatura/assinatura';
-import { DocumentosPage } from '../documentos/documentos';
-import { FeitoPage } from '../feito/feito';
 import { Usuario } from '../../models/usuario';
 
 @Component({
@@ -26,14 +20,10 @@ export class ProblemaPage {
 
     this.usuario = this.navParams.get('usuario') as Usuario;
     this.problemas = this.navParams.get('problema') as Problema[];
-    // this.problemasSelecionados = this.problemas;
-
-    console.log('usuarioid problemas', this.usuario);
-    console.log(navParams);
   }
 
   ionViewDidLoad() {
-    //this.problemas = this.problemas;
+
   }
 
 
@@ -41,7 +31,6 @@ export class ProblemaPage {
   escolherProblemas(problema: Problema) {
 
 
-    // $scope.clicked = function (member) {
 
     problema.selected = problema.selected === true ? false : true;
 
@@ -53,28 +42,44 @@ export class ProblemaPage {
         if (item === problema) this.problemasSelecionados.splice(index, 1);
       });
     }
-
-
-
-    // 
-    console.log(this.problemasSelecionados);
-    // if (index > -1) {
-    //   selected.splice(index, 1);
-    //   member.selected = false;
-    // } else {
-    //   selected.push(member);
-    //   member.selected = true;
-    // }
-    // }
   }
 
   irParaEntrevista() {
 
 
-    this.usuario.problemas = this.problemasSelecionados;
+    // this.usuario.problemas = this.problemasSelecionados;
+
+    this.usuario.usuarioProblema = [];
+    for (let a of this.problemasSelecionados) {
+
+      let b: UsuarioProblema = {} as UsuarioProblema;
+      b.idProblema = a.id;
+      b.idUsuario = this.usuario.id;
+      this.usuario.usuarioProblema.push(b);
+    }
+
+
+
+    // for (let entry of this.problemasSelecionados) {
+    //   console.log(entry.id, entry.id);
+    //   console.log('element', entry);
+    //   let up: any = {};
+    //   up.idProblema = entry.id;
+    //   up.idUsuario = this.usuario.id;
+    //   console.log('up', up);
+
+    //   // var a: UsuarioProblema = new UsuarioProblema();
+
+    //   // console.log(a);
+
+    // }
+
 
     this.usuario.Logradouro = 'teste';
-    this.usuarioService.update(this.usuario); 
+
+    // console.log('JSON.stringify(this.usuario)', JSON.stringify(this.usuario));
+
+    this.usuarioService.update(this.usuario);
 
     this.navCtrl.push(PrimeiraEntrevistaPage,
       {

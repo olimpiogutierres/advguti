@@ -36,14 +36,26 @@ export class UsuarioService extends BaseService {
 
   public update(usuario: Usuario): void {
 
-    console.log('http://localhost:18092/api/usuarios/ + usuario.id', 'http://localhost:18092/api/usuarios/' + usuario.id);
-    console.log('http://localhost:18092/api/usuarios/ + usuario.id', usuario);
 
-    console.log('json', JSON.stringify(usuario));
-    var a = this.http.put('http://localhost:18092/api/Usuarios/' + usuario.id, JSON.stringify(usuario), { headers: this.optionsHttp.headers })
-      .map((res: Response) => res.json());
+    // console.log('http://localhost:18092/api/usuarios/ + usuario.id', 'http://localhost:18092/api/usuarios/' + usuario.id);
+    // console.log('http://localhost:18092/api/usuarios/ + usuario.id', usuario);
 
-    console.log(a);
+    // console.log('json', JSON.stringify(usuario));
+    // var a = this.http.post<any>('http://localhost:18092/api/Usuarios/' + usuario.id + '/',
+    //  usuario, { headers: this.optionsHttp.headers })
+    //   .map((res: Response) => {
+    //     let a = res.json()
+    //     console.log('res.json()', a);
+    //     return a;
+    //   });
+
+
+
+    console.log('usuarioalter', usuario);
+
+    this.http.post<Usuario>('http://localhost:18092/api/usuarios/', usuario, { headers: this.optionsHttp.headers });
+
+
   }
 
   public create(usuario: Usuario): Observable<Usuario> {
@@ -85,9 +97,9 @@ export class UsuarioService extends BaseService {
     // console.log('JSON.stringify(usuario)', JSON.stringify(usuario));
 
 
+    console.log('usuariocreate', usuario);
 
-
-    return this.http.post<Usuario>('https://webapplicationadvogados.azurewebsites.net/api/usuarios/', usuario, { headers: this.optionsHttp.headers });
+    return this.http.post<Usuario>('http://localhost:18092/api/usuarios/', usuario, { headers: this.optionsHttp.headers });
 
 
 

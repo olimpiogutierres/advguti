@@ -3,3 +3,4 @@ class Pergunta {
     public descricao: string;
     public resposta: Resposta[];
 }
+

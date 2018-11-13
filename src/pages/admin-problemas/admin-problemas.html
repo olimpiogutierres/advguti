@@ -1,0 +1,111 @@
+<!--
+  Generated template for the AdminProblemasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>admin-problemas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-2>
+        <ion-row primary>Dominios</ion-row>
+        <ion-row *ngFor="let d of dominios" no-padding (click)="escolherDominio(d)">
+          <!-- <ion-card> -->
+          <!-- <ion-icon name="happy" item-left color="primary"></ion-icon> -->
+          {{d.descricao}}
+          <!-- </ion-card> -->
+        </ion-row>
+      </ion-col>
+      <ion-col col-2>
+        <ion-row primary> Problemas</ion-row>
+        <ion-row *ngFor="let d of problemas" no-padding (click)="escolherProblema(d)">
+          <!-- <ion-card> -->
+          <!-- <ion-icon name="happy" item-left color="primary"></ion-icon> -->
+          {{d.descricao}}
+          <!-- </ion-card> -->
+        </ion-row>
+      </ion-col>
+
+      <ion-col col-2>
+        <ion-row primary> Perguntas</ion-row>
+        <ion-row *ngFor="let p of perguntas" no-padding (click)="escolherProblema(p)">
+          <!-- <ion-card> -->
+          <!-- <ion-icon name="happy" item-left color="primary"></ion-icon> -->
+          {{p.descricao}}
+          <!-- </ion-card> -->
+        </ion-row>
+      </ion-col>
+
+      <ion-col col-6>
+        <!-- <form [formGroup]="formperguntas" id="login-form5"> -->
+        <ion-list id="login-list5">
+          <!-- <h2 text-center>Informe seu email e telefone</h2> -->
+          <ion-item id="login-input9">
+            <ion-label>
+              Pergunta
+            </ion-label>
+            <ion-input type="input" placeholder=""></ion-input>
+          </ion-item>
+
+          <ion-row radio-group>
+            <ion-col>
+              <ion-item>
+                Tipo de Respostas
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Sim ou Não</ion-label>
+                <ion-radio (ionSelect)="Multirespostas(0)"></ion-radio>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Única resposta</ion-label>
+                <ion-radio (ionSelect)="Multirespostas(1)"></ion-radio>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Multirespostas</ion-label>
+                <ion-radio (ionSelect)="Multirespostas(2)"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+
+
+
+          <ion-item *ngIf="TipoResposta>0" id="login-input10"> 
+
+            <ion-input *ngFor="let r of respostas" [(ngModel)]="r.value" (keypress)="onChange($event.keyCode);"></ion-input>
+          </ion-item>
+        </ion-list>
+        <!-- <div class="spacer" style="width:300px;height:66px;" id="login-spacer1"></div> -->
+        <!-- <button id="login-button17" color="stable" [disabled]="signupForm.invalid" (click)="goToDominios();" ion-button block>
+            Prosseguir
+          </button> -->
+
+        <button id="login-button17" color="stable" ion-button block>
+          Adicionar
+        </button>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>
