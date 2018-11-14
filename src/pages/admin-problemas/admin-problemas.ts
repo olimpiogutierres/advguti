@@ -22,6 +22,7 @@ export class AdminProblemasPage {
     { 
       label: 'First Name',
       value: '',
+      index: 1
     }
   ];
   public TipoResposta: number = 0;
@@ -37,6 +38,8 @@ export class AdminProblemasPage {
   }
 
   public Multirespostas(status: number) {
+
+    console.log(status);
     this.TipoResposta = status;
   }
   public escolherDominio(d: Dominio) {
@@ -44,17 +47,20 @@ export class AdminProblemasPage {
   }
 
   public onChange(keycode) {
+
+    // console.log();
     if (keycode == 13) {
       this.respostas.push({
         label: 'Last Name',
         value: '',
+        index: this.respostas.length +1
       });
     }
     // console.log("keycode,", keycode);
   }
 
   public escolherProblema(problema: Problema) {
-    console.log('escolherProblema', problema);
+   
     this.perguntaService.list(problema).subscribe((d: Pergunta[]) => {
       this.perguntas = d;
     });
