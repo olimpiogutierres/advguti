@@ -31,9 +31,12 @@ export class PerguntaService extends BaseService {
   //   return this.items;
   // }
 
- 
+
   list(problema: Problema): Observable<Pergunta[]> {
-    return this.http.get<Pergunta[]>('https://webapplicationadvogados.azurewebsites.net/api/problemas/perguntas/' + problema.id, this.optionsHttp);
+    console.log('http://olimpiogutierres-001-site2.btempurl.com/api/problemas/perguntas/' + problema.id);
+
+
+    return this.http.get<Pergunta[]>('http://olimpiogutierres-001-site2.btempurl.com/api/problemas/perguntas/' + problema.id, this.optionsHttp);
   }
 
 }

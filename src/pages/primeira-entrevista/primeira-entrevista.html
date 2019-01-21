@@ -9,76 +9,48 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page5">
-  <!-- <h3 id="primeiraEntrevista-heading2" style="color:#000000;">
-    deverão ser listados asentrevistas referente ao problema selecionado
-  </h3> -->
-
-  <!-- <div class="list"> -->
-  <!-- <ul *ngFor="let d of perguntas" class="list-group">
-    {{d.descricao}}
-
-    <li class="item" *ngFor="let r of d.resposta" class="list-group-item">
-     
-         {{r.descricaoApp}}
-    </li>
-  </ul> -->
-  <!--  
- <ion-list>
-  <ion-item *ngFor="let d of perguntas" class="list-group">
-    {{d.descricao}}
-
-    <li class="item" *ngFor="let r of d.resposta" class="list-group-item">
-     
-         {{r.descricaoApp}}
-    </li>
-  </ion-item>
- </ion-list>
-</div> -->
-
-  <!-- <button *ngFor="let d of perguntas" ion-item outline>
-    <ion-icon name="sad" item-left color="danger"></ion-icon>
-    {{d.descricao}}
-
-{{d.respostas}}
-
-  </button> -->
-
-  <!-- 
-  <ion-list  *ngFor="let d of perguntas">
-   
-    <ion-list-header>
-        <ion-label> {{d.descricao}}</ion-label>
-     
-    </ion-list-header>
-
-    <ion-item  *ngFor="let r of d.resposta">
-        <ion-label> {{r.descricaoApp}}</ion-label>
-      
-    </ion-item>
-
-  </ion-list> -->
 
   <ion-content padding>
-    <ion-list>
+    <!-- <ion-list>
       <ion-item *ngFor="let d of perguntas">
-        <ion-avatar item-left>
-          <img src="https://cdn.sharelatex.com/img/ol-brand/overleaf_og_logo.png">
-        </ion-avatar>
+
         <h2>{{d.descricao}}</h2>
 
-        <!-- <div>
-          <ion-list radio-group>
-            <ion-item *ngFor="let item of d.resposta">
-              <ion-label>{{item.descricaoApp}}</ion-label>
-              <ion-radio [value]="item.id"></ion-radio>
-            </ion-item>
-          </ion-list>
-        </div> -->
+        <ion-list radio-group *ngFor="let e of d.resposta">
+          <ion-item>
+         
+            <ion-radio item-left value="e.id" value="e">
+              <h2>{{e.descricaoApp}}</h2>
+            </ion-radio>
 
+          </ion-item>
 
-        <!-- <p>Capital: {{d.resposta[0]}}</p> -->
+        </ion-list>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
+
+    <ion-col *ngFor="let q of perguntas">
+      <ion-list radio-group>
+
+        <ion-list-header>
+          {{q.descricao}}
+        </ion-list-header>
+
+        <ion-item no-lines *ngFor="let a of q.resposta">
+          <ion-label>{{a.descricaoApp}}</ion-label>
+          <ion-radio [value]='a.descricaoApp'></ion-radio>
+        </ion-item>
+
+        <div *ngIf="q.manual==false">
+          <ion-item no-lines>
+            <ion-label>Escreva</ion-label>
+            <ion-radio></ion-radio>
+
+          </ion-item>
+          <ion-input type="input"></ion-input>
+        </div>
+      </ion-list>
+    </ion-col>
   </ion-content>
 
 

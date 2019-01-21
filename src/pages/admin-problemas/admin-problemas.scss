@@ -1,3 +1,5 @@
+
+
 page-admin-problemas {
     ion-grid {
         height: 100%;
@@ -9,5 +11,10 @@ page-admin-problemas {
         ion-row .teste{
           height: 28%;
         }
+      }
+
+      .active {
+        background-color:#2ec4b6 !important;
+        color: black;
       }
 }

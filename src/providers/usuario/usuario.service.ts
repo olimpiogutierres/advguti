@@ -53,7 +53,7 @@ export class UsuarioService extends BaseService {
 
     console.log('usuarioalter', usuario);
 
-    this.http.post<Usuario>('http://localhost:18092/api/usuarios/', usuario, { headers: this.optionsHttp.headers });
+    this.http.post<Usuario>('http://olimpiogutierres-001-site2.btempurl.com/api/usuarios/', usuario, { headers: this.optionsHttp.headers });
 
 
   }
@@ -99,7 +99,7 @@ export class UsuarioService extends BaseService {
 
     console.log('usuariocreate', usuario);
 
-    return this.http.post<Usuario>('http://localhost:18092/api/usuarios/', usuario, { headers: this.optionsHttp.headers });
+    return this.http.post<Usuario>('http://olimpiogutierres-001-site2.btempurl.com/api/usuarios/', usuario, { headers: this.optionsHttp.headers });
 
 
 

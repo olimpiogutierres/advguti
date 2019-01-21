@@ -46,7 +46,7 @@ export class DominioPage {
       this.dominios = d;
     }));
 
-    // this.dominios = this.http.get('https://webapplicationadvogados.azurewebsites.net/api/dominios')
+    // this.dominios = this.http.get('http://olimpiogutierres-001-site2.btempurl.com/api/dominios')
     // .subscribe((data:List<Dominio>) => {
     //   this.data = data;
     //   resolve(this.data);

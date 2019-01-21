@@ -39,6 +39,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { AuthService } from '../providers/auth/auth.service';
 import { PerguntaService } from '../providers/pergunta/pergunta.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 

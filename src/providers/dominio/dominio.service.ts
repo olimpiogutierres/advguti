@@ -16,8 +16,8 @@ import { AngularFireObject } from 'angularfire2/database';
 @Injectable()
 export class DominioService extends BaseService {
 
-  public api: string = 'https://webapplicationadvogados.azurewebsites.net/api/dominios/';
-  // public api: string = 'https://webapplicationadvogados.azurewebsites.net/api/dominios/';
+  public api: string = 'http://olimpiogutierres-001-site2.btempurl.com/api/dominios/';
+  // public api: string = 'http://olimpiogutierres-001-site2.btempurl.com/api/dominios/';
   public dominioCollection: AngularFirestoreCollection<Dominio>;
   items: Observable<Dominio[]>;
   // public items: Observable<{}[]>; // read collection

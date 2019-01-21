@@ -29,62 +29,71 @@
       </ion-col>
       <ion-col col-2>
         <ion-row primary> Problemas</ion-row>
-        <ion-row *ngFor="let d of problemas" no-padding (click)="escolherProblema(d)">
+        <ion-row [class.active]="i == selectedRow" *ngFor="let d of problemas; let i = index" no-padding (click)="escolherProblema(d,i)">
           {{d.descricao}}
         </ion-row>
       </ion-col>
-
       <ion-col col-2>
         <ion-row primary> Perguntas</ion-row>
-        <ion-row [class.highlight]="p == 1" *ngFor="let p of perguntas" no-padding (click)="escolherProblema(p)">
+        <ion-row *ngFor="let p of perguntas" (click)="escolherPergunta(p)" no-padding>
           {{p.descricao}}
         </ion-row>
       </ion-col>
-
-      <ion-col col-6>
-        <ion-list id="login-list5">
-          <ion-item id="login-input9">
-            <ion-label>
-              Pergunta
-            </ion-label>
-            <ion-input type="input" placeholder=""></ion-input>
-          </ion-item>
-          <ion-row radio-group>
-            <ion-col>
-              <ion-item>
-                Tipo de Respostas
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label>Sim ou Não</ion-label>
-                <ion-radio (ionSelect)="Multirespostas(0)"></ion-radio>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label>Única resposta</ion-label>
-                <ion-radio (ionSelect)="Multirespostas(1)"></ion-radio>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label>Multirespostas</ion-label>
-                <ion-radio (ionSelect)="Multirespostas(2)"></ion-radio>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <div *ngIf="TipoResposta>0">
-            <ion-row class="teste" *ngFor="let r of respostas" (keypress)="onChange($event.keyCode);">
-              <ion-label>{{r.index}}</ion-label>
-              <ion-input [(ngModel)]="r.value" autofocus></ion-input>
-            </ion-row>
-          </div>
-        </ion-list>
-        <button id="login-button17" color="stable" ion-button block>
-          Adicionar pergunta
-        </button>
+      <ion-col col-2>
+        <ion-row primary> Respostas</ion-row>
+        <ion-row *ngFor="let r of respostasDB" no-padding>
+          {{r.descricaoApp}}
+        </ion-row>
       </ion-col>
+
+      <form [formGroup]="perguntaForm" (ngSubmit)="SalvarPergunta()">
+
+
+        <ion-col col-4>
+          <ion-list id="login-list5">
+            <ion-item id="login-input9">
+              <ion-label>
+                Pergunta
+              </ion-label>
+              <ion-input type="input" formControlName="descricao" placeholder=""></ion-input>
+            </ion-item>
+            <ion-row radio-group>
+              <ion-col>
+                <ion-item>
+                  Tipo de Respostas
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label>Sim ou Não</ion-label>
+                  <ion-radio formControlName="simounao" (ionSelect)="Multirespostas(0)" ngDefaultControl></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label>Única resposta</ion-label>
+                  <ion-radio formControlName="unicaresposta" (ionSelect)="Multirespostas(1)" ngDefaultControl></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label>Multirespostas</ion-label>
+                  <ion-radio formControlName="multirespostas" (ionSelect)="Multirespostas(2)" ngDefaultControl></ion-radio>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <div *ngIf="TipoResposta>0">
+              <ion-row class="teste" *ngFor="let r of respostas" (keypress)="onChange($event.keyCode);">
+                <ion-label>{{r.index}}</ion-label>
+                <ion-input [(ngModel)]="r.value" formControlName="respostas" autofocus ngDefaultControl></ion-input>
+              </ion-row>
+            </div>
+          </ion-list>
+          <button type="submit" id="login-button17" color="stable" ion-button block>
+            Adicionar pergunta
+          </button>
+        </ion-col>
+      </form>
     </ion-row>
   </ion-grid>
 </ion-content>
