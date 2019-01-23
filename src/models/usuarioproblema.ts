@@ -16,7 +16,7 @@ class UsuarioProblema {
     constructor() {
 
     }
-    public id: string = '';
-    public idProblema: string = '';
-    public idUsuario: string = '';
+    public id: number;
+    public IdProblema: number;
+    public IdUsuario: number;
 }

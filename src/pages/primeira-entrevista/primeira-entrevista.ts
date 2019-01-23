@@ -1,5 +1,5 @@
 import { PerguntaService } from './../../providers/pergunta/pergunta.service';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { OutrosProblemasPage } from '../outros-problemas/outros-problemas';
 import { DadosPessoaisPage } from '../dados-pessoais/dados-pessoais';
@@ -17,6 +17,9 @@ import { forEach } from '@firebase/util';
 })
 export class PrimeiraEntrevistaPage {
 
+  
+  @ViewChild('my_input') myInput: any;
+  
   public usuario: Usuario;
   public problemas: Problema[];
   public perguntas: Pergunta[] = [];
