@@ -1,3 +1,4 @@
+import { HeaderPrincipalComponent } from './../components/header-principal/header-principal';
 import { AdminProblemasPage } from './../pages/admin-problemas/admin-problemas';
 // import { PerguntaService } from './../providers/pergunta/pergunta.service';
 import { EntrevistaService } from './../providers/entrevista/entrevista.service';
@@ -12,7 +13,7 @@ import { MyFilterPipe } from '../pipes/filter.pipe';
 import { ProcuracaoPage } from '../pages/procuracao/procuracao';
 import { NgModule, ErrorHandler, Injectable, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, Header } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { CompanhiaPage } from '../pages/companhia/companhia';
 import { ProblemaPage } from '../pages/problema/problema';
@@ -40,7 +41,10 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AuthService } from '../providers/auth/auth.service';
 import { PerguntaService } from '../providers/pergunta/pergunta.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { RespostaProvider } from '../providers/resposta/resposta';
+import { RespostaService } from '../providers/resposta/resposta.service';
+// import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+import { ComponentsModule } from '../components/components.module';
+
 
 
 
@@ -100,13 +104,19 @@ export class MyErrorHandler implements ErrorHandler {
     FeitoPage,
     MyFilterPipe, LogonPage, DominioPage,
     AdminProblemasPage,
+    // ProgressBarComponent,
+    // CustomHeaderComponent,
+    ,HeaderPrincipalComponent,
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AngularFireModule.initializeApp(firebaseAppConfig),
+    ComponentsModule,
+    
     IonicModule.forRoot(MyApp),
-
+    IonicModule.forRoot(HeaderPrincipalComponent),
+    
     AngularFireAuthModule,
     AngularFirestoreModule,
   ],
@@ -124,7 +134,8 @@ export class MyErrorHandler implements ErrorHandler {
     FeitoPage,
     LogonPage,
     DominioPage,
-    AdminProblemasPage
+    AdminProblemasPage,
+    HeaderPrincipalComponent
   ],
   providers: [
     StatusBar,
@@ -140,7 +151,7 @@ export class MyErrorHandler implements ErrorHandler {
     UsuarioService,
     EntrevistaService,
     PerguntaService,
-    RespostaProvider
+    RespostaService
     // AuthProvider
   ]
 })

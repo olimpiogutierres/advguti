@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Usuario } from '../../models/usuario';
 import { Observable } from '../../../node_modules/rxjs';
 import { DocumentSnapshot } from '@firebase/firestore-types';
+import { UsuarioResposta } from '../../models/usuarioresposta';
 
 /*
   Generated class for the UsuarioProvider provider.
@@ -44,8 +45,11 @@ export class UsuarioService extends BaseService {
   }
 
   public inserirProblemaUsuario(usuario: UsuarioProblema): Observable<UsuarioProblema> {
-    console.log('UsuarioProblema', usuario);
-    return this.http.post<UsuarioProblema>('http://olimpiogutierres-001-site2.btempurl.com/api/UsuarioProblemas/', usuario, { headers: this.optionsHttp.headers });
+        return this.http.post<UsuarioProblema>('http://olimpiogutierres-001-site2.btempurl.com/api/UsuarioProblemas/', usuario, { headers: this.optionsHttp.headers });
+  }
+
+  public inserirRespostaUsuario(usuario: UsuarioResposta): Observable<UsuarioResposta> {
+        return this.http.post<UsuarioResposta>('http://olimpiogutierres-001-site2.btempurl.com/api/UsuarioRespostas/', usuario, { headers: this.optionsHttp.headers });
   }
 
   public create(usuario: Usuario): Observable<Usuario> {

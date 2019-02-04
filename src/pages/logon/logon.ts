@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { AdminProblemasPage } from './../admin-problemas/admin-problemas';
 import { Usuario } from './../../models/usuario';
 import { UsuarioService } from './../../providers/usuario/usuario.service';
@@ -6,6 +7,7 @@ import { ProblemaPage } from '../problema/problema';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 /**
  * Generated class for the LogonPage page.
@@ -22,7 +24,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LogonPage {
 
   signupForm: FormGroup;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
+  constructor( public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
     public usuarioService: UsuarioService) {
     let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     this.signupForm = this.formBuilder.group({
@@ -31,13 +33,15 @@ export class LogonPage {
       email: ['', Validators.compose([Validators.required, Validators.pattern(emailRegex)])]
 
     })
-  }
 
+
+  }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogonPage');
   }
 
-  goToAdminProblema(){
+  goToAdminProblema() {
     this.navCtrl.push(AdminProblemasPage);
   }
   goToDominios() {
@@ -47,7 +51,7 @@ export class LogonPage {
     usuario.Numero = '';
     usuario.Complemento = '';
     usuario.Bairro = '';
-    usuario.Cidade = ''; 
+    usuario.Cidade = '';
     usuario.Estado = '';
     usuario.Pais = '';
     usuario.CEP = '';
@@ -63,7 +67,7 @@ export class LogonPage {
 
       this.navCtrl.setRoot(DominioPage, usuario);
     });
-    
+
   }
 
 }
