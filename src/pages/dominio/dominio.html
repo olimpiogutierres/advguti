@@ -12,10 +12,11 @@
 
 </ion-header> -->
 
-<header-principal></header-principal>
- 
-<ion-content padding>
 
+<!-- <br> -->
+
+<ion-content padding>
+  <header-principal [title]="'Dominio'" [progresso]="90"></header-principal>
   <!-- <div *ngIf="dominios | async;let list">
     Length: {{list.length}}
     <div *ngIf="list.length>0">
@@ -29,10 +30,10 @@
 
   </div> -->
 
-    <button *ngFor="let d of dominios" ion-item outline (click)="goToProblema(d)">
-      <ion-icon name="happy" item-left color="primary"></ion-icon>
-      {{d.descricao}}
-    </button>
+  <button *ngFor="let d of dominios" ion-item outline (click)="goToProblema(d)">
+    <ion-icon name="happy" item-left color="primary"></ion-icon>
+    {{d.descricao}}
+  </button>
 
   <!-- <button id="problema-button5" ion-button color="positive" block (click)="goToProblemas()">
     Prosseguir

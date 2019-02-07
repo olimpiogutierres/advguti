@@ -1,3 +1,4 @@
+import { ProgressBarComponent } from './../components/progress-bar/progress-bar';
 import { HeaderPrincipalComponent } from './../components/header-principal/header-principal';
 import { AdminProblemasPage } from './../pages/admin-problemas/admin-problemas';
 // import { PerguntaService } from './../providers/pergunta/pergunta.service';
@@ -43,14 +44,14 @@ import { PerguntaService } from '../providers/pergunta/pergunta.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RespostaService } from '../providers/resposta/resposta.service';
 // import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
-import { ComponentsModule } from '../components/components.module';
+// import { ComponentsModule } from '../components/components.module';
 
 
 
 
 // import { AngularFireDatabaseModule } from '../../node_modules/angularfire2/database';
 // import { AngularFireAuthModule } from '../../node_modules/angularfire2/auth';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 Pro.init('f07c10f1', {
   appVersion: '1'
 })
@@ -106,19 +107,20 @@ export class MyErrorHandler implements ErrorHandler {
     AdminProblemasPage,
     // ProgressBarComponent,
     // CustomHeaderComponent,
-    ,HeaderPrincipalComponent,
+    HeaderPrincipalComponent,
+    ProgressBarComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AngularFireModule.initializeApp(firebaseAppConfig),
-    ComponentsModule,
+    //ComponentsModule,
     
     IonicModule.forRoot(MyApp),
-    IonicModule.forRoot(HeaderPrincipalComponent),
+    // IonicModule.forRoot(HeaderPrincipalComponent),
     
     AngularFireAuthModule,
-    AngularFirestoreModule,
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -153,6 +155,6 @@ export class MyErrorHandler implements ErrorHandler {
     PerguntaService,
     RespostaService
     // AuthProvider
-  ]
+  ], schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -4,14 +4,16 @@
 </div> -->
 
 
-<ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>
-        {{text}}
-      </ion-title>
-      <progress-bar [progress]="40"></progress-bar>
-    </ion-navbar>
-  </ion-header>
+<!-- <ion-header> -->
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{text}}
+    </ion-title>
+  </ion-navbar>
+<!-- </ion-header> -->
+<div>
+  <progress-bar [progress]="progressValue"></progress-bar>
+</div>
