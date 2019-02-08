@@ -38,6 +38,7 @@ export class PrimeiraEntrevistaPage {
         for (let pergunta of data) {
 
           if (!this.perguntas.find(d => d.id == pergunta.id))
+          if(pergunta.)
             this.perguntas.push(pergunta);
         }
 
