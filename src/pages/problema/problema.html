@@ -1,74 +1,12 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      Problema
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-<ion-content padding id="page4">
-  <!-- <ion-list id="problema-list4">
-    <ion-item color="none" id="problema-list-item19">
-      Não embarquei
-    </ion-item>
-    <ion-item color="none" id="problema-list-item20">
-      Cancelaram meu voo
-    </ion-item>
-    <ion-item color="none" id="problema-list-item21">
-      Problemas com bagagem
-    </ion-item>
-    <ion-item color="none" id="problema-list-item22">
-      Atrasaram meu voo
-    </ion-item> 
-  </ion-list> -->
-
-  <!-- <div class="list listbox">
-    <div class="item" *ngFor="let p of problemas" ng-click="escolherProblemas(p);" ng-class="{ active: p.selected }" >
-      <input type="checkbox" checked={{p.selected}} /> 
-      <ion-icon [name]="p.icon" item-left color="danger"></ion-icon>
-
-      {{p.descricao}}
-    </div>
-  </div> -->
-
-  <!-- <div> -->
-  <!-- <div ng-app="sampleApp" ng-controller="MainCtrl"> -->
-  <!-- <ion-content > -->
-  <!-- <div class="list listbox">
-    <div class="item" *ngFor="let item of problemas" (click)="escolherProblemas(item)" ng-class="{ active: item.selected }" ion-item
-    outline>
-      {{ item.descricao }}
-    </div>
-  </div> -->
-
-  <!-- <ion-item>
-      <ion-label>Toppings</ion-label> -->
-  <!-- <ion-select [(ngModel)]="toppings" multiple="true">
-        <ion-option>Bacon</ion-option>
-        <ion-option>Black Olives</ion-option>
-        <ion-option>Extra Cheese</ion-option>
-        <ion-option>Mushrooms</ion-option>
-        <ion-option>Pepperoni</ion-option>
-        <ion-option>Sausage</ion-option>
-      </ion-select> -->
-  <!-- </ion-item> -->
-
-  <ion-list>
+<ion-content id="page4">
+  <header-principal [title]="'Problemas'" [progresso]="20"></header-principal>
+   <ion-list>
     <ion-item *ngFor="let item of problemas">
       <ion-label>{{item.descricao}}</ion-label>
       <ion-checkbox [checked]="item.selected" color="secondary" (click)="escolherProblemas(item)"></ion-checkbox>
 
     </ion-item>
   </ion-list>
-
-
-  <!-- </ion-content> -->
-  <!-- </div> -->
-  <!-- </div> -->
-
-
   <button id="problema-button5" (click)="irParaEntrevista()" ion-button color="positive" block>
     Prosseguir
   </button>

@@ -5,15 +5,19 @@
 
 
 <!-- <ion-header> -->
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      {{text}}
-    </ion-title>
+
+  <ion-navbar text-center>
+    <!-- <ion-content padding> -->
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title cente>
+        {{title}}
+      </ion-title>
+      <div>
+        <progress-bar [progress]='(progresso)'></progress-bar>
+      </div>
+    <!-- </ion-content> -->
   </ion-navbar>
+
 <!-- </ion-header> -->
-<div>
-  <progress-bar [progress]="progressValue"></progress-bar>
-</div>

@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { DadosPessoaisPage } from '../dados-pessoais/dados-pessoais';
-import { ProcuracaoPage } from '../procuracao/procuracao';
-import { AssinaturaPage } from '../assinatura/assinatura';
-import { DocumentosPage } from '../documentos/documentos';
-import { FeitoPage } from '../feito/feito';
+import { Usuario } from '../../models/usuario';
+
 
 @Component({
   selector: 'page-outros-problemas',
@@ -12,9 +10,12 @@ import { FeitoPage } from '../feito/feito';
 })
 export class OutrosProblemasPage {
 
-  constructor(public navCtrl: NavController) {
+  public usuario: Usuario;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public perguntaService: PerguntaService ) {
+    this.usuario = this.navParams.get('usuario') as Usuario;
+    // console.log('OutrosProblemasPage111', this.usuario);
   }
-  goToDadosPessoais(){
+  goToDadosPessoais() {
     this.navCtrl.push(DadosPessoaisPage);
   }
 }

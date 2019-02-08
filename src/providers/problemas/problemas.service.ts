@@ -30,7 +30,7 @@ export class ProblemasService extends BaseService {
 
 
   list(dominio: Dominio): Observable<Problema[]> {
-    return this.http.get<Problema[]>('http://olimpiogutierres-001-site2.btempurl.com/api/problemas/dominio/' + dominio.id, this.optionsHttp);
+    return this.http.get<Problema[]>(this.api + '/problemas/dominio/' + dominio.id, this.optionsHttp);
   }
 
 }

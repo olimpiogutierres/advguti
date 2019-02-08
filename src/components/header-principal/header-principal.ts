@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class HeaderPrincipalComponent {
 
   text: string;
-  progressValue: number;
+  @Output() progressValue: number;
   @Input('title') public title: string;
   @Input('progresso') public progresso: number;
   constructor() {
@@ -17,10 +17,11 @@ export class HeaderPrincipalComponent {
     this.progressValue = this.progresso;
 
     console.log(this.title, this.text);
+    console.log(this.progressValue, this.progresso);
   }
   ionViewWillEnter() {
 
-    console.log(this.progressValue, this.progresso);
+    
   }
 
 }

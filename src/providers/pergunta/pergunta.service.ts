@@ -33,10 +33,7 @@ export class PerguntaService extends BaseService {
 
 
   list(problema: Problema): Observable<Pergunta[]> {
-    console.log('http://olimpiogutierres-001-site2.btempurl.com/api/problemas/perguntas/' + problema.id);
-
-
-    return this.http.get<Pergunta[]>('http://olimpiogutierres-001-site2.btempurl.com/api/problemas/perguntas/' + problema.id, this.optionsHttp);
+    return this.http.get<Pergunta[]>(this.api + '/problemas/perguntas/' + problema.id, this.optionsHttp);
   }
 
 }

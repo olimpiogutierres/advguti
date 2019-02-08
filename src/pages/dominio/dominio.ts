@@ -46,18 +46,13 @@ export class DominioPage {
       this.dominios = d;
     }));
 
-    // this.dominios = this.http.get('http://olimpiogutierres-001-site2.btempurl.com/api/dominios')
-    // .subscribe((data:List<Dominio>) => {
-    //   this.data = data;
-    //   resolve(this.data);
-    // });
-
 
   }
 
   public goToProblema(dominio: Dominio) {
 
     let usuario: Usuario = this.navParams.data as Usuario;
+
     // usuario.entrou = 1;
     // this.usuarioService.create(usuario);
 
@@ -67,13 +62,13 @@ export class DominioPage {
 
     //usuario.dominio = dominio; 
 
-    this.usuarioService.update(usuario); 
+    this.usuarioService.update(usuario);
 
-    let problemas: Problema[]; 
+    let problemas: Problema[];
 
+    usuario.idDominioSelecionado = dominio.id;
 
-
-    console.log('dominio.problema', dominio.problema);
+    console.log('usuario.idDominioSelecionado', usuario.idDominioSelecionado);
     this.navCtrl.push(ProblemaPage, {
       problema: dominio.problema,
       usuario: usuario

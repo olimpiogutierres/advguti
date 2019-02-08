@@ -39,17 +39,17 @@ export class UsuarioService extends BaseService {
 
     console.log('usuarioalter', usuario);
 
-    this.http.post<Usuario>('http://olimpiogutierres-001-site2.btempurl.com/api/usuarios/', usuario, { headers: this.optionsHttp.headers });
+    this.http.post<Usuario>(this.api + '/usuarios/', usuario, { headers: this.optionsHttp.headers });
 
 
   }
 
   public inserirProblemaUsuario(usuario: UsuarioProblema): Observable<UsuarioProblema> {
-        return this.http.post<UsuarioProblema>('http://olimpiogutierres-001-site2.btempurl.com/api/UsuarioProblemas/', usuario, { headers: this.optionsHttp.headers });
+    return this.http.post<UsuarioProblema>(this.api + '/UsuarioProblemas/', usuario, { headers: this.optionsHttp.headers });
   }
 
   public inserirRespostaUsuario(usuario: UsuarioResposta): Observable<UsuarioResposta> {
-        return this.http.post<UsuarioResposta>('http://olimpiogutierres-001-site2.btempurl.com/api/UsuarioRespostas/', usuario, { headers: this.optionsHttp.headers });
+    return this.http.post<UsuarioResposta>(this.api + '/UsuarioRespostas/', usuario, { headers: this.optionsHttp.headers });
   }
 
   public create(usuario: Usuario): Observable<Usuario> {
@@ -61,7 +61,7 @@ export class UsuarioService extends BaseService {
 
     console.log('usuariocreate', usuario);
 
-    return this.http.post<Usuario>('http://olimpiogutierres-001-site2.btempurl.com/api/usuarios/', usuario, { headers: this.optionsHttp.headers });
+    return this.http.post<Usuario>(this.api + '/usuarios/', usuario, { headers: this.optionsHttp.headers });
 
 
 

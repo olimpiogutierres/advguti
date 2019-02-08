@@ -1,59 +1,29 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      Primeira Entrevista
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-<ion-content padding id="page5">
 
-  <ion-content padding>
-    <!-- <ion-list>
-      <ion-item *ngFor="let d of perguntas">
 
-        <h2>{{d.descricao}}</h2>
+<ion-content>
+  <header-principal [title]="'Primeira Entrevista'" [progresso]="30"></header-principal>
+  <ion-col *ngFor="let q of perguntas">
+    <ion-list radio-group>
 
-        <ion-list radio-group *ngFor="let e of d.resposta">
-          <ion-item>
-         
-            <ion-radio item-left value="e.id" value="e">
-              <h2>{{e.descricaoApp}}</h2>
-            </ion-radio>
+      <ion-list-header>
+        {{q.descricao}}
+      </ion-list-header>
 
-          </ion-item>
-
-        </ion-list>
+      <ion-item no-lines *ngFor="let a of q.resposta">
+        <ion-label>{{a.descricaoApp}}</ion-label>
+        <ion-radio color="secondary" [value]='a.descricaoApp'></ion-radio>
       </ion-item>
-    </ion-list> -->
 
-    <ion-col *ngFor="let q of perguntas">
-      <ion-list radio-group>
+      <div *ngIf="q.manual==false">
+        <ion-item no-lines>
+          <ion-label>Outro</ion-label>
+          <ion-radio></ion-radio>
 
-        <ion-list-header>
-          {{q.descricao}}
-        </ion-list-header>
-
-        <ion-item no-lines *ngFor="let a of q.resposta">
-          <ion-label>{{a.descricaoApp}}</ion-label>
-          <ion-radio [value]='a.descricaoApp'></ion-radio>
         </ion-item>
-
-        <div *ngIf="q.manual==false">
-          <ion-item no-lines>
-            <ion-label>Outro</ion-label>
-            <ion-radio></ion-radio>
-
-          </ion-item>
-          <ion-input type="input"></ion-input>
-        </div>
-      </ion-list>
-    </ion-col>
-  </ion-content>
-
-
+        <ion-input type="input"></ion-input>
+      </div>
+    </ion-list>
+  </ion-col>
   <button id="primeiraEntrevista-button6" ion-button color="positive" block on-click="goToOutrosProblemas()">
     Prosseguir
   </button>

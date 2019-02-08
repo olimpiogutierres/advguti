@@ -17,9 +17,9 @@ import { forEach } from '@firebase/util';
 })
 export class PrimeiraEntrevistaPage {
 
-  
+
   @ViewChild('my_input') myInput: any;
-  
+
   public usuario: Usuario;
   public problemas: Problema[];
   public perguntas: Pergunta[] = [];
@@ -29,6 +29,7 @@ export class PrimeiraEntrevistaPage {
     this.problemas = this.navParams.get('problema') as Problema[];
     // this.entrevistas = this.navParams.get('entrevista') as Entrevista;
 
+    console.log('PrimeiraEntrevistaPage1',this.usuario);
 
     for (let key of this.problemas) {
 
@@ -57,6 +58,8 @@ export class PrimeiraEntrevistaPage {
 
   }
   goToOutrosProblemas() {
-    this.navCtrl.push(OutrosProblemasPage);
+    console.log('this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });', this.usuario);
+
+    this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });
   }
 }

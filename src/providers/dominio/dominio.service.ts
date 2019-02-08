@@ -16,8 +16,6 @@ import { AngularFireObject } from 'angularfire2/database';
 @Injectable()
 export class DominioService extends BaseService {
 
-  public api: string = 'http://olimpiogutierres-001-site2.btempurl.com/api/dominios/';
-  // public api: string = 'http://olimpiogutierres-001-site2.btempurl.com/api/dominios/';
   public dominioCollection: AngularFirestoreCollection<Dominio>;
   items: Observable<Dominio[]>;
   // public items: Observable<{}[]>; // read collection
@@ -38,7 +36,7 @@ export class DominioService extends BaseService {
 
 
   list(): Observable<Dominio[]> {
-    return this.http.get<Dominio[]>(this.api, this.optionsHttp);
+    return this.http.get<Dominio[]>(this.api + '/dominios', this.optionsHttp);
   }
 
 }

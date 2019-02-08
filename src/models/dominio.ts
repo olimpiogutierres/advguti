@@ -1,5 +1,5 @@
 class Dominio {
-    public id: string;
+    public id: number;
     public descricao: string;
     public problema: Problema[];
 

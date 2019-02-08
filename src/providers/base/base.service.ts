@@ -41,7 +41,7 @@ export abstract class BaseService {
     private headers: HttpHeaders;
     public optionsHttp: { headers: {}, body: {} };
 
-
+    public api: string = 'https://www.semvoo.com.br/ws/api';
 
 
 
