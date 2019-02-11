@@ -1,18 +1,18 @@
 page-logon {
 
 
-  $img:"https://lh4.googleusercontent.com/-3eBjuQpOGFw/U47yh_-OycI/AAAAAAAAI2U/uaU5pK49N1w/s1600/normal.jpg";
+  $img:"https://www.ceara.gov.br/wp-content/uploads/2018/03/FOTO-MARCOS-STUDART_170624_AERO-JERI_MVS0196.jpg";
 
 .box{
 	background: url($img) 0 0 / cover fixed no-repeat;
-    filter: blur(6px);
-  position: absolute;
-  left:0; top:0; right:0; bottom:0;
-  z-index: -1;
-  pointer-events: none;
+    // filter: blur(6px);
+  // position: absolute;
+  // left:0; top:0; right:0; bottom:0;
+  // z-index: -1;
+  // pointer-events: none;
 }
 .login{
-  z-index:1;
+  // z-index:1;
  // filter: blur(100px);
 }
 // .box::before{

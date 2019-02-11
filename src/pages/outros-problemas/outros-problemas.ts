@@ -16,7 +16,7 @@ export class OutrosProblemasPage {
     this.usuario = this.navParams.get('usuario') as Usuario;
     // console.log('OutrosProblemasPage111', this.usuario);
 
-    this.perguntaService.list()
+    // this.perguntaService.list()
   }
   goToDadosPessoais() {
     this.navCtrl.push(DadosPessoaisPage);

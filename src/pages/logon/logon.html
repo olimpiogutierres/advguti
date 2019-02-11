@@ -17,23 +17,25 @@
         <ion-label>
           Email
         </ion-label>
-        <ion-input type="email" placeholder="" formControlName="email" value='o@o.com'></ion-input>
+        <ion-input type="email" placeholder="" formControlName="email"></ion-input>
       </ion-item>
       <ion-item id="login-input10">
         <ion-label>
           Telefone
         </ion-label>
-        <ion-input type="tel" placeholder="" formControlName="telefone" value='1234'></ion-input>
+        <ion-input type="tel" placeholder="" formControlName="telefone"></ion-input>
       </ion-item>
     </ion-list>
     <!-- <div class="spacer" style="width:300px;height:66px;" id="login-spacer1"></div> -->
-    <button id="login-button17" color="stable" [disabled]="signupForm.invalid" (click)="goToDominios();" ion-button block>
+    <button id="login-button17" color="stable" [disabled]="signupForm.invalid" (click)="goToDominios();" ion-button
+      block>
       Prosseguir
     </button>
 
-    <button id="login-button17" color="stable" [disabled]="signupForm.invalid" (click)="goToAdminProblema();" ion-button block>
+    <!-- <button id="login-button17" color="stable" [disabled]="signupForm.invalid" (click)="goToAdminProblema();"
+      ion-button block>
       Admin Problema
-    </button>
+    </button> -->
     <!-- <button id="login-button18" ion-button clear color="positive" block href-inappbrowser="/signup">
       Or create an account
     </button> -->
