@@ -9,6 +9,7 @@ progress-bar {
         border: 1px solid #dcdcdc;
         color: #fff;
         border-radius: 20px;
+        height: 10%;
     }
 
     .progress-inner {
@@ -18,6 +19,7 @@ progress-bar {
         padding: 5px;
         border-radius: 20px;
         background-color: map-get($colors, secondary);
+        height: 10%;
     }
 
 }

@@ -7,7 +7,7 @@
 
     </ion-item>
   </ion-list>
-  <button id="problema-button5" (click)="irParaEntrevista()" ion-button color="positive" block>
+  <button id="problema-button5" [disabled]="this.problemasSelecionados.length==0" (click)="irParaEntrevista()" ion-button color="positive" block>
     Prosseguir
   </button>
 </ion-content>

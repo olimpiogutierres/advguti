@@ -10,6 +10,7 @@ import { FeitoPage } from '../feito/feito';
 import { Usuario } from '../../models/usuario';
 import { EntrevistaService } from '../../providers/entrevista/entrevista.service';
 import { forEach } from '@firebase/util';
+import { UsuarioResposta } from '../../models/usuarioresposta';
 
 @Component({
   selector: 'page-primeira-entrevista',
@@ -23,25 +24,22 @@ export class PrimeiraEntrevistaPage {
   public usuario: Usuario;
   public problemas: Problema[];
   public perguntas: Pergunta[] = [];
+  public respostas: UsuarioResposta[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public perguntaService: PerguntaService) {
 
     this.usuario = this.navParams.get('usuario') as Usuario;
     this.problemas = this.navParams.get('problema') as Problema[];
     // this.entrevistas = this.navParams.get('entrevista') as Entrevista;
 
-    console.log('PrimeiraEntrevistaPage1',this.usuario);
+    console.log('PrimeiraEntrevistaPage1', this.usuario);
 
     for (let key of this.problemas) {
 
       this.perguntaService.list(key as Problema).subscribe((data: Pergunta[]) => {
-
         for (let pergunta of data) {
-
           if (!this.perguntas.find(d => d.id == pergunta.id))
-          // if(pergunta.)
             this.perguntas.push(pergunta);
         }
-
       });
 
 

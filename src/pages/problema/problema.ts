@@ -106,7 +106,7 @@ export class ProblemaPage {
     //   this.navCtrl.push(PrimeiraEntrevistaPage,
     //     {
     //       problema: problema,
-    //       usuario: this.usuario, 
+    //       usuario: this.usuario,
     //       entrevista: this.entrevista
     //     });
     // }));

@@ -1,9 +1,15 @@
 export class UsuarioResposta {
 
-    constructor() {
+  constructor() {
 
-    }
-    public Id: number;
-    public IdProblema: number;
-    public IdUsuario: number;
+  }
+  public Id: number;
+  public IdResposta: number;
+  public IdProblema: number;
+  public IdUsuario: number;
+  public IdStatus: number;
+  public IdPergunta: number;
+  public RelatoManual: string;
+
+
 }
