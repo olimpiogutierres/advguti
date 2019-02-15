@@ -1,6 +1,9 @@
+
+
+
 <ion-content>
   <header-principal [title]="'Primeira Entrevista'" [progresso]="30"></header-principal>
-  <ion-col *ngFor="let q of perguntas">
+  <ion-col *ngFor="let q of perguntas; let i = index ">
     <ion-list radio-group>
 
 
@@ -11,47 +14,24 @@
         </ion-card-header>
         <ion-card-content>
           <ion-item no-lines *ngFor="let a of q.resposta">
+            <ion-radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, q, a)" [value]='a.descricaoApp'></ion-radio>
             <ion-label>{{a.descricaoApp}}</ion-label>
-            <ion-radio color="secondary" [value]='a.descricaoApp'></ion-radio>
           </ion-item>
-          <div *ngIf="q.manual==false">
-
-            <ion-input type="input" placeholder="Descreva aqui"></ion-input>
-            <!-- <ion-radio color="secondary"></ion-radio> -->
-            <ion-grid>
-              <ion-row>
-                <ion-col size="9" push="3">
-                  <div>
-                    1 of 2
-                  </div>
-                </ion-col>
-                <ion-col size="3" pull="9">
-                  <div>
-                    2 of 2
-                  </div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
+          <div *ngIf="q.manual==true">
+            <ion-item no-lines>
+              <ion-radio  item-left color="secondary" (ionSelect)="selecionarRespostas(input, q, null)"></ion-radio>
+              <ion-label>Outro(s)</ion-label>
+            </ion-item>
+            <ion-input #input type="input" (keydown)="atualizarRelato($event,q)" placeholder="Descreva aqui"></ion-input>
           </div>
         </ion-card-content>
 
       </ion-card>
 
-      <!-- <ion-list-header>
-        {{q.descricao}}
-      </ion-list-header>
-
-      <ion-item no-lines *ngFor="let a of q.resposta">
-        <ion-label>{{a.descricaoApp}}</ion-label>
-        <ion-radio color="secondary" [value]='a.descricaoApp'></ion-radio>
-      </ion-item>
-
-      <div *ngIf="q.manual==false">
-
-        <ion-input type="input" placeholder="Descreva aqui"></ion-input>
-      </div> -->
     </ion-list>
   </ion-col>
-  <button id="primeiraEntrevista-button6" ion-button color="positive" block on-click="goToOutrosProblemas()">
+  <button id="primeiraEntrevista-button6"  ion-button color="positive" [disabled]="this.perguntas.length!=this.usuarioRespostas.length"
+    block on-click="goToOutrosProblemas()">
     Prosseguir
   </button>
+

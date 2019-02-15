@@ -1,5 +1,5 @@
 import { PerguntaService } from './../../providers/pergunta/pergunta.service';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { OutrosProblemasPage } from '../outros-problemas/outros-problemas';
 import { DadosPessoaisPage } from '../dados-pessoais/dados-pessoais';
@@ -11,6 +11,7 @@ import { Usuario } from '../../models/usuario';
 import { EntrevistaService } from '../../providers/entrevista/entrevista.service';
 import { forEach } from '@firebase/util';
 import { UsuarioResposta } from '../../models/usuarioresposta';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'page-primeira-entrevista',
@@ -24,15 +25,18 @@ export class PrimeiraEntrevistaPage {
   public usuario: Usuario;
   public problemas: Problema[];
   public perguntas: Pergunta[] = [];
-  public respostas: UsuarioResposta[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public perguntaService: PerguntaService) {
+  public usuarioRespostas: UsuarioResposta[] = [];
+  public loginForm: FormGroup;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public perguntaService: PerguntaService, public fb: FormBuilder) {
 
     this.usuario = this.navParams.get('usuario') as Usuario;
     this.problemas = this.navParams.get('problema') as Problema[];
-    // this.entrevistas = this.navParams.get('entrevista') as Entrevista;
 
-    console.log('PrimeiraEntrevistaPage1', this.usuario);
 
+    this.loginForm = this.fb.group({
+      // 'title': ['', Validators.required],
+      'outroInput': ['', Validators.required]
+    });
     for (let key of this.problemas) {
 
       this.perguntaService.list(key as Problema).subscribe((data: Pergunta[]) => {
@@ -49,7 +53,36 @@ export class PrimeiraEntrevistaPage {
     console.log('this.perguntas', this.perguntas);
   }
 
+  selecionarRespostas(input: any, pergunta: Pergunta, resposta: Resposta) {
+    //console.log('teste', idPergunta);
 
+    // console.log('entrou no selecionar respostas');
+    // if (this.usuarioRespostas.length == 0)
+    //   return;
+
+
+    this.usuarioRespostas = this.usuarioRespostas.filter(d => d.IdPergunta != pergunta.id);
+
+    var respostaUsuario = new UsuarioResposta();
+    respostaUsuario.IdProblema = null;
+    respostaUsuario.IdPergunta = pergunta.id;
+    respostaUsuario.IdStatus = 1;
+    respostaUsuario.IdUsuario = Number(this.usuario.id);
+
+
+    if (resposta != null) {
+      respostaUsuario.IdResposta = resposta.id;
+    }
+    else {
+      respostaUsuario.IdResposta = null;
+      if (input != null)
+        input.setFocus();
+    }
+
+    this.usuarioRespostas.push(respostaUsuario);
+
+    console.log('respostas dos usuarios', this.usuarioRespostas);
+  }
 
 
   ionViewDidLoad() {
@@ -57,8 +90,36 @@ export class PrimeiraEntrevistaPage {
 
   }
   goToOutrosProblemas() {
+
+    // console.log("this.fb.control['outroInput'].value;", this.fb.control['outroInput'].value);
     console.log('this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });', this.usuario);
 
     this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });
+  }
+
+  atualizarRelato(event, q: Pergunta) {
+
+    // if (outroSelecionado != null)
+    //   outroSelecionado.setFocus();
+    q.manual = true;
+
+    var usuarioResposta = this.usuarioRespostas.filter(d => d.IdPergunta = q.id)[0];
+
+    if (usuarioResposta === undefined || usuarioResposta == null) {
+
+      usuarioResposta = new UsuarioResposta();
+      usuarioResposta.IdProblema = null;
+      usuarioResposta.IdPergunta = q.id;
+      usuarioResposta.IdStatus = 1;
+      usuarioResposta.IdUsuario = Number(this.usuario.id);
+      usuarioResposta.IdResposta = null;
+      usuarioResposta.RelatoManual = '';
+    }
+
+    usuarioResposta.RelatoManual = usuarioResposta.RelatoManual + String(event.key);
+
+    this.usuarioRespostas = this.usuarioRespostas.filter(d => d.IdPergunta != q.id);
+    this.usuarioRespostas.push(usuarioResposta);
+
   }
 }

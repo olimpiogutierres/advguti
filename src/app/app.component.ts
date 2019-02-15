@@ -21,9 +21,9 @@ import { CompanhiaPage } from '../pages/companhia/companhia';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp { 
+export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = LogonPage; 
+    rootPage:any = AssinaturaPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

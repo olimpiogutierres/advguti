@@ -9,7 +9,7 @@ export class UsuarioResposta {
   public IdUsuario: number;
   public IdStatus: number;
   public IdPergunta: number;
-  public RelatoManual: string;
+  public RelatoManual: string='';
 
 
 }

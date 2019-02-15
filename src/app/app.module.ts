@@ -41,17 +41,17 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { AuthService } from '../providers/auth/auth.service';
 import { PerguntaService } from '../providers/pergunta/pergunta.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RespostaService } from '../providers/resposta/resposta.service';
 // import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 // import { ComponentsModule } from '../components/components.module';
-
-
-
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 // import { AngularFireDatabaseModule } from '../../node_modules/angularfire2/database';
 // import { AngularFireAuthModule } from '../../node_modules/angularfire2/auth';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SignaturePage } from "../pages/assinatura/signature";
+
 Pro.init('f07c10f1', {
   appVersion: '1'
 })
@@ -108,24 +108,29 @@ export class MyErrorHandler implements ErrorHandler {
     // ProgressBarComponent,
     // CustomHeaderComponent,
     HeaderPrincipalComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    SignaturePage
+
   ],
   imports: [
+
     HttpClientModule,
     BrowserModule,
     AngularFireModule.initializeApp(firebaseAppConfig),
     //ComponentsModule,
-    
+
     IonicModule.forRoot(MyApp),
     // IonicModule.forRoot(HeaderPrincipalComponent),
-    
+    ReactiveFormsModule,
+    SignaturePadModule,
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    CompanhiaPage, 
+
+    CompanhiaPage,
     ProblemaPage,
     PrimeiraEntrevistaPage,
     OutrosProblemasPage,
@@ -137,7 +142,8 @@ export class MyErrorHandler implements ErrorHandler {
     LogonPage,
     DominioPage,
     AdminProblemasPage,
-    HeaderPrincipalComponent
+    HeaderPrincipalComponent,
+    SignaturePage,
   ],
   providers: [
     StatusBar,
@@ -146,7 +152,7 @@ export class MyErrorHandler implements ErrorHandler {
     IonicErrorHandler,
     [{ provide: ErrorHandler, useClass: MyErrorHandler }],
     HttpClientModule,
-
+    // IonicsignaturepadProvider,
     DominioService,
     ProblemasService,
     AuthService,

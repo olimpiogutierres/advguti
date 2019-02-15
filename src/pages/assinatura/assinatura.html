@@ -8,19 +8,18 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page9">
-  <div id="assinatura-container4">
-    <div id="assinatura-markdown9" class="show-list-numbers-and-dots">
-      <p style="color:#000000;">
-        Assine abaixo
-      </p>
-      <p style="color:#000000;">
-        .
-      </p>
-    </div>
+<ion-content padding>
+  <h4>Precisamos da sua autorização.</h4>
+  <h6>Assine duas vezes abaixo, pode utilizar seus dedos...</h6>
+  <button ion-button full (click)="openSignatureModel(1)">Assinatura 1</button>
+  <button ion-button full (click)="openSignatureModel(2)">Assinatura 2</button>
+  <!-- <ion-item > -->
+
+  <div no-lines *ngFor="let a of signatureImages">
+    <img [src]="a" />
   </div>
-  <img src="assets/img/RVOdS48QS1mtC2fjh9hX_signature.jpg" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
-  <button id="assinatura-button11" ion-button color="positive" block on-click="goToDocumentos()">
-    Prosseguir
-  </button>
+  <!-- <div *ngIf="signatureImages.length>0"><img [src]="signatureImages[0]" /></div> -->
 </ion-content>
+<button id="assinatura-button11" ion-button color="positive" block on-click="goToDocumentos()">
+  Prosseguir
+</button>
