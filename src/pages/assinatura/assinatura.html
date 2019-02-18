@@ -15,9 +15,19 @@
   <button ion-button full (click)="openSignatureModel(2)">Assinatura 2</button>
   <!-- <ion-item > -->
 
-  <div class="imagem" *ngFor="let a of signatureImages">
-    <img [src]="a" />
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="imagem" *ngFor="let a of signatureImages">
+
+
+        <img [src]="a" />
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
   <!-- <div *ngIf="signatureImages.length>0"><img [src]="signatureImages[0]" /></div> -->
 </ion-content>
 <button id="assinatura-button11" ion-button color="positive" block on-click="goToDocumentos()">

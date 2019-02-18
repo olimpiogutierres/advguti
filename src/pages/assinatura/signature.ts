@@ -21,7 +21,8 @@ export class SignaturePage {
     // console.log('navParams.get(images)', navParams.get('images'));
     if (images == undefined)
       this.signatureImages = [];
-    this.signatureImages = images;
+    else
+      this.signatureImages = images;
     console.log('images', this.signatureImages);
     // console.log('this.signatureImages', this.signatureImages);
     // console.log('this.signatureImages,leng', this.signatureImages.length);
