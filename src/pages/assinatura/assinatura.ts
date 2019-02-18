@@ -15,10 +15,20 @@ export class AssinaturaPage {
   public signatureImages: any[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalController: ModalController) {
 
+    // console.log('signatureImage', signatureImage);
+
+    // console.log('signatureImages',this.signatureImages)
+    var signatureImage: any[] = navParams.get('signatureImage');
     console.log('signatureImage', signatureImage);
 
-    var signatureImage: any = navParams.get('signatureImage');
-    // this.signatureImages.push(signatureImage);
+    // if (signatureImage.length > 0) {
+    //   for (let value of signatureImage) {
+    //     this.signatureImages.push(value);
+    //     console.log('entrou foreach');
+    //   }
+    // }
+
+    this.signatureImages = signatureImage;
   }
   goToDocumentos() {
     this.navCtrl.push(DocumentosPage);

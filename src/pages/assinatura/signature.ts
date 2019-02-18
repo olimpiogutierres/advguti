@@ -17,7 +17,14 @@ export class SignaturePage {
   public signatureImage: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.signatureImages = navParams.get('images');
+    var images: any[] = navParams.get('images');
+    // console.log('navParams.get(images)', navParams.get('images'));
+    if (images == undefined)
+      this.signatureImages = [];
+    this.signatureImages = images;
+    console.log('images', this.signatureImages);
+    // console.log('this.signatureImages', this.signatureImages);
+    // console.log('this.signatureImages,leng', this.signatureImages.length);
   }
 
   canvasResize() {
@@ -40,10 +47,15 @@ export class SignaturePage {
 
   drawComplete() {
     this.signatureImage = this.signaturePad.toDataURL();
-    console.log(this.signatureImage);
+
+    console.log('this.signatureImage', this.signatureImage)
+    console.log('this.signatureImages', this.signatureImages)
+
+    if (this.signatureImages == undefined || this.signatureImages == null)
+      this.signatureImages = [];
 
     this.signatureImages.push(this.signatureImage);
-    this.navCtrl.push(AssinaturaPage, { signatureImage: this.signatureImage });
+    this.navCtrl.push(AssinaturaPage, { signatureImage: this.signatureImages });
   }
 
   drawClear() {
