@@ -2,7 +2,7 @@ import { AssinaturaPage } from './assinatura';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
-// import {HomePage} from '../home/home';
+
 @Component({
   selector: 'page-signature',
   templateUrl: 'signature.html',
@@ -18,14 +18,13 @@ export class SignaturePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     var images: any[] = navParams.get('images');
-    // console.log('navParams.get(images)', navParams.get('images'));
+
     if (images == undefined)
       this.signatureImages = [];
     else
       this.signatureImages = images;
-    console.log('images', this.signatureImages);
-    // console.log('this.signatureImages', this.signatureImages);
-    // console.log('this.signatureImages,leng', this.signatureImages.length);
+
+
   }
 
   canvasResize() {
@@ -43,14 +42,14 @@ export class SignaturePage {
   }
 
   drawCancel() {
-    this.navCtrl.push(AssinaturaPage);
+    this.navCtrl.push(AssinaturaPage, { signatureImage: this.signatureImages });
   }
 
   drawComplete() {
     this.signatureImage = this.signaturePad.toDataURL();
 
-    console.log('this.signatureImage', this.signatureImage)
-    console.log('this.signatureImages', this.signatureImages)
+    // console.log('this.signatureImage', this.signatureImage)
+    // console.log('this.signatureImages', this.signatureImages)
 
     if (this.signatureImages == undefined || this.signatureImages == null)
       this.signatureImages = [];

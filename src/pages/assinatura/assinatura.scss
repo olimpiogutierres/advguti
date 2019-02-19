@@ -1,6 +1,11 @@
 page-assinatura {
-.imagem{
-  border: dashed 1px #180909;
-  width: 20%; height: 200px;
-}
+    .imagem {
+        border: dashed 1px #180909;
+        width: 20%;
+        height: 200px;
+        max-width: 50%;
+    }
+    .botao-fechar {
+        float: right;
+    }
 }

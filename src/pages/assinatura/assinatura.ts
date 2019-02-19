@@ -13,32 +13,28 @@ import { SignaturePage } from "./signature";
 })
 export class AssinaturaPage {
   public signatureImages: any[] = [];
+  public minSignatures: number = 2;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalController: ModalController) {
 
-    // console.log('signatureImage', signatureImage);
-
-    // console.log('signatureImages',this.signatureImages)
     var signatureImage: any[] = navParams.get('signatureImage');
-    console.log('signatureImage', signatureImage);
-
-    // if (signatureImage.length > 0) {
-    //   for (let value of signatureImage) {
-    //     this.signatureImages.push(value);
-    //     console.log('entrou foreach');
-    //   }
-    // }
-
+    // console.log('signatureImage', signatureImage);
     this.signatureImages = signatureImage;
   }
   goToDocumentos() {
     this.navCtrl.push(DocumentosPage);
   }
 
-  openSignatureModel(indice: number) {
+  openSignatureModel() {
     setTimeout(() => {
       let modal = this.modalController.create(SignaturePage, { images: this.signatureImages });
       modal.present();
     }, 300);
+  }
 
+  removerAssinatura(assinatura: any) {
+    this.signatureImages = this.signatureImages.filter(d => d != assinatura);
+  }
+  validarQuantidadeImagens(): boolean {
+    return true;
   }
 }

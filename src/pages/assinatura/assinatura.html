@@ -10,26 +10,31 @@
 </ion-header>
 <ion-content padding>
   <h4>Precisamos da sua autorização.</h4>
-  <h6>Assine duas vezes abaixo, pode utilizar seus dedos...</h6>
-  <button ion-button full (click)="openSignatureModel(1)">Assinatura 1</button>
-  <button ion-button full (click)="openSignatureModel(2)">Assinatura 2</button>
+  <h6>Assine <ion-text color="secondary">duas vezes</ion-text> abaixo. Pode utilizar seus dedos...</h6>
+  <button ion-button full (click)="openSignatureModel()">
+    <ion-icon name="brush"></ion-icon>Assinatura
+  </button>
+  <!-- <button ion-button full (click)="openSignatureModel(2)">Assinatura 2</button> -->
   <!-- <ion-item > -->
 
   <ion-grid>
     <ion-row>
       <ion-col size="2" class="imagem" *ngFor="let a of signatureImages">
-
-
+        <button class="botao-fechar" item-right (click)="removerAssinatura(a)">
+          <ion-icon color="secondary" name="close"></ion-icon>
+        </button>
         <img [src]="a" />
 
       </ion-col>
-
     </ion-row>
   </ion-grid>
 
 
   <!-- <div *ngIf="signatureImages.length>0"><img [src]="signatureImages[0]" /></div> -->
+  <br>
+  <button id="assinatura-button11" [disabled]="!this.validarQuantidadeImagens()" ion-button color="positive" block
+    on-click="goToDocumentos()">
+    Prosseguir
+  </button>
+
 </ion-content>
-<button id="assinatura-button11" ion-button color="positive" block on-click="goToDocumentos()">
-  Prosseguir
-</button>
