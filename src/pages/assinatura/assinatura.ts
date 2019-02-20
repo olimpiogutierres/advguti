@@ -13,13 +13,16 @@ import { SignaturePage } from "./signature";
 })
 export class AssinaturaPage {
   public signatureImages: any[] = [];
-  public minSignatures: number = 2;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalController: ModalController) {
 
+    this.signatureImages = [];
     var signatureImage: any[] = navParams.get('signatureImage');
     // console.log('signatureImage', signatureImage);
     this.signatureImages = signatureImage;
+
+
   }
+ 
   goToDocumentos() {
     this.navCtrl.push(DocumentosPage);
   }
@@ -33,8 +36,7 @@ export class AssinaturaPage {
 
   removerAssinatura(assinatura: any) {
     this.signatureImages = this.signatureImages.filter(d => d != assinatura);
+ 
   }
-  validarQuantidadeImagens(): boolean {
-    return true;
-  }
+
 }
