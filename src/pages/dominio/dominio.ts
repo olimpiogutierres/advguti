@@ -6,8 +6,9 @@ import { Usuario } from './../../models/usuario';
 import { ProblemaPage } from '../problema/problema';
 import { DominioService } from '../../providers/dominio/dominio.service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { d } from '@angular/core/src/render3';
 
 /**
  * Generated class for the DominioPage page.
@@ -25,7 +26,7 @@ export class DominioPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private dominioService: DominioService, private usuarioService: UsuarioService,
-    private problemasService: ProblemasService
+    private problemasService: ProblemasService, public appCtrl: App
   ) {
     this.dominioService.list().subscribe((d: Dominio[]) => {
       this.dominios = d;
@@ -44,7 +45,11 @@ export class DominioPage {
 
     this.dominioService.list().subscribe(((d: Dominio[]) => {
       this.dominios = d;
+
+      this.goToProblema(this.dominios.filter(d => d.id == 1)[0]);
     }));
+
+
 
 
   }
@@ -60,7 +65,7 @@ export class DominioPage {
 
     console.log('this.usuarioService.getKeys;', dominio);
 
-    //usuario.dominio = dominio; 
+    //usuario.dominio = dominio;
 
     this.usuarioService.update(usuario);
 
@@ -87,6 +92,7 @@ export class DominioPage {
 
 
   goToProblemas() {
-    this.navCtrl.push(ProblemaPage, this.dominioSelecionado);
+    this.appCtrl.getRootNav().setRoot(ProblemaPage, this.dominioSelecionado);
+    // this.navCtrl.getRootNav().setRoot(ProblemaPage, this.dominioSelecionado);
   }
 }

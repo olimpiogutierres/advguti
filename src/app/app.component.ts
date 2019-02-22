@@ -23,7 +23,7 @@ import { CompanhiaPage } from '../pages/companhia/companhia';
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = AssinaturaPage;
+    rootPage:any = LogonPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
