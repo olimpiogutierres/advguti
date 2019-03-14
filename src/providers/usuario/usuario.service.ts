@@ -6,6 +6,7 @@ import { Usuario } from '../../models/usuario';
 import { Observable } from '../../../node_modules/rxjs';
 import { DocumentSnapshot } from '@firebase/firestore-types';
 import { UsuarioResposta } from '../../models/usuarioresposta';
+import { UsuarioDocumento } from '../../models/usuariodocumento';
 
 /*
   Generated class for the UsuarioProvider provider.
@@ -54,23 +55,21 @@ export class UsuarioService extends BaseService {
 
   public create(usuario: Usuario): Observable<Usuario> {
 
-
     this.optionsHttp.body = { usuario };
-
-
 
     console.log('usuariocreate', usuario);
 
     return this.http.post<Usuario>(this.api + '/usuarios/', usuario, { headers: this.optionsHttp.headers });
 
-
-
-
-
-
   }
 
+  public inserirDocumentos(usuarioDocumento: UsuarioDocumento) {
+    this.optionsHttp.body = { usuarioDocumento };
 
+    console.log(JSON.stringify(usuarioDocumento));
 
+    return this.http.post<UsuarioDocumento>(this.api + '/UsuarioDocumento/', usuarioDocumento, { headers: this.optionsHttp.headers })
+      .subscribe((data) => { console.log(data) });
+  }
 
 }
