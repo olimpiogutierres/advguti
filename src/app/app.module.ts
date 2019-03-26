@@ -51,6 +51,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 // import { AngularFireAuthModule } from '../../node_modules/angularfire2/auth';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SignaturePage } from "../pages/assinatura/signature";
+import { Camera } from '@ionic-native/camera';
 
 Pro.init('f07c10f1', {
   appVersion: '1'
@@ -159,7 +160,8 @@ export class MyErrorHandler implements ErrorHandler {
     UsuarioService,
     EntrevistaService,
     PerguntaService,
-    RespostaService
+    RespostaService,
+    Camera
     // AuthProvider
   ], schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
