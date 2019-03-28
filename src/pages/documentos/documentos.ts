@@ -9,86 +9,71 @@ import { FeitoPage } from '../feito/feito';
 })
 export class DocumentosPage {
 
+
+
   private camera: Camera = new Camera();
-  public arquivos: string[] = [];
+  public documentos: Arquivos[] = [];
   constructor(public navCtrl: NavController) {
   }
   goToFeito() {
     this.navCtrl.push(FeitoPage);
   }
 
-  openImage(i: number) {
+  openImage(tipoDocumento: number) {
 
-    let arquivos: any[] = [];
-    let arquivo: any;
+
     let input = document.createElement('input');
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*'); //you can change also file type as **'file/*'**
-    input.setAttribute("multiple", ""); // If you dont want multiple select file pls remove this line
+    // input.setAttribute("multiple", ""); // If you dont want multiple select file pls remove this line
 
     input.addEventListener('change', (event: any) => {
-      let fileList = event.target.files;
-      // this.getBase64(); 
+      let listaArquivo = event.target.files;
 
-      var reader = new FileReader();
-      reader.readAsDataURL(fileList[0]);
-      // reader.onload = function () {
+      this.getBase64(listaArquivo[0]).then(dados => {
+        let arquivo = new Arquivos();
+        arquivo.tipo = tipoDocumento;
+        arquivo.name = listaArquivo[0].name;
+        arquivo.file = dados;
 
-      //   arquivo = 
+        this.documentos.push(arquivo);
+        console.log(this.documentos);
+      });
 
-      // }(file);
-
-      reader.onload = (function (f) {
-        return function (e) {
-          // Here you can use `e.target.result` or `this.result`
-          // and `f.name`.
-          this.result;
-        };
-      })(fileList[0]);
-
-      reader.onload = (function (file) { // here we save variable 'file' in closure
-        return function (e) { // return handler function for 'onload' event
-          var data = this.result; // do some thing with data
-        }
-      })(fileList[0]);
-
-      console.log(arquivo);
-      // console.log("File List Object Value", fileList);
     });
 
-
-    // this.arquivos = arquivos;
-    // for (let a of arquivos) {
-    //   this.arquivos.push(a);
-    // }
     input.click();
-
-    console.log(arquivos);
-    // console.log(arquivos);
-
-    // var options: CameraOptions = {
-    //   quality: 100,
-    //   destinationType: this.camera.DestinationType.FILE_URI,
-    //   encodingType: this.camera.EncodingType.JPEG,
-    //   mediaType: this.camera.MediaType.PICTURE
-    // }
-
-    // this.camera.getPicture(options).then((imageData) => {
-    //   // imageData is either a base64 encoded string or a file URI
-    //   // If it's base64 (DATA_URL):
-    //   let base64Image = 'data:image/jpeg;base64,' + imageData;
-    // }, (err) => {
-    //   // Handle error
-    // });
   }
 
+  removerDocumento(doc: any) {
+    this.documentos = this.documentos.filter(d => d != doc);
+  }
+
+  getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        let encoded = reader.result.toString().replace(/^data:(.*;base64,)?/, '');
+        if ((encoded.length % 4) > 0) {
+          encoded += '='.repeat(4 - (encoded.length % 4));
+        }
+        resolve(encoded);
+      };
+      reader.onerror = error => reject(error);
+    });
+  }
 
 
 
   imageFilePath_change(event) {
-    // event.preventDefault();
-    // this.file = $event.target.files[0];
     console.log('$event.target.files[0];', event.currentTarget);
   }
 
+}
+
+export class Arquivos {
+  tipo: number;
+  name: string;
+  file: {};
 }
