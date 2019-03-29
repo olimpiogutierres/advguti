@@ -19,6 +19,7 @@ export class OutrosProblemasPage {
     // this.perguntaService.list()
   }
   goToDadosPessoais() {
-    this.navCtrl.push(DadosPessoaisPage);
+    // this.navCtrl.push(OutrosProblemasPage);
+    this.navCtrl.push(DadosPessoaisPage, { usuario: this.usuario });
   }
 }

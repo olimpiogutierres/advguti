@@ -2,6 +2,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FeitoPage } from '../feito/feito';
+import { UsuarioService } from '../../providers/usuario/usuario.service';
+import { UsuarioDocumento } from '../../models/usuariodocumento';
 
 @Component({
   selector: 'page-documentos',
@@ -13,9 +15,22 @@ export class DocumentosPage {
 
   private camera: Camera = new Camera();
   public documentos: Arquivos[] = [];
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public usuarioService: UsuarioService) {
   }
   goToFeito() {
+
+    for (let item of this.documentos) {
+      var usuarioDocumento = new UsuarioDocumento();
+      usuarioDocumento.IdDocumento = item.tipo;
+      usuarioDocumento.IdUsuario = 1;
+      usuarioDocumento.Arquivo = String(item.file);
+
+      // console.log('item', item);
+      //console.log('documento', usuarioDocumento);
+      this.usuarioService.inserirDocumentos(usuarioDocumento);
+    }
+
+
     this.navCtrl.push(FeitoPage);
   }
 
@@ -36,8 +51,13 @@ export class DocumentosPage {
         arquivo.name = listaArquivo[0].name;
         arquivo.file = dados;
 
+
+
+        this.documentos = this.documentos.filter(d => d.name != arquivo.name);
+
         this.documentos.push(arquivo);
-        console.log(this.documentos);
+
+        // console.log(this.documentos);
       });
 
     });

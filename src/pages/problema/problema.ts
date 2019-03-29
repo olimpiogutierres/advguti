@@ -77,7 +77,7 @@ export class ProblemaPage {
     // }
 
 
-    this.usuario.Logradouro = 'teste';
+    // this.usuario.Logradouro = 'teste';
 
     // console.log('JSON.stringify(this.usuario)', JSON.stringify(this.usuario));
 

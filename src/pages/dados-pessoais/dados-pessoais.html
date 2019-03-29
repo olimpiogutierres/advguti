@@ -1,3 +1,5 @@
+<form *ngIf="usuario | async;" [formGroup]="form" (ngSubmit)="goToProcuracao()">
+
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -14,38 +16,38 @@
       <ion-label stacked>
         Nome completo
       </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
+      <ion-input type="text" placeholder="" formControlName="nome"></ion-input>
     </ion-item>
     <ion-item id="dadosPessoais-input2">
       <ion-label stacked>
         CPF
       </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
+      <ion-input type="text" placeholder="" formControlName="cpf"></ion-input>
     </ion-item>
     <ion-item id="dadosPessoais-input3">
       <ion-label stacked>
         CEP
       </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
+      <ion-input type="text" placeholder="" formControlName="cep"></ion-input>
     </ion-item>
     <ion-item id="dadosPessoais-input4">
       <ion-label stacked>
         nº da casa
       </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
+      <ion-input type="text" placeholder="" formControlName="numero"></ion-input>
     </ion-item>
     <ion-item id="dadosPessoais-input5">
       <ion-label stacked>
         Complemento
       </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
+      <ion-input type="text" placeholder="" formControlName="complemento"></ion-input>
     </ion-item>
-    <ion-item id="dadosPessoais-input6">
+    <!-- <ion-item id="dadosPessoais-input6">
       <ion-label stacked>
         Data de Nascimento
       </ion-label>
       <ion-input type="date" placeholder=""></ion-input>
-    </ion-item>
+    </ion-item> -->
     <ion-item id="dadosPessoais-input8">
       <ion-label stacked>
         Telefone
@@ -58,8 +60,11 @@
       </ion-label>
       <ion-input type="email" placeholder=""></ion-input>
     </ion-item>
-    <button id="dadosPessoais-button8" ion-button color="positive" block on-click="goToProcuraO()">
+    <!-- <button >
       Prosseguir
-    </button>
+    </button> -->
+
+    <button [disabled]="!form.valid" id="dadosPessoais-button8" ion-button color="positive" block >Prosseguir</button>
   </form>
 </ion-content>
+</form>
