@@ -14,7 +14,7 @@ export class OutrosProblemasPage {
   public usuario: Usuario;
   constructor(public navCtrl: NavController, public navParams: NavParams, public perguntaService: PerguntaService) {
     this.usuario = this.navParams.get('usuario') as Usuario;
-    // console.log('OutrosProblemasPage111', this.usuario);
+     console.log('OutrosProblemasPage111', this.usuario);
 
     // this.perguntaService.list()
   }

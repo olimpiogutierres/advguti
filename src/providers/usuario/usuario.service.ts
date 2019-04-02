@@ -39,8 +39,19 @@ export class UsuarioService extends BaseService {
   public update(usuario: Usuario): void {
 
     console.log('usuarioalter', usuario);
+    this.optionsHttp.body = { usuario };
 
-    this.http.post<Usuario>(this.api + '/usuarios/', usuario, { headers: this.optionsHttp.headers });
+    this.http.post<Usuario>(this.api + '/usuarios/', usuario, { headers: this.optionsHttp.headers }).subscribe(d => console.log('problema', d));
+
+
+  }
+
+  public atualizar(usuario: Usuario): void {
+
+    console.log('usuarioalter', usuario);
+    this.optionsHttp.body = { usuario };
+
+    this.http.put<Usuario>(this.api + '/usuarios/' + usuario.id, usuario, { headers: this.optionsHttp.headers }).subscribe(d => console.log('problema', d));
 
 
   }

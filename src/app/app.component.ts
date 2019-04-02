@@ -18,12 +18,12 @@ import { CompanhiaPage } from '../pages/companhia/companhia';
 
 
 
-@Component({
+@Component({ 
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = LogonPage; 
+    rootPage:any = LogonPage ; 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
