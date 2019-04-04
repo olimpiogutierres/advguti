@@ -1,3 +1,4 @@
+import { UsuarioService } from './../../providers/usuario/usuario.service';
 import { PerguntaService } from './../../providers/pergunta/pergunta.service';
 import { Component, ViewChild, Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -27,7 +28,7 @@ export class PrimeiraEntrevistaPage {
   public perguntas: Pergunta[] = [];
   public usuarioRespostas: UsuarioResposta[] = [];
   public loginForm: FormGroup;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public perguntaService: PerguntaService, public fb: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public perguntaService: PerguntaService, public usuarioService: UsuarioService, public fb: FormBuilder) {
 
     this.usuario = this.navParams.get('usuario') as Usuario;
     this.problemas = this.navParams.get('problema') as Problema[];
@@ -81,6 +82,7 @@ export class PrimeiraEntrevistaPage {
 
     this.usuarioRespostas.push(respostaUsuario);
 
+
     console.log('respostas dos usuarios', this.usuarioRespostas);
   }
 
@@ -90,6 +92,14 @@ export class PrimeiraEntrevistaPage {
 
   }
   goToOutrosProblemas() {
+
+
+    for (let a of this.usuarioRespostas) {
+
+      console.log('resposta', a);
+      this.usuarioService.inserirRespostaUsuario(a);
+    }
+
 
     // console.log("this.fb.control['outroInput'].value;", this.fb.control['outroInput'].value);
     console.log('this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });', this.usuario);

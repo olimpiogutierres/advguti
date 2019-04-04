@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ProcuracaoPage } from '../procuracao/procuracao';
 import { Usuario } from '../../models/usuario';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 // import { AssinaturaPage } from '../assinatura/assinatura';
 // import { DocumentosPage } from '../documentos/documentos';
 // import { FeitoPage } from '../feito/feito';
@@ -16,7 +17,7 @@ export class DadosPessoaisPage {
 
   public usuario: Usuario;
   public form: FormGroup;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public usuarioService: UsuarioService, private formBuilder: FormBuilder) {
+  constructor(private http: HttpClient, public navCtrl: NavController, public navParams: NavParams, public usuarioService: UsuarioService, private formBuilder: FormBuilder) {
     this.usuario = this.navParams.get('usuario') as Usuario;
     console.log(this.usuario);
 
@@ -42,7 +43,13 @@ export class DadosPessoaisPage {
     this.usuario.id = String(id);
     // this.usuarioService.update(this.usuario);
     console.log(this.usuario);
-    this.usuarioService.atualizar(this.usuario);
+    this.usuarioService.update(this.usuario);
     this.navCtrl.push(ProcuracaoPage);
+  }
+
+  buscarCEP() {
+
+    if (!isNaN(Number(this.form.value.cep)))
+      this.http.get(`https://viacep.com.br/ws/${this.form.value.cep}/json/`).subscribe(data => console.log(data));
   }
 }

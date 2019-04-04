@@ -67,13 +67,13 @@ export class DominioPage {
 
     //usuario.dominio = dominio;
 
-    this.usuarioService.update(usuario);
+    //this.usuarioService.update(usuario);
 
-    let problemas: Problema[];
+    
 
     usuario.idDominioSelecionado = dominio.id;
 
-    console.log('usuario.idDominioSelecionado', usuario.idDominioSelecionado);
+    //console.log('usuario.idDominioSelecionado', usuario.idDominioSelecionado);
     this.navCtrl.push(ProblemaPage, {
       problema: dominio.problema,
       usuario: usuario

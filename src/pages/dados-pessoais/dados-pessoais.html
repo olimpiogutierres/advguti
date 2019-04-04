@@ -10,31 +10,78 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
+
 <ion-content padding id="page7">
+
+
   <form [formGroup]="form" (ngSubmit)="goToProcuracao()">
 
-    <ion-item id="dadosPessoais-input1">
-      <ion-label stacked>
-        Nome completo
-      </ion-label>
-      <ion-input type="text" placeholder="" formControlName="nome"></ion-input>
-    </ion-item>
+    <ion-card padding> 
+      <ion-card-header>
+        <ion-card-subtitle>Digite seus dados</ion-card-subtitle>
+        <!-- <ion-card-title>Card Title</ion-card-title> -->
+      </ion-card-header>
 
-    <ion-item id="dadosPessoais-input2">
-      <ion-label stacked>
-        CPF
-      </ion-label>
-      <ion-input type="text" placeholder="" formControlName="cpf"></ion-input>
-    </ion-item>
-    <ion-item id="dadosPessoais-input3">
-      <ion-label stacked>
-        CEP
-      </ion-label>
-      <ion-input type="text" placeholder="" formControlName="cep"></ion-input>
-    </ion-item>
+      <!-- <ion-card-content> -->
+        <ion-row>
+          <ion-col width-70>
+            <ion-item id="dadosPessoais-input1">
+              <ion-label stacked>
+                Nome completo
+              </ion-label>
+              <ion-input type="text" placeholder="" formControlName="nome"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col width-30>
+            <ion-item id="dadosPessoais-input2">
+              <ion-label stacked>
+                CPF
+              </ion-label>
+              <ion-input type="text" placeholder="" formControlName="cpf"></ion-input>
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+      <!-- </ion-card-content> -->
+    </ion-card>
+    <ion-row>
+        <ion-col width-70>
+          <ion-item id="dadosPessoais-input1">
+            <ion-label stacked>
+              Nome completo
+            </ion-label>
+            <ion-input type="text" placeholder="" formControlName="nome"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col width-30>
+          <ion-item id="dadosPessoais-input2">
+            <ion-label stacked>
+              CPF
+            </ion-label>
+            <ion-input type="text" placeholder="" formControlName="cpf"></ion-input>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+
+
+
+    <ion-row>
+      <ion-col width-70>
+
+
+        <ion-item id="dadosPessoais-input3">
+          <ion-label stacked>
+            CEP
+          </ion-label>
+          <ion-input type="text" placeholder="" formControlName="cep" (change)="buscarCEP()"></ion-input>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
     <ion-item id="dadosPessoais-input4">
       <ion-label stacked>
-        nº da casa
+        Nº da casa
       </ion-label>
       <ion-input type="text" placeholder="" formControlName="numero"></ion-input>
     </ion-item>

@@ -60,8 +60,8 @@ export class UsuarioService extends BaseService {
     return this.http.post<UsuarioProblema>(this.api + '/UsuarioProblemas/', usuario, { headers: this.optionsHttp.headers });
   }
 
-  public inserirRespostaUsuario(usuario: UsuarioResposta): Observable<UsuarioResposta> {
-    return this.http.post<UsuarioResposta>(this.api + '/UsuarioRespostas/', usuario, { headers: this.optionsHttp.headers });
+  public inserirRespostaUsuario(usuario: UsuarioResposta) {
+    this.http.post<UsuarioResposta>(this.api + '/UsuarioRespostas/', usuario, { headers: this.optionsHttp.headers }).subscribe(d => console.log('resposta', d));
   }
 
   public create(usuario: Usuario): Observable<Usuario> {
