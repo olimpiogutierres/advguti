@@ -1,3 +1,4 @@
+import { BrMaskerModule } from 'br-mask';
 import { ProgressBarComponent } from './../components/progress-bar/progress-bar';
 import { HeaderPrincipalComponent } from './../components/header-principal/header-principal';
 import { AdminProblemasPage } from './../pages/admin-problemas/admin-problemas';
@@ -31,45 +32,37 @@ import { HttpClientModule } from '@angular/common/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Pro } from '@ionic/pro';
-// import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
-import { FirebaseAppConfig } from 'angularfire2';
-import { BaseService } from '../providers/base/base.service';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+// import { FirebaseAppConfig } from 'angularfire2';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 import { AuthService } from '../providers/auth/auth.service';
 import { PerguntaService } from '../providers/pergunta/pergunta.service';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import {  ReactiveFormsModule } from '@angular/forms';
 import { RespostaService } from '../providers/resposta/resposta.service';
-// import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
-// import { ComponentsModule } from '../components/components.module';
 import { SignaturePadModule } from 'angular2-signaturepad';
 
-// import { AngularFireDatabaseModule } from '../../node_modules/angularfire2/database';
-// import { AngularFireAuthModule } from '../../node_modules/angularfire2/auth';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SignaturePage } from "../pages/assinatura/signature";
-import { Camera } from '@ionic-native/camera';
-
 Pro.init('f07c10f1', {
   appVersion: '1'
 })
 
-const firebaseAppConfig: FirebaseAppConfig = {
-  // apiKey: "AIzaSyDxXarH2mUPXXHXiCpWEx_JAH6tTVxU_zk",
-  // authDomain: "ionic2-firebase-chat-c98bd.firebaseapp.com",
-  // databaseURL: "https://ionic2-firebase-chat-c98bd.firebaseio.com",
-  // storageBucket: "ionic2-firebase-chat-c98bd.appspot.com",
-  // messagingSenderId: "1047752270485"
-  apiKey: "AIzaSyBP2b2FFcEHoOd6aqEpbZWgVYYXGu9bR_M",
-  authDomain: "projetoadvogado-f8501.firebaseapp.com",
-  databaseURL: "https://projetoadvogado-f8501.firebaseio.com",
-  projectId: "projetoadvogado-f8501",
-  storageBucket: "projetoadvogado-f8501.appspot.com",
-  messagingSenderId: "98843321259"
-}
+// const firebaseAppConfig: FirebaseAppConfig = {
+//   // apiKey: "AIzaSyDxXarH2mUPXXHXiCpWEx_JAH6tTVxU_zk",
+//   // authDomain: "ionic2-firebase-chat-c98bd.firebaseapp.com",
+//   // databaseURL: "https://ionic2-firebase-chat-c98bd.firebaseio.com",
+//   // storageBucket: "ionic2-firebase-chat-c98bd.appspot.com",
+//   // messagingSenderId: "1047752270485"
+//   apiKey: "AIzaSyBP2b2FFcEHoOd6aqEpbZWgVYYXGu9bR_M",
+//   authDomain: "projetoadvogado-f8501.firebaseapp.com",
+//   databaseURL: "https://projetoadvogado-f8501.firebaseio.com",
+//   projectId: "projetoadvogado-f8501",
+//   storageBucket: "projetoadvogado-f8501.appspot.com",
+//   messagingSenderId: "98843321259"
+// }
 
 @Injectable()
 export class MyErrorHandler implements ErrorHandler {
@@ -114,18 +107,18 @@ export class MyErrorHandler implements ErrorHandler {
 
   ],
   imports: [
-
+    BrMaskerModule,
     HttpClientModule,
     BrowserModule,
-    AngularFireModule.initializeApp(firebaseAppConfig),
+    // AngularFireModule.initializeApp(firebaseAppConfig),
     //ComponentsModule,
 
     IonicModule.forRoot(MyApp),
     // IonicModule.forRoot(HeaderPrincipalComponent),
     ReactiveFormsModule,
     SignaturePadModule,
-    AngularFireAuthModule,
-    AngularFirestoreModule
+
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -161,7 +154,7 @@ export class MyErrorHandler implements ErrorHandler {
     EntrevistaService,
     PerguntaService,
     RespostaService,
-    Camera
+    // Camera
     // AuthProvider
   ], schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

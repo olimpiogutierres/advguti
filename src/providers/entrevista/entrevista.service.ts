@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import 'rxjs/add/operator/map';
 import { s } from '@angular/core/src/render3';
 import { Observable } from 'rxjs';
@@ -20,10 +19,9 @@ export class EntrevistaService extends BaseService {
   //   console.log('Hello EntrevistaProvider Provider');
   // }
 
-  public itemsCollection: AngularFirestoreCollection<Entrevista>;
   items: Observable<Entrevista[]>;
   countItems = 0;
-  constructor(public http: HttpClient, public db: AngularFirestore, public authService: AuthService) {
+  constructor(public http: HttpClient, public authService: AuthService) {
     super();
     // this.itemsCollection = this.db.collection('entrevista');
     // this.items = this.itemsCollection.valueChanges();
@@ -42,21 +40,21 @@ export class EntrevistaService extends BaseService {
 
 
 
-  list(): Observable<Entrevista[]> {
-    this.itemsCollection = this.db.collection('entrevista');
-    this.items = this.itemsCollection.valueChanges();
+  // list(): Observable<Entrevista[]> {
+  //   this.itemsCollection = this.db.collection('entrevista');
+  //   this.items = this.itemsCollection.valueChanges();
 
-    // this.items = this.itemsCollection.snapshotChanges()
-    //   .map(changes => {
-    //     return changes.map(a => {
-    //       const data = a.payload.doc.data();
-    //       data.id = a.payload.doc.id;
-    //       return data;
-    //     })
-    //   });
+  //   // this.items = this.itemsCollection.snapshotChanges()
+  //   //   .map(changes => {
+  //   //     return changes.map(a => {
+  //   //       const data = a.payload.doc.data();
+  //   //       data.id = a.payload.doc.id;
+  //   //       return data;
+  //   //     })
+  //   //   });
 
-    return this.items;
-  }
+  //   return this.items;
+  // }
 
 
 }

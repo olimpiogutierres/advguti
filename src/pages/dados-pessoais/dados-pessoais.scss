@@ -1,3 +1,10 @@
 page-dados-pessoais {
+    input:-moz-read-only {
+        /* For Firefox */
+        background-color:rgba(243, 226, 226, 0.274);
+    }
 
+    input:read-only {
+        background-color: rgba(226, 243, 233, 0.726);
+    }
 }

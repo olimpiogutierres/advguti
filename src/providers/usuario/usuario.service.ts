@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseService } from '../base/base.service';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '../../../node_modules/angularfire2/firestore';
+
 import { Usuario } from '../../models/usuario';
 import { Observable } from '../../../node_modules/rxjs';
-import { DocumentSnapshot } from '@firebase/firestore-types';
+
 import { UsuarioResposta } from '../../models/usuarioresposta';
 import { UsuarioDocumento } from '../../models/usuariodocumento';
 
@@ -17,24 +17,24 @@ import { UsuarioDocumento } from '../../models/usuariodocumento';
 @Injectable()
 export class UsuarioService extends BaseService {
 
-  public usuariosCollection: AngularFirestoreCollection<any>;
+
   public items: Observable<any[]>;
   countItems: number;
-  constructor(public http: HttpClient, private db: AngularFirestore) {
+  constructor(public http: HttpClient) {
     super();
 
-    this.list();
+    // this.list();
     console.log('Hello UsuarioProvider Provider');
   }
 
 
 
-  list(): Observable<Usuario[]> {
-    this.usuariosCollection = this.db.collection('usuario');
-    this.items = this.usuariosCollection.valueChanges();
+  // list(): Observable<Usuario[]> {
+  //   this.usuariosCollection = this.db.collection('usuario');
+  //   this.items = this.usuariosCollection.valueChanges();
 
-    return this.items;
-  }
+  //   return this.items;
+  // }
 
   public update(usuario: Usuario): void {
 

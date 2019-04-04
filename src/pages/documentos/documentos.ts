@@ -1,4 +1,4 @@
-import { Camera, CameraOptions } from '@ionic-native/camera';
+// import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FeitoPage } from '../feito/feito';
@@ -7,13 +7,13 @@ import { UsuarioDocumento } from '../../models/usuariodocumento';
 
 @Component({
   selector: 'page-documentos',
-  templateUrl: 'documentos.html', providers: [Camera]
+  templateUrl: 'documentos.html'
 })
 export class DocumentosPage {
 
 
 
-  private camera: Camera = new Camera();
+  // private camera: Camera = new Camera();
   public documentos: Arquivos[] = [];
   constructor(public navCtrl: NavController, public usuarioService: UsuarioService) {
   }

@@ -5,6 +5,7 @@ import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { DocumentosPage } from '../documentos/documentos';
 import { FeitoPage } from '../feito/feito';
 import { SignaturePage } from "./signature";
+import { Usuario } from '../../models/usuario';
 
 @Component({
   selector: 'page-assinatura',
@@ -15,8 +16,10 @@ import { SignaturePage } from "./signature";
 })
 export class AssinaturaPage {
   public signatureImages: any[] = [];
+  public usuario: Usuario;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalController: ModalController, public usuarioService: UsuarioService) {
 
+    this.usuario = this.navParams.get('usuario') as Usuario;
     this.signatureImages = [];
     var signatureImage: any[] = navParams.get('signatureImage');
     console.log('signatureImage', signatureImage);
@@ -38,12 +41,12 @@ export class AssinaturaPage {
       this.usuarioService.inserirDocumentos(usuarioDocumento);
     }
 
-    this.navCtrl.push(DocumentosPage);
+    this.navCtrl.push(DocumentosPage, { usuario: this.usuario });
   }
 
   openSignatureModel() {
     setTimeout(() => {
-      let modal = this.modalController.create(SignaturePage, { images: this.signatureImages });
+      let modal = this.modalController.create(SignaturePage, { images: this.signatureImages, usuario: this.usuario  });
       modal.present();
     }, 300);
   }

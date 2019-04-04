@@ -16,20 +16,20 @@
 
   <form [formGroup]="form" (ngSubmit)="goToProcuracao()">
 
-    <ion-card padding> 
+    <!-- <ion-card padding>
       <ion-card-header>
         <ion-card-subtitle>Digite seus dados</ion-card-subtitle>
-        <!-- <ion-card-title>Card Title</ion-card-title> -->
+
       </ion-card-header>
 
-      <!-- <ion-card-content> -->
+
         <ion-row>
           <ion-col width-70>
             <ion-item id="dadosPessoais-input1">
               <ion-label stacked>
                 Nome completo
               </ion-label>
-              <ion-input type="text" placeholder="" formControlName="nome"></ion-input>
+              <ion-input type="text" placeholder="" formControlName="nome" ng-dirty></ion-input>
             </ion-item>
           </ion-col>
           <ion-col width-30>
@@ -42,73 +42,116 @@
           </ion-col>
 
         </ion-row>
-      <!-- </ion-card-content> -->
-    </ion-card>
+
+    </ion-card> -->
     <ion-row>
-        <ion-col width-70>
-          <ion-item id="dadosPessoais-input1">
-            <ion-label stacked>
-              Nome completo
-            </ion-label>
-            <ion-input type="text" placeholder="" formControlName="nome"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col width-30>
-          <ion-item id="dadosPessoais-input2">
-            <ion-label stacked>
-              CPF
-            </ion-label>
-            <ion-input type="text" placeholder="" formControlName="cpf"></ion-input>
-          </ion-item>
-        </ion-col>
-
-      </ion-row>
+      <ion-col col-8>
+        <ion-item id="dadosPessoais-input1">
+          <ion-label stacked>
+            Nome completo
+          </ion-label>
+          <ion-input type="text" placeholder="" formControlName="nome"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-2>
+        <ion-item id="dadosPessoais-input2">
+          <ion-label stacked>
+            CPF/CPNJ
+          </ion-label>
+          <ion-input type="text" placeholder=""   formControlName="cpf" [brmasker]="{form: form.get('cpf'), person: true}"></ion-input>
+        </ion-item>
+      </ion-col>
 
 
+    </ion-row>
+    <ion-row>
+      <ion-col col-2>
+        <ion-item id="dadosPessoais-input6">
+          <ion-label stacked>
+            Data de Nascimento
+          </ion-label>
+          <ion-input type="date" placeholder=""></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-2>
+        <ion-item id="dadosPessoais-input8">
+          <ion-label stacked>
+            Telefone
+          </ion-label>
+          <ion-input type="tel" placeholder="" [brmasker]="{form: form.get('telefone'), phone: true}" formControlName="telefone"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-2>
+        <ion-item id="dadosPessoais-input7">
+          <ion-label stacked>
+            Email
+          </ion-label>
+          <ion-input type="email" placeholder="" formControlName="email"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
     <ion-row>
-      <ion-col width-70>
-
-
+      <ion-col col-2>
         <ion-item id="dadosPessoais-input3">
           <ion-label stacked>
             CEP
           </ion-label>
-          <ion-input type="text" placeholder="" formControlName="cep" (change)="buscarCEP()"></ion-input>
+          <ion-input type="text" placeholder="" formControlName="cep" (input)="buscarCEP()"></ion-input>
         </ion-item>
       </ion-col>
-
     </ion-row>
-    <ion-item id="dadosPessoais-input4">
-      <ion-label stacked>
-        Nº da casa
-      </ion-label>
-      <ion-input type="text" placeholder="" formControlName="numero"></ion-input>
-    </ion-item>
-    <ion-item id="dadosPessoais-input5">
-      <ion-label stacked>
-        Complemento
-      </ion-label>
-      <ion-input type="text" placeholder="" formControlName="complemento"></ion-input>
-    </ion-item>
-    <ion-item id="dadosPessoais-input6">
-      <ion-label stacked>
-        Data de Nascimento
-      </ion-label>
-      <ion-input type="date" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="dadosPessoais-input8">
-      <ion-label stacked>
-        Telefone
-      </ion-label>
-      <ion-input type="tel" placeholder="" formControlName="telefone"></ion-input>
-    </ion-item>
-    <ion-item id="dadosPessoais-input7">
-      <ion-label stacked>
-        Email
-      </ion-label>
-      <ion-input type="email" placeholder="" formControlName="email"></ion-input>
-    </ion-item>
+
+
+    <ion-row>
+
+      <ion-col col-7>
+        <ion-item id="dadosPessoais-input3">
+          <ion-label stacked>
+            Logradouro
+          </ion-label>
+          <ion-input type="text" placeholder="" formControlName="logradouro"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-1>
+        <ion-item id="dadosPessoais-input4">
+          <ion-label stacked>
+            Nº da casa
+          </ion-label>
+          <ion-input type="text" placeholder="" formControlName="numero"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-2>
+        <ion-item id="dadosPessoais-input5">
+          <ion-label stacked>
+            Complemento
+          </ion-label>
+          <ion-input type="text" placeholder="" formControlName="complemento"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+
+      <ion-col col-5>
+        <ion-item id="dadosPessoais-input5">
+          <ion-label stacked>
+            Cidade
+          </ion-label>
+          <ion-input type="text" placeholder="" formControlName="cidade" readonly></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-1>
+        <ion-item id="dadosPessoais-input5">
+          <ion-label stacked>
+            Estado
+          </ion-label>
+          <ion-input type="text" placeholder="" formControlName="estado" readonly></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+
     <button [disabled]="!form.valid" id="dadosPessoais-button8" ion-button color="positive" block>Prosseguir</button>
   </form>
 </ion-content>
@@ -138,7 +181,7 @@
       </ion-label>
       <ion-input type="text" placeholder="" formControlName="numero"></ion-input>
     </ion-item>
-    <ion-item id="dadosPessoais-input5"> 
+    <ion-item id="dadosPessoais-input5">
       <ion-label stacked>
         Complemento
       </ion-label>
@@ -149,7 +192,7 @@
         Data de Nascimento
       </ion-label>
       <ion-input type="date" placeholder=""></ion-input>
-    </ion-item> 
+    </ion-item>
     <ion-item id="dadosPessoais-input8">
       <ion-label stacked>
         Telefone
@@ -162,7 +205,7 @@
       </ion-label>
       <ion-input type="email" placeholder="" formControlName="email"></ion-input>
     </ion-item>
-     
+
 
     <button [disabled]="!form.valid" id="dadosPessoais-button8" ion-button color="positive" block>Prosseguir</button>
   </div>

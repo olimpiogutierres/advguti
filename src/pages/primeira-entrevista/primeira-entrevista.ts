@@ -10,7 +10,7 @@ import { DocumentosPage } from '../documentos/documentos';
 import { FeitoPage } from '../feito/feito';
 import { Usuario } from '../../models/usuario';
 import { EntrevistaService } from '../../providers/entrevista/entrevista.service';
-import { forEach } from '@firebase/util';
+
 import { UsuarioResposta } from '../../models/usuarioresposta';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

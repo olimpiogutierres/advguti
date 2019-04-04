@@ -4,7 +4,6 @@
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
-// import { AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 
 
@@ -41,9 +40,9 @@ export abstract class BaseService {
     private headers: HttpHeaders;
     public optionsHttp: { headers: {}, body: {} };
 
-    public api: string = 'https://www.semvoo.com.br/ws/api'; 
+    public api: string = 'https://www.semvoo.com.br/ws/api';
     // public api: string = 'http://localhost:18092/api';
-    
+
 
 
 

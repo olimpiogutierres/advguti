@@ -9,15 +9,15 @@ import { BaseService } from '../base/base.service';
 @Injectable()
 export class AuthService extends BaseService {
 
-  constructor(public http: HttpClient, public auth: AngularFireAuth) {
+  constructor(public http: HttpClient) {
     super();
    // console.log('Hello AuthProvider Provider');
   }
 
-  createAuthUser(user: { email: string, password: string }): Promise<any> {
-    return this.auth.auth.createUserWithEmailAndPassword(user.email, user.password)
-      .catch(this.handlePromiseError);
-  } 
+  // createAuthUser(user: { email: string, password: string }): Promise<any> {
+  //   return this.auth.auth.createUserWithEmailAndPassword(user.email, user.password)
+  //     .catch(this.handlePromiseError);
+  // }
 
   // signinWithEmail(user: { email: string, password: string }): Promise<boolean> {
 
@@ -28,14 +28,14 @@ export class AuthService extends BaseService {
 
   // }
 
-  logout(): Promise<void> {
-    return this.auth.auth.signOut();
-  }
+  // logout(): Promise<void> {
+  //   return this.auth.auth.signOut();
+  // }
 
-  get authenticated(): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      this.auth.auth.currentUser ? resolve(true) : reject(false);
+  // get authenticated(): Promise<boolean> {
+  //   return new Promise((resolve, reject) => {
+  //     this.auth.auth.currentUser ? resolve(true) : reject(false);
 
-    })
-  }
+  //   })
+  // }
 }

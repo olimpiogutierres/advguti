@@ -17,16 +17,13 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ProblemasService extends BaseService {
 
-  public problemas: AngularFirestoreCollection<Problema>;
-  constructor(public http: HttpClient, public db: AngularFirestore, public authService: AuthService,
+  constructor(public http: HttpClient, public authService: AuthService,
     public entrevistaService: EntrevistaService) {
     super();
     console.log('Hello ProblemasProvider Provider');
   }
 
-  create(problema: Problema): Promise<void> {
-    return this.db.doc(`/problemas/`).set(problema).catch(this.handlePromiseError);
-  }
+
 
 
   list(dominio: Dominio): Observable<Problema[]> {

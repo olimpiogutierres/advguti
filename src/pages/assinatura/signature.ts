@@ -2,6 +2,7 @@ import { AssinaturaPage } from './assinatura';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import { Usuario } from '../../models/usuario';
 
 @Component({
   selector: 'page-signature',
@@ -10,6 +11,7 @@ import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 export class SignaturePage {
   @ViewChild(SignaturePad) public signaturePad: SignaturePad;
   public signatureImages: any[] = [];
+  public usuario: Usuario;
 
   public signaturePadOptions: Object = {
     'minWidth': 2, 'canvasWidth': 340, 'canvasHeight': 200
@@ -18,6 +20,7 @@ export class SignaturePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     var images: any[] = navParams.get('images');
+    this.usuario = this.navParams.get('usuario') as Usuario;
 
     if (images == undefined)
       this.signatureImages = [];
@@ -42,7 +45,7 @@ export class SignaturePage {
   }
 
   drawCancel() {
-    this.navCtrl.push(AssinaturaPage, { signatureImage: this.signatureImages });
+    this.navCtrl.push(AssinaturaPage, { signatureImage: this.signatureImages, usuario: this.usuario });
   }
 
   drawComplete() {
