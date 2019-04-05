@@ -1,25 +1,53 @@
 <!-- <div class="box"></div> -->
 <div class="box" padding id="page12">
   <form class="login" [formGroup]="signupForm" id="login-form5">
+    <!-- <div class="insidediv"> -->
     <ion-list id="login-list5">
-      <h2 text-center>Informe seu email e telefone</h2>
-      <ion-item id="login-input9">
-        <ion-label>
-          Email
-        </ion-label>
-        <ion-input type="email" value="o@o" placeholder=""></ion-input>
-      </ion-item>
-      <ion-item id="login-input10">
-        <ion-label>
-          Telefone
-        </ion-label>
-        <ion-input type="tel" placeholder="" formControlName="telefone"></ion-input>
-      </ion-item>
+      <ion-row>
+        <ion-col col-lg-3></ion-col>
+        <ion-col col-lg-5>
+          <ion-card class="cardconteudo" clear>
+            <!-- <h2 text-center>Informe seu email e telefone</h2> -->
+            <ion-card-header text-center>
+              <h5>Precisamos desses dados para entrarmos em contato com você</h5>
+              <ion-card-title>Informe seu email e telefone</ion-card-title>
+            </ion-card-header>
+
+            <ion-row>
+              <ion-col col-10 text-center>
+                <ion-item id="login-input9">
+                  <ion-label>
+                    Email
+                  </ion-label>
+                  <ion-input type="email" placeholder="" formControlName="email"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-10>
+                <ion-item id="login-input10">
+                  <ion-label>
+                    Telefone
+                  </ion-label>
+                  <ion-input type="tel" placeholder="" formControlName="telefone"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-center>
+                <button id="login-button17" color="stable"  (click)="goToDominios();"
+                  ion-button float>
+                  Prosseguir
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+        <ion-col col-lg-3></ion-col>
+      </ion-row>
     </ion-list>
-    <button id="login-button17" color="stable" [disabled]="signupForm.invalid" (click)="goToDominios();" ion-button
-      block>
-      Prosseguir
-    </button>
+
+    <!-- </div> -->
 
 
   </form>

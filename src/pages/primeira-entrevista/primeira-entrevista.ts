@@ -42,13 +42,16 @@ export class PrimeiraEntrevistaPage {
 
       this.perguntaService.list(key as Problema).subscribe((data: Pergunta[]) => {
         for (let pergunta of data) {
-          if (!this.perguntas.find(d => d.id == pergunta.id))
+          if (!this.perguntas.find(d => d.id == pergunta.id)) {
+
+            pergunta.idProblema = Number(key.id);
             this.perguntas.push(pergunta);
+          }
         }
       });
 
 
-      // this.perguntas = Array.from(new Set(this.perguntas));
+      // this.perguntas = Array.from(new Set(this.perguntas)); 
     }
 
     console.log('this.perguntas', this.perguntas);
@@ -61,11 +64,13 @@ export class PrimeiraEntrevistaPage {
     // if (this.usuarioRespostas.length == 0)
     //   return;
 
+    if (resposta == null)
+      return;
 
     this.usuarioRespostas = this.usuarioRespostas.filter(d => d.IdPergunta != pergunta.id);
 
     var respostaUsuario = new UsuarioResposta();
-    respostaUsuario.IdProblema = null;
+    respostaUsuario.IdProblema = pergunta.idProblema;
     respostaUsuario.IdPergunta = pergunta.id;
     respostaUsuario.IdStatus = 1;
     respostaUsuario.IdUsuario = Number(this.usuario.id);
@@ -82,8 +87,11 @@ export class PrimeiraEntrevistaPage {
 
     this.usuarioRespostas.push(respostaUsuario);
 
+    // const result = this.usuarioRespostas.map
 
-    console.log('respostas dos usuarios', this.usuarioRespostas);
+    const selectedIds = this.usuarioRespostas.map(({ IdPergunta }) => IdPergunta);
+
+    console.log('respostas dos usuarios', selectedIds);
   }
 
 
@@ -102,7 +110,7 @@ export class PrimeiraEntrevistaPage {
 
 
     // console.log("this.fb.control['outroInput'].value;", this.fb.control['outroInput'].value);
-    console.log('this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });', this.usuario);
+    //console.log('this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });', this.usuario);
 
     this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });
   }
@@ -111,14 +119,20 @@ export class PrimeiraEntrevistaPage {
 
     // if (outroSelecionado != null)
     //   outroSelecionado.setFocus();
+
+
+
+
+
     q.manual = true;
 
-    var usuarioResposta = this.usuarioRespostas.filter(d => d.IdPergunta = q.id)[0];
+
+    var usuarioResposta = this.usuarioRespostas.find(d => d.IdPergunta == q.id);
 
     if (usuarioResposta === undefined || usuarioResposta == null) {
 
       usuarioResposta = new UsuarioResposta();
-      usuarioResposta.IdProblema = null;
+      usuarioResposta.IdProblema = q.idProblema;
       usuarioResposta.IdPergunta = q.id;
       usuarioResposta.IdStatus = 1;
       usuarioResposta.IdUsuario = Number(this.usuario.id);
@@ -126,10 +140,12 @@ export class PrimeiraEntrevistaPage {
       usuarioResposta.RelatoManual = '';
     }
 
-    usuarioResposta.RelatoManual = usuarioResposta.RelatoManual + String(event.key);
+    usuarioResposta.RelatoManual = usuarioResposta.RelatoManual + String(event.key); 
 
     this.usuarioRespostas = this.usuarioRespostas.filter(d => d.IdPergunta != q.id);
     this.usuarioRespostas.push(usuarioResposta);
+
+
 
   }
 }

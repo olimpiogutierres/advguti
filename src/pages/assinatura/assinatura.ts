@@ -33,7 +33,7 @@ export class AssinaturaPage {
     for (let item of this.signatureImages) {
       var usuarioDocumento = new UsuarioDocumento();
       usuarioDocumento.IdDocumento = 3;
-      usuarioDocumento.IdUsuario = 1;
+      usuarioDocumento.IdUsuario = Number(this.usuario.id);
       usuarioDocumento.Arquivo = item;
 
       // console.log('item', item);
@@ -46,7 +46,7 @@ export class AssinaturaPage {
 
   openSignatureModel() {
     setTimeout(() => {
-      let modal = this.modalController.create(SignaturePage, { images: this.signatureImages, usuario: this.usuario  });
+      let modal = this.modalController.create(SignaturePage, { images: this.signatureImages, usuario: this.usuario });
       modal.present();
     }, 300);
   }
