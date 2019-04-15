@@ -1,3 +1,4 @@
+import { AutenticacaoPage } from './../pages/autenticacao/autenticacao';
 import { LogonPage } from '../pages/logon/logon';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
@@ -23,7 +24,7 @@ import { CompanhiaPage } from '../pages/companhia/companhia';
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = LogonPage;
+    rootPage:any = AutenticacaoPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

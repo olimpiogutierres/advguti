@@ -1,3 +1,4 @@
+import { AutenticacaoPage } from './../pages/autenticacao/autenticacao';
 import { BrMaskerModule } from 'br-mask';
 import { ProgressBarComponent } from './../components/progress-bar/progress-bar';
 import { HeaderPrincipalComponent } from './../components/header-principal/header-principal';
@@ -40,16 +41,29 @@ import { Pro } from '@ionic/pro';
 
 import { AuthService } from '../providers/auth/auth.service';
 import { PerguntaService } from '../providers/pergunta/pergunta.service';
-import {  ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RespostaService } from '../providers/resposta/resposta.service';
 import { SignaturePadModule } from 'angular2-signaturepad';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SignaturePage } from "../pages/assinatura/signature";
+import { Facebook } from '@ionic-native/facebook';
+import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
+ 
 Pro.init('f07c10f1', {
   appVersion: '1'
 })
 
+
+let config = new AuthServiceConfig([
+ 
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("2339063683077864")
+  }
+]);
+ 
 // const firebaseAppConfig: FirebaseAppConfig = {
 //   // apiKey: "AIzaSyDxXarH2mUPXXHXiCpWEx_JAH6tTVxU_zk",
 //   // authDomain: "ionic2-firebase-chat-c98bd.firebaseapp.com",
@@ -103,13 +117,15 @@ export class MyErrorHandler implements ErrorHandler {
     // CustomHeaderComponent,
     HeaderPrincipalComponent,
     ProgressBarComponent,
-    SignaturePage
+    SignaturePage,
+    AutenticacaoPage
 
   ],
   imports: [
     BrMaskerModule,
     HttpClientModule,
     BrowserModule,
+    SocialLoginModule.initialize(config),
     // AngularFireModule.initializeApp(firebaseAppConfig),
     //ComponentsModule,
 
@@ -138,7 +154,7 @@ export class MyErrorHandler implements ErrorHandler {
     AdminProblemasPage,
     HeaderPrincipalComponent,
     SignaturePage,
-  ],
+    AutenticacaoPage],
   providers: [
     StatusBar,
     SplashScreen,
@@ -154,6 +170,9 @@ export class MyErrorHandler implements ErrorHandler {
     EntrevistaService,
     PerguntaService,
     RespostaService,
+    // <--- Here!
+    // ...
+    Facebook
     // Camera
     // AuthProvider
   ], schemas: [CUSTOM_ELEMENTS_SCHEMA]
