@@ -2,6 +2,7 @@ page-logon {
 
     // $img: "./assets/img/bg-urban.jpg";
      $img: "https://www.semvoo.com.br/app/assets/img/bg-urban.jpg";
+   //$img: "https://images.pexels.com/photos/875858/pexels-photo-875858.png";
     //$img:"https://www.ceara.gov.br/wp-content/uploads/2018/03/FOTO-MARCOS-STUDART_170624_AERO-JERI_MVS0196.jpg";
     // $img:"https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png";
 
@@ -16,8 +17,8 @@ page-logon {
       // -moz-filter: blur(5px);
       // -o-filter: blur(5px);
       // -ms-filter: blur(5px);
-      filter: blur(0.25rem);
-      position: fixed;
+      filter: blur(0.055rem);
+      position: absolute;
        width: 100%;
        height: 100%;
       top: 0;
@@ -31,8 +32,8 @@ justify-content: center;
       }
 
        .insidediv{
-      //   background-color: blue; 
-      // margin-left: 10%; 
+      //   background-color: blue;
+      // margin-left: 10%;
       // margin-right: 10%
        }
        .cardconteudo {
@@ -41,6 +42,6 @@ justify-content: center;
         flex-direction: column;
         width: 100% !important;
         margin: 0 !important;
-        
+
     }
 }

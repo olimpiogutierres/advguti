@@ -19,6 +19,7 @@ export class AutenticacaoPage {
   async login() {
 
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(d => { console.log('dado', d) });
+    //this.authService.
     // let permissions = new Array<string>();
     // permissions = ["public_profile", "email"];
 
@@ -63,7 +64,7 @@ export class AutenticacaoPage {
     // this.fb.logEvent();
   }
 
-  //método para chamar api do facebook e salvar no banco o usuario    
+  //método para chamar api do facebook e salvar no banco o usuario
   // loginFacebook() {
   //      let permissions = new Array<string>();
   //      permissions = ["public_profile", "email"];
