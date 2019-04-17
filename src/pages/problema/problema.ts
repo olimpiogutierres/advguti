@@ -83,7 +83,7 @@ export class ProblemaPage {
 
     this.usuarioService.update(this.usuario);
 
-    console.log('PrimeiraEntrevistaPage', this.usuario);
+    // console.log('PrimeiraEntrevistaPage', this.usuario);
 
     this.navCtrl.push(PrimeiraEntrevistaPage,
       {

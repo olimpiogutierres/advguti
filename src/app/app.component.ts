@@ -9,14 +9,14 @@ import { ProblemaPage } from '../pages/problema/problema';
 import { PrimeiraEntrevistaPage } from '../pages/primeira-entrevista/primeira-entrevista';
 import { OutrosProblemasPage } from '../pages/outros-problemas/outros-problemas';
 import { DadosPessoaisPage } from '../pages/dados-pessoais/dados-pessoais';
-import { ProcuracaoPage  } from '../pages/procuracao/procuracao';
+import { ProcuracaoPage } from '../pages/procuracao/procuracao';
 import { AssinaturaPage } from '../pages/assinatura/assinatura';
 import { DocumentosPage } from '../pages/documentos/documentos';
 import { FeitoPage } from '../pages/feito/feito';
 
 
 import { CompanhiaPage } from '../pages/companhia/companhia';
-
+import { timer } from 'rxjs/observable/timer';
 
 
 @Component({
@@ -24,7 +24,10 @@ import { CompanhiaPage } from '../pages/companhia/companhia';
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = AutenticacaoPage;
+  rootPage: any = LogonPage;
+
+  showSplash = true;
+
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -32,33 +35,34 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      timer(3000).subscribe(() => this.showSplash = false)
     });
   }
-  goToCompanhia(params){
+  goToCompanhia(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(CompanhiaPage);
-  }goToProblema(params){
+  } goToProblema(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(ProblemaPage);
-  }goToPrimeiraEntrevista(params){
+  } goToPrimeiraEntrevista(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(PrimeiraEntrevistaPage);
-  }goToOutrosProblemas(params){
+  } goToOutrosProblemas(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(OutrosProblemasPage);
-  }goToDadosPessoais(params){
+  } goToDadosPessoais(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(DadosPessoaisPage);
-  }goToProcuraO(params){
+  } goToProcuraO(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(ProcuracaoPage);
-  }goToAssinatura(params){
+  } goToAssinatura(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(AssinaturaPage);
-  }goToDocumentos(params){
+  } goToDocumentos(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(DocumentosPage);
-  }goToFeito(params){
+  } goToFeito(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(FeitoPage);
   }

@@ -23,5 +23,16 @@
     </ion-list>
   </ion-content>
 </ion-menu> -->
+<div *ngIf="showSplash" class="splash">
+  <div class="spinner">
 
-<ion-nav #mainContent [root]="rootPage"></ion-nav>
+    <div class="sk-folding-cube">
+      <div class="sk-cube1 sk-cube"></div>
+      <div class="sk-cube2 sk-cube"></div>
+      <div class="sk-cube4 sk-cube"></div>
+      <div class="sk-cube3 sk-cube"></div>
+    </div>
+  </div>
+
+</div>
+<ion-nav #mainContent [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

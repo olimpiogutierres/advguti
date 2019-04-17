@@ -9,9 +9,38 @@
           <ion-card class="cardconteudo" clear>
             <!-- <h2 text-center>Informe seu email e telefone</h2> -->
             <ion-card-header text-center>
-              <h5>Precisamos desses dados para entrarmos em contato com você</h5>
-              <ion-card-title>Informe seu email e telefone</ion-card-title>
+              <!-- <h5>Precisamos desses dados para entrarmos em contato com você</h5> -->
+              <ion-card-title>Direito a indenização? Entre!</ion-card-title>
             </ion-card-header>
+            <!-- <ion-row> -->
+            <!-- <ion-item-divider> -->
+            <ion-row>
+              <ion-col col-10 text-center>
+                <button ion-button float icon-left color="facebook" (click)='loginFacebook();'>
+                  <ion-icon name="logo-facebook"></ion-icon>Entrar com Facebook
+                </button>
+                <!-- </ion-item-divider> -->
+                <!-- <ion-item-divider> -->
+                <button ion-button float icon-left color="google" (click)='loginGoogle();'>
+                  <ion-icon name="logo-google"></ion-icon>Entrar com Google
+                </button>
+              </ion-col>
+            </ion-row>
+            <!-- </ion-item-divider> -->
+
+            <!-- </ion-row> -->
+            <!-- <div class="row-fluid">
+                <div class="span10 offset1 divisor">
+                    <div class="divisor-horizontal">
+                        <span class="label-divisor">ou</span>
+                    </div>
+                </div>
+            </div> -->
+            <ion-row>
+              <ion-col col-10 text-center>
+                <h2>ou</h2>
+              </ion-col>
+            </ion-row>
 
             <ion-row>
               <ion-col col-10 text-center>
@@ -35,8 +64,7 @@
             </ion-row>
             <ion-row>
               <ion-col text-center>
-                <button id="login-button17" color="stable"  (click)="goToDominios();"
-                  ion-button float>
+                <button id="login-button17" color="stable" (click)="goToDominios();" ion-button float>
                   Prosseguir
                 </button>
               </ion-col>

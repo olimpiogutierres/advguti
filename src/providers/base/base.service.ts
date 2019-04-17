@@ -41,9 +41,9 @@ export abstract class BaseService {
     public optionsHttp: { headers: {}, body: {} };
 
     public api: string = 'https://www.semvoo.com.br/ws/api';
-    // public api: string = 'http://localhost:18092/api';
+    // public api: string = 'http://localhost:18092/api'; 
 
-
+ 
 
 
     protected handlePromiseError(error: Response | any): Promise<any> {

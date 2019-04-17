@@ -1,14 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { AdminProblemasPage } from './../admin-problemas/admin-problemas';
 import { Usuario } from './../../models/usuario';
 import { UsuarioService } from './../../providers/usuario/usuario.service';
 import { DominioPage } from '../dominio/dominio';
-import { ProblemaPage } from '../problema/problema';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-
+import { AuthService, SocialUser } from "angular4-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
+import { ProblemaPage } from '../problema/problema';
+import { DominioService } from '../../providers/dominio/dominio.service';
 /**
  * Generated class for the LogonPage page.
  *
@@ -24,8 +25,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LogonPage {
 
   signupForm: FormGroup;
-  constructor( public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
-    public usuarioService: UsuarioService) {
+  usuarioFacebookGoogle: SocialUser = null;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
+    public usuarioService: UsuarioService, private dominioService: DominioService, private authService: AuthService) {
     let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     this.signupForm = this.formBuilder.group({
 
@@ -37,36 +40,97 @@ export class LogonPage {
 
   }
 
+  async loginFacebook() {
+
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((d: SocialUser) => {
+      this.usuarioFacebookGoogle = d;
+      this.goToDominios();
+    });
+  }
+
+  async loginGoogle() {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((d: SocialUser) => {
+      this.usuarioFacebookGoogle = d;
+      this.goToDominios();
+    });
+  }
+
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LogonPage');
+    // console.log('ionViewDidLoad LogonPage');
   }
 
   goToAdminProblema() {
     this.navCtrl.push(AdminProblemasPage);
   }
   goToDominios() {
-    let usuario: Usuario = this.signupForm.value;
-    usuario.Nome = '';
-    usuario.Logradouro = '';
-    usuario.Numero = '';
-    usuario.Complemento = '';
-    usuario.Bairro = '';
-    usuario.Cidade = '';
-    usuario.Estado = '';
-    usuario.Pais = '';
-    usuario.CEP = '';
+
+    let usuario: Usuario = new Usuario;
+    // console.log('this.usuarioFacebookGoogle ', this.usuarioFacebookGoogle);
+    if (this.usuarioFacebookGoogle != null) {
+      usuario.email = this.usuarioFacebookGoogle.email;
+      usuario.Nome = this.usuarioFacebookGoogle.name;// this.usuarioFacebookGoogle.firstName + ' ' + this.usuarioFacebookGoogle.lastName;
+      usuario.Logradouro = '';
+      usuario.Numero = '';
+      usuario.Complemento = '';
+      usuario.Bairro = '';
+      usuario.Cidade = '';
+      usuario.Estado = '';
+      usuario.Pais = '';
+      usuario.CEP = '';
+      usuario.telefone = '';
+    }
+    else {
+      usuario = this.signupForm.value;
+      usuario.Nome = '';
+      usuario.Logradouro = '';
+      usuario.Numero = '';
+      usuario.Complemento = '';
+      usuario.Bairro = '';
+      usuario.Cidade = '';
+      usuario.Estado = '';
+      usuario.Pais = '';
+      usuario.CEP = '';
+      usuario.telefone = '';
+    }
 
 
-    console.log('creating');
+
+    // console.log('creating');
     this.usuarioService.create(usuario).subscribe((u: Usuario) => {
 
-      console.log('logon u', u);
+      // console.log('logon u', u);
 
       usuario.id = u.id;
+      this.dominioService.list().subscribe(((d: Dominio[]) => {
 
+        this.goToProblema(d.filter(d => d.id == 1)[0]);
+      }));
 
-      this.navCtrl.setRoot(DominioPage, usuario);
+      /**
+       * temporario
+       * 
+       */
     });
+
+  }
+
+  public goToProblema(dominio: Dominio) {
+
+    let usuario: Usuario = this.navParams.data as Usuario;
+
+    // console.log('this.usuarioService.getKeys;', dominio);
+
+
+    usuario.idDominioSelecionado = dominio.id;
+
+    this.navCtrl.setRoot(ProblemaPage, {
+      problema: dominio.problema,
+      usuario: usuario
+    });
+
+
+
 
   }
 
