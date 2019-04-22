@@ -10,6 +10,7 @@ import { AuthService, SocialUser } from "angular4-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
 import { ProblemaPage } from '../problema/problema';
 import { DominioService } from '../../providers/dominio/dominio.service';
+// import { Dominio } from '../../models/dominio';
 /**
  * Generated class for the LogonPage page.
  *
@@ -25,6 +26,7 @@ import { DominioService } from '../../providers/dominio/dominio.service';
 export class LogonPage {
 
   signupForm: FormGroup;
+  usuario: Usuario;
   usuarioFacebookGoogle: SocialUser = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
@@ -63,70 +65,67 @@ export class LogonPage {
   goToAdminProblema() {
     this.navCtrl.push(AdminProblemasPage);
   }
-  goToDominios() {
+  async goToDominios() {
 
-    let usuario: Usuario = new Usuario;
+    this.usuario = new Usuario;
     // console.log('this.usuarioFacebookGoogle ', this.usuarioFacebookGoogle);
     if (this.usuarioFacebookGoogle != null) {
-      usuario.email = this.usuarioFacebookGoogle.email;
-      usuario.Nome = this.usuarioFacebookGoogle.name;// this.usuarioFacebookGoogle.firstName + ' ' + this.usuarioFacebookGoogle.lastName;
-      usuario.Logradouro = '';
-      usuario.Numero = '';
-      usuario.Complemento = '';
-      usuario.Bairro = '';
-      usuario.Cidade = '';
-      usuario.Estado = '';
-      usuario.Pais = '';
-      usuario.CEP = '';
-      usuario.telefone = '';
+      this.usuario.email = this.usuarioFacebookGoogle.email;
+      this.usuario.Nome = this.usuarioFacebookGoogle.name;// this.usuarioFacebookGoogle.firstName + ' ' + this.usuarioFacebookGoogle.lastName;
+      this.usuario.Logradouro = '';
+      this.usuario.Numero = '';
+      this.usuario.Complemento = '';
+      this.usuario.Bairro = '';
+      this.usuario.Cidade = '';
+      this.usuario.Estado = '';
+      this.usuario.Pais = '';
+      this.usuario.CEP = '';
+      this.usuario.telefone = '';
     }
     else {
-      usuario = this.signupForm.value;
-      usuario.Nome = '';
-      usuario.Logradouro = '';
-      usuario.Numero = '';
-      usuario.Complemento = '';
-      usuario.Bairro = '';
-      usuario.Cidade = '';
-      usuario.Estado = '';
-      usuario.Pais = '';
-      usuario.CEP = '';
-      usuario.telefone = '';
+      this.usuario = this.signupForm.value;
+      this.usuario.Nome = '';
+      this.usuario.Logradouro = '';
+      this.usuario.Numero = '';
+      this.usuario.Complemento = '';
+      this.usuario.Bairro = '';
+      this.usuario.Cidade = '';
+      this.usuario.Estado = '';
+      this.usuario.Pais = '';
+      this.usuario.CEP = '';
+      this.usuario.telefone = '';
     }
 
 
+ 
+    console.log('creating', this.usuario);
 
-    // console.log('creating');
-    this.usuarioService.create(usuario).subscribe((u: Usuario) => {
+    this.usuarioService.check(this.usuario).subscribe(
+      result => {
+        this.usuario = result;
+        this.usuario.id = result.id;
+        this.dominioService.list().subscribe(((d: Dominio[]) => {
+          this.goToProblema(d.filter(d => d.id == 1)[0]);
+        }));
+      },
+      error => {
 
-      // console.log('logon u', u);
-
-      usuario.id = u.id;
-      this.dominioService.list().subscribe(((d: Dominio[]) => {
-
-        this.goToProblema(d.filter(d => d.id == 1)[0]);
-      }));
-
-      /**
-       * temporario
-       * 
-       */
-    });
-
+        this.usuarioService.create(this.usuario).subscribe((u: Usuario) => {
+          this.usuario.id = u.id;
+          this.dominioService.list().subscribe(((d: Dominio[]) => {
+            this.goToProblema(d.filter(d => d.id == 1)[0]);
+          }));
+        });
+      });
   }
 
   public goToProblema(dominio: Dominio) {
 
-    let usuario: Usuario = this.navParams.data as Usuario;
-
-    // console.log('this.usuarioService.getKeys;', dominio);
-
-
-    usuario.idDominioSelecionado = dominio.id;
+    this.usuario.idDominioSelecionado = dominio.id;
 
     this.navCtrl.setRoot(ProblemaPage, {
       problema: dominio.problema,
-      usuario: usuario
+      usuario: this.usuario
     });
 
 

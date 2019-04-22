@@ -1,3 +1,4 @@
+import { Dominio } from "./dominio";
 
 export class Usuario {
 

@@ -18,4 +18,13 @@ export class PerguntaService extends BaseService {
     return this.http.get<Pergunta[]>(this.api + '/problemas/perguntas/' + problema.id, this.optionsHttp);
   }
 
+  // listProblemasComuns(idDominio: number): Observable<Pergunta[]> {
+
+
+  //   this.http.get<Pergunta[]>(this.api + '/subproblemas/', this.optionsHttp).subscribe((Pergunta:));
+
+    
+  //   return a;
+  // }
+
 }

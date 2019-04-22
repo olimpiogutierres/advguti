@@ -64,14 +64,12 @@ export class UsuarioService extends BaseService {
     this.http.post<UsuarioResposta>(this.api + '/UsuarioRespostas/', usuario, { headers: this.optionsHttp.headers }).subscribe(d => console.log('resposta', d));
   }
 
+  public check(usuario: Usuario): Observable<Usuario> {
+    return this.http.get<Usuario>(this.api + '/usuarios/emailtelefone?email=' + usuario.email + '&telefone=' + usuario.telefone, { headers: this.optionsHttp.headers });
+  }
+
   public create(usuario: Usuario): Observable<Usuario> {
-
-    this.optionsHttp.body = { usuario };
-
-    console.log('usuariocreate', usuario);
-
     return this.http.post<Usuario>(this.api + '/usuarios/', usuario, { headers: this.optionsHttp.headers });
-
   }
 
   public inserirDocumentos(usuarioDocumento: UsuarioDocumento) {

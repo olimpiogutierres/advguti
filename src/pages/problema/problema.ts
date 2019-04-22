@@ -20,6 +20,7 @@ export class ProblemaPage {
 
     this.usuario = this.navParams.get('usuario') as Usuario;
     this.problemas = this.navParams.get('problema') as Problema[];
+    this.problemas = this.problemas.filter(d => d.problemaComum == false); 
   }
 
   ionViewDidLoad() {

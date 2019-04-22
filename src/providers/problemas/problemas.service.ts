@@ -6,6 +6,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { BaseService } from '../base/base.service';
 import { AuthService } from '../auth/auth.service';
 import { Observable } from 'rxjs/Observable';
+// import { Dominio } from '../../models/dominio';
 
 
 /*
@@ -27,6 +28,10 @@ export class ProblemasService extends BaseService {
 
 
   list(dominio: Dominio): Observable<Problema[]> {
+
+    console.log('list dominio', dominio);
+
+
     return this.http.get<Problema[]>(this.api + '/problemas/dominio/' + dominio.id, this.optionsHttp);
   }
 
