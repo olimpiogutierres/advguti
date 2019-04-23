@@ -1,4 +1,4 @@
-import { Dominio } from "./dominio";
+// import { Dominio } from "./dominio";
 
 export class Usuario {
 

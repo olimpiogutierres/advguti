@@ -13,24 +13,42 @@ import { PerguntaService } from './../../providers/pergunta/pergunta.service';
 })
 export class OutrosProblemasPage {
   public problemas: Problema[];
+  public problemasSelecionados: Problema[] = [];
   public usuario: Usuario;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public problemaService: ProblemasService) {
     this.usuario = this.navParams.get('usuario') as Usuario;
     console.log('OutrosProblemasPage111', this.usuario);
 
-    var dominio = new Dominio;
-    dominio.id = this.usuario.idDominioSelecionado;
 
-    console.log('dominio', dominio);
-    this.problemaService.list(dominio).subscribe(d => {
+
+    this.problemaService.list( this.usuario.idDominioSelecionado).subscribe(d => {
 
       this.problemas = d.filter(d => d.problemaComum == true);
-      console.log(this.problemas);
-    },error=>{
+      console.log('this.problemas', this.problemas);
+    }, error => {
       console.log(error);
     });
   }
+
+
+  escolherProblemas(problema: Problema) {
+
+
+
+    problema.selected = problema.selected === true ? false : true;
+
+    if (problema.selected === true) {
+      this.problemasSelecionados.push(problema);
+    }
+    else {
+      this.problemasSelecionados.forEach((item, index) => {
+        if (item === problema) this.problemasSelecionados.splice(index, 1);
+      });
+    }
+  }
+
+
   goToDadosPessoais() {
     // this.navCtrl.push(OutrosProblemasPage);
     this.navCtrl.push(DadosPessoaisPage, { usuario: this.usuario });

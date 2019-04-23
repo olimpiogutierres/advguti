@@ -3,14 +3,7 @@ import { PerguntaService } from './../../providers/pergunta/pergunta.service';
 import { Component, ViewChild, Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { OutrosProblemasPage } from '../outros-problemas/outros-problemas';
-import { DadosPessoaisPage } from '../dados-pessoais/dados-pessoais';
-import { ProcuracaoPage } from '../procuracao/procuracao';
-import { AssinaturaPage } from '../assinatura/assinatura';
-import { DocumentosPage } from '../documentos/documentos';
-import { FeitoPage } from '../feito/feito';
 import { Usuario } from '../../models/usuario';
-import { EntrevistaService } from '../../providers/entrevista/entrevista.service';
-
 import { UsuarioResposta } from '../../models/usuarioresposta';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -33,9 +26,8 @@ export class PrimeiraEntrevistaPage {
     this.usuario = this.navParams.get('usuario') as Usuario;
     this.problemas = this.navParams.get('problema') as Problema[];
 
-
     this.loginForm = this.fb.group({
-      // 'title': ['', Validators.required],
+
       'outroInput': ['', Validators.required]
     });
     for (let key of this.problemas) {
@@ -49,20 +41,11 @@ export class PrimeiraEntrevistaPage {
           }
         }
       });
-
-
-      // this.perguntas = Array.from(new Set(this.perguntas)); 
     }
-
-    console.log('this.perguntas', this.perguntas);
   }
 
   selecionarRespostas(input: any, pergunta: Pergunta, resposta: Resposta) {
-    //console.log('teste', idPergunta);
 
-    // console.log('entrou no selecionar respostas');
-    // if (this.usuarioRespostas.length == 0)
-    //   return;
 
     if (resposta == null)
       return;
@@ -87,11 +70,6 @@ export class PrimeiraEntrevistaPage {
 
     this.usuarioRespostas.push(respostaUsuario);
 
-    // const result = this.usuarioRespostas.map
-
-    const selectedIds = this.usuarioRespostas.map(({ IdPergunta }) => IdPergunta);
-
-    console.log('respostas dos usuarios', selectedIds);
   }
 
 
@@ -101,28 +79,13 @@ export class PrimeiraEntrevistaPage {
   }
   goToOutrosProblemas() {
 
-
     for (let a of this.usuarioRespostas) {
-
-      console.log('resposta', a);
       this.usuarioService.inserirRespostaUsuario(a);
     }
-
-
-    // console.log("this.fb.control['outroInput'].value;", this.fb.control['outroInput'].value);
-    //console.log('this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });', this.usuario);
-
     this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });
   }
 
   atualizarRelato(event, q: Pergunta) {
-
-    // if (outroSelecionado != null)
-    //   outroSelecionado.setFocus();
-
-
-
-
 
     q.manual = true;
 
@@ -140,12 +103,10 @@ export class PrimeiraEntrevistaPage {
       usuarioResposta.RelatoManual = '';
     }
 
-    usuarioResposta.RelatoManual = usuarioResposta.RelatoManual + String(event.key); 
+    usuarioResposta.RelatoManual = usuarioResposta.RelatoManual + String(event.key);
 
     this.usuarioRespostas = this.usuarioRespostas.filter(d => d.IdPergunta != q.id);
     this.usuarioRespostas.push(usuarioResposta);
-
-
 
   }
 }

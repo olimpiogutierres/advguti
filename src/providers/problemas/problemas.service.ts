@@ -24,15 +24,7 @@ export class ProblemasService extends BaseService {
     console.log('Hello ProblemasProvider Provider');
   }
 
-
-
-
-  list(dominio: Dominio): Observable<Problema[]> {
-
-    console.log('list dominio', dominio);
-
-
-    return this.http.get<Problema[]>(this.api + '/problemas/dominio/' + dominio.id, this.optionsHttp);
+  list(iddominio: number): Observable<Problema[]> {
+    return this.http.get<Problema[]>(this.api + '/problemas/dominio/' + iddominio, this.optionsHttp);
   }
-
 }

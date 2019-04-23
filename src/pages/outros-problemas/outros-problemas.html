@@ -1,43 +1,21 @@
-
-<ion-content  id="page6">
-    <header-principal [title]="'Problemas comuns'" [progresso]="40"></header-principal>
+<ion-content id="page6">
+  <header-principal [title]="'Problemas comuns'" [progresso]="40"></header-principal>
   <form id="outrosProblemas-form3">
-    <ion-item id="outrosProblemas-checkbox1">
-      <ion-label>
-        Reembolso não feito
-      </ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
-    <ion-item id="outrosProblemas-checkbox2">
-      <ion-label>
-        Gastos com alimentação não reembolsado
-      </ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
-    <ion-item id="outrosProblemas-checkbox3">
-      <ion-label>
-        Hospedagem não paga
-      </ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
-    <ion-item id="outrosProblemas-checkbox4">
-      <ion-label>
-        Falta de hospedagem
-      </ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
-    <ion-item id="outrosProblemas-checkbox5">
-      <ion-label>
-        Assédio moral
-      </ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
-    <ion-item id="outrosProblemas-checkbox6">
-      <ion-label>
-        Me ignoraram
-      </ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
+
+    <ion-list>
+      <ion-item *ngFor="let item of problemas">
+        <ion-label>{{item.descricao}}</ion-label>
+        <ion-checkbox [checked]="item.selected" color="secondary" (click)="escolherProblemas(item)"></ion-checkbox>
+
+      </ion-item>
+    </ion-list>
+
+    <!-- <button id="primeiraEntrevista-button6" ion-button color="positive"
+        [disabled]="this.problemas.length!=this.usuarioProblemas.length" block on-click="goToOutrosProblemas()">
+        Prosseguir
+      </button> -->
+
+
     <div id="outrosProblemas-markdown3" class="show-list-numbers-and-dots">
       <p style="color:#000000;">
         .
