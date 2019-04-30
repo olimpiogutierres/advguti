@@ -15,7 +15,7 @@ export class HeaderPrincipalComponent {
   @Input('progresso') public progresso: number;
 
   constructor() {
-    console.log('Hello HeaderPrincipalComponent Component');
+    //console.log('Hello HeaderPrincipalComponent Component');
     this.text = this.title;
     this.progressValue = this.progresso;
   }

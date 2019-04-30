@@ -1,6 +1,6 @@
 <!-- <form  [formGroup]="form" (ngSubmit)="goToProcuracao()"> -->
 
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -9,10 +9,11 @@
       Dados Pessoais
     </ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content padding id="page7">
 
+<ion-content  id="page7">
+  <header-principal [title]="'Insira seus dados pessoais'" [progresso]="50"></header-principal>
 
   <form [formGroup]="form" (ngSubmit)="goToProcuracao()">
 
@@ -45,7 +46,7 @@
 
     </ion-card> -->
     <ion-row>
-      <ion-col col-8>
+      <ion-col col-lg-8>
         <ion-item id="dadosPessoais-input1">
           <ion-label stacked>
             Nome completo
@@ -53,7 +54,7 @@
           <ion-input type="text" placeholder="" formControlName="nome"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col col-2>
+      <ion-col col-lg-2>
         <ion-item id="dadosPessoais-input2">
           <ion-label stacked>
             CPF/CPNJ
@@ -65,7 +66,7 @@
 
     </ion-row>
     <ion-row>
-      <ion-col col-2>
+      <ion-col col-lg-2>
         <ion-item id="dadosPessoais-input6">
           <ion-label stacked>
             Data de Nascimento
@@ -73,7 +74,7 @@
           <ion-input type="date" placeholder=""></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col col-2>
+      <ion-col col-lg-2>
         <ion-item id="dadosPessoais-input8">
           <ion-label stacked>
             Telefone
@@ -81,7 +82,7 @@
           <ion-input type="tel" placeholder="" [brmasker]="{form: form.get('telefone'), phone: true}" formControlName="telefone"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col col-2>
+      <ion-col col-lg-2>
         <ion-item id="dadosPessoais-input7">
           <ion-label stacked>
             Email
@@ -92,7 +93,7 @@
     </ion-row>
 
     <ion-row>
-      <ion-col col-2>
+      <ion-col col-lg-2>
         <ion-item id="dadosPessoais-input3">
           <ion-label stacked>
             CEP
@@ -105,7 +106,7 @@
 
     <ion-row>
 
-      <ion-col col-7>
+      <ion-col col-lg-7>
         <ion-item id="dadosPessoais-input3">
           <ion-label stacked>
             Logradouro
@@ -113,7 +114,7 @@
           <ion-input type="text" placeholder="" formControlName="logradouro"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col col-1>
+      <ion-col col-lg-1>
         <ion-item id="dadosPessoais-input4">
           <ion-label stacked>
             Nº da casa
@@ -121,7 +122,7 @@
           <ion-input type="text" placeholder="" formControlName="numero"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col col-2>
+      <ion-col col-lg-2>
         <ion-item id="dadosPessoais-input5">
           <ion-label stacked>
             Complemento
@@ -132,7 +133,7 @@
     </ion-row>
     <ion-row>
 
-      <ion-col col-5>
+      <ion-col col-lg-5>
         <ion-item id="dadosPessoais-input5">
           <ion-label stacked>
             Cidade
@@ -140,7 +141,7 @@
           <ion-input type="text" placeholder="" formControlName="cidade" readonly></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col col-1>
+      <ion-col col-lg-1>
         <ion-item id="dadosPessoais-input5">
           <ion-label stacked>
             Estado

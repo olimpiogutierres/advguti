@@ -20,15 +20,20 @@ export class AssinaturaPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalController: ModalController, public usuarioService: UsuarioService) {
 
     this.usuario = this.navParams.get('usuario') as Usuario;
+   // console.log('documentosuser', this.usuario);
     this.signatureImages = [];
     var signatureImage: any[] = navParams.get('signatureImage');
-    console.log('signatureImage', signatureImage);
+    //console.log('signatureImage', signatureImage);
     this.signatureImages = signatureImage;
 
 
   }
 
   goToDocumentos() {
+
+    //console.log('documentosuser', this.usuario);
+
+
 
     for (let item of this.signatureImages) {
       var usuarioDocumento = new UsuarioDocumento();

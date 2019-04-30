@@ -21,7 +21,7 @@ export class ProblemasService extends BaseService {
   constructor(public http: HttpClient, public authService: AuthService,
     public entrevistaService: EntrevistaService) {
     super();
-    console.log('Hello ProblemasProvider Provider');
+    //console.log('Hello ProblemasProvider Provider');
   }
 
   list(iddominio: number): Observable<Problema[]> {

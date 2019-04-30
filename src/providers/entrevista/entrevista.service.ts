@@ -34,7 +34,7 @@ export class EntrevistaService extends BaseService {
     //     })
     //   });
 
-    console.log('Entrevistaitems', this.items);
+    //console.log('Entrevistaitems', this.items);
 
   }
 

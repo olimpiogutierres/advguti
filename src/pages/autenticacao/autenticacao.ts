@@ -18,11 +18,11 @@ export class AutenticacaoPage {
 
   async loginFacebook() {
 
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((d: SocialUser) => { console.log('dado', d) });
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   async loginGoogle(){
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((d: SocialUser) => { console.log('dado', d) });
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 }
 export class Model {

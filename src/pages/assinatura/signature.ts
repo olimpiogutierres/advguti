@@ -22,6 +22,8 @@ export class SignaturePage {
     var images: any[] = navParams.get('images');
     this.usuario = this.navParams.get('usuario') as Usuario;
 
+    //console.log('signature', this.usuario);
+
     if (images == undefined)
       this.signatureImages = [];
     else
@@ -32,14 +34,15 @@ export class SignaturePage {
 
   canvasResize() {
     let canvas = document.querySelector('canvas');
-    this.signaturePad.set('minWidth', 1); console.log(canvas.offsetWidth);
+    this.signaturePad.set('minWidth', 1); 
+    //console.log(canvas.offsetWidth);
     this.signaturePad.set('canvasWidth', canvas.offsetWidth);
     this.signaturePad.set('canvasHeight', canvas.offsetHeight);
   }
 
 
   ngAfterViewInit() {
-    console.log("Reset Model Screen");
+    //console.log("Reset Model Screen");
     this.signaturePad.clear();
     this.canvasResize();
   }
@@ -58,7 +61,7 @@ export class SignaturePage {
       this.signatureImages = [];
 
     this.signatureImages.push(this.signatureImage);
-    this.navCtrl.push(AssinaturaPage, { signatureImage: this.signatureImages });
+    this.navCtrl.push(AssinaturaPage, { signatureImage: this.signatureImages, usuario: this.usuario });
   }
 
   drawClear() {

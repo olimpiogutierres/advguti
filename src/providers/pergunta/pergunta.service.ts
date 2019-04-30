@@ -9,7 +9,7 @@ export class PerguntaService extends BaseService {
   items: Observable<Pergunta[]>;
   constructor(public http: HttpClient) {
     super();
-    console.log('Hello PerguntaProvider Provider');
+    //console.log('Hello PerguntaProvider Provider');
   }
 
 

@@ -87,7 +87,7 @@ export class DocumentosPage {
 
 
   imageFilePath_change(event) {
-    console.log('$event.target.files[0];', event.currentTarget);
+    //console.log('$event.target.files[0];', event.currentTarget);
   }
 
 }

@@ -30,7 +30,7 @@ export class DominioPage {
   ) {
     this.dominioService.list().subscribe((d: Dominio[]) => {
       this.dominios = d;
-      console.log(this.dominios);
+     // console.log(this.dominios);
 
     });
   }
@@ -40,7 +40,7 @@ export class DominioPage {
 
   ionViewDidLoad() {
 
-    console.log('did load');
+    
 
 
     this.dominioService.list().subscribe(((d: Dominio[]) => {
@@ -63,7 +63,7 @@ export class DominioPage {
 
 
 
-    console.log('this.usuarioService.getKeys;', dominio);
+   // console.log('this.usuarioService.getKeys;', dominio);
 
     //usuario.dominio = dominio;
 

@@ -24,7 +24,7 @@ export class UsuarioService extends BaseService {
     super();
 
     // this.list();
-    console.log('Hello UsuarioProvider Provider');
+    //console.log('Hello UsuarioProvider Provider');
   }
 
 
@@ -38,20 +38,20 @@ export class UsuarioService extends BaseService {
 
   public update(usuario: Usuario): void {
 
-    console.log('usuarioalter', usuario);
+    //console.log('usuarioalter', usuario);
     this.optionsHttp.body = { usuario };
 
-    this.http.post<Usuario>(this.api + '/usuarios/', usuario, { headers: this.optionsHttp.headers }).subscribe(d => console.log('problema', d));
+    this.http.post<Usuario>(this.api + '/usuarios/', usuario, { headers: this.optionsHttp.headers });
 
 
   }
 
   public atualizar(usuario: Usuario): void {
 
-    console.log('usuarioalter', usuario);
+    //console.log('usuarioalter', usuario);
     this.optionsHttp.body = { usuario };
 
-    this.http.put<Usuario>(this.api + '/usuarios/' + usuario.id, usuario, { headers: this.optionsHttp.headers }).subscribe(d => console.log('problema', d));
+    this.http.put<Usuario>(this.api + '/usuarios/' + usuario.id, usuario, { headers: this.optionsHttp.headers });
 
 
   }
@@ -75,10 +75,10 @@ export class UsuarioService extends BaseService {
   public inserirDocumentos(usuarioDocumento: UsuarioDocumento) {
     this.optionsHttp.body = { usuarioDocumento };
 
-    console.log(JSON.stringify(usuarioDocumento));
+    //console.log(JSON.stringify(usuarioDocumento));
 
-    return this.http.post<UsuarioDocumento>(this.api + '/UsuarioDocumento/', usuarioDocumento, { headers: this.optionsHttp.headers })
-      .subscribe((data) => { console.log(data) });
+    return this.http.post<UsuarioDocumento>(this.api + '/UsuarioDocumento/', usuarioDocumento, { headers: this.optionsHttp.headers });
+
   }
 
 }

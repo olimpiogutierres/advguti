@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class RespostaService {
 
   constructor(public http: HttpClient) {
-    console.log('Hello RespostaProvider Provider');
+    //console.log('Hello RespostaProvider Provider');
   }
 
 }
