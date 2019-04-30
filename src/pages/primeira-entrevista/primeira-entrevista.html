@@ -10,18 +10,22 @@
           <!-- <ion-card-title>Card Title</ion-card-title> -->
         </ion-card-header>
         <ion-card-content>
-          <ion-item no-lines *ngFor="let a of pergunta.resposta">
-            <ion-radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, pergunta, a)"
-              [value]='a.descricaoApp'></ion-radio>
-            <ion-label>{{a.descricaoApp}}</ion-label>
-          </ion-item>
+
+          <div *ngFor="let a of pergunta.resposta">
+            <ion-item no-lines >
+              <ion-radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, pergunta, a)"
+                [value]='a.descricaoApp'></ion-radio>
+              <ion-label>{{a.descricaoApp}}</ion-label>
+            </ion-item>
+          </div>
           <div *ngIf="pergunta.manual==true">
             <ion-item no-lines>
-              <ion-radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, pergunta, null)"
+              <ion-radio #radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, pergunta, null)"
                 [value]=""></ion-radio>
               <ion-label>Outro(s)</ion-label>
             </ion-item>
-            <ion-input #input type="input" (keydown)="atualizarRelato($event,pergunta)" placeholder="Descreva aqui">
+            <ion-input #input type="input" (keydown)="atualizarRelato($event,pergunta, radio)"
+              placeholder="Descreva aqui">
             </ion-input>
           </div>
         </ion-card-content>

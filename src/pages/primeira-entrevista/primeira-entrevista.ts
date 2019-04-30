@@ -46,9 +46,11 @@ export class PrimeiraEntrevistaPage {
 
   selecionarRespostas(input: any, pergunta: Pergunta, resposta: Resposta) {
 
-
-    if (resposta == null)
+    console.log('input', input);
+    if (resposta == null && input == undefined)
       return;
+
+
 
     this.usuarioRespostas = this.usuarioRespostas.filter(d => d.IdPergunta != pergunta.id);
 
@@ -61,6 +63,7 @@ export class PrimeiraEntrevistaPage {
 
     if (resposta != null) {
       respostaUsuario.IdResposta = resposta.id;
+      console.log(input, resposta);
     }
     else {
       respostaUsuario.IdResposta = null;
@@ -85,11 +88,10 @@ export class PrimeiraEntrevistaPage {
     this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });
   }
 
-  atualizarRelato(event, q: Pergunta) {
+  atualizarRelato(event, q: Pergunta, radio: any) {
 
 
-    
-    console.log(event.key, q);
+
     q.manual = true;
 
 
@@ -104,6 +106,10 @@ export class PrimeiraEntrevistaPage {
       usuarioResposta.IdUsuario = Number(this.usuario.id);
       usuarioResposta.IdResposta = null;
       usuarioResposta.RelatoManual = '';
+
+      radio.value = true;
+      radio.checked = true;
+      // radio.setFocus();
     }
 
     usuarioResposta.RelatoManual = usuarioResposta.RelatoManual + String(event.key);
