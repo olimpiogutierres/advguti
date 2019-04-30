@@ -1,26 +1,27 @@
 <ion-content>
   <header-principal [title]="'Responda as seguintes perguntas'" [progresso]="30"></header-principal>
-  <ion-col *ngFor="let q of perguntas; let i = index ">
+  <ion-col *ngFor="let pergunta of perguntas; let i = index ">
     <ion-list radio-group>
 
 
       <ion-card>
         <ion-card-header>
-          <ion-card-subtitle> {{q.descricao}}</ion-card-subtitle>
+          <ion-card-subtitle> {{pergunta.descricao}}</ion-card-subtitle>
           <!-- <ion-card-title>Card Title</ion-card-title> -->
         </ion-card-header>
         <ion-card-content>
-          <ion-item no-lines *ngFor="let a of q.resposta">
-            <ion-radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, q, a)"
+          <ion-item no-lines *ngFor="let a of pergunta.resposta">
+            <ion-radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, pergunta, a)"
               [value]='a.descricaoApp'></ion-radio>
             <ion-label>{{a.descricaoApp}}</ion-label>
           </ion-item>
-          <div *ngIf="q.manual==true">
+          <div *ngIf="pergunta.manual==true">
             <ion-item no-lines>
-              <ion-radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, q, null)"></ion-radio>
+              <ion-radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, pergunta, null)"
+                [value]=""></ion-radio>
               <ion-label>Outro(s)</ion-label>
             </ion-item>
-            <ion-input #input type="input" (keydown)="atualizarRelato($event,q)" placeholder="Descreva aqui">
+            <ion-input #input type="input" (keydown)="atualizarRelato($event,pergunta)" placeholder="Descreva aqui">
             </ion-input>
           </div>
         </ion-card-content>

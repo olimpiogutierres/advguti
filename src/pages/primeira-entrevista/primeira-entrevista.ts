@@ -87,6 +87,9 @@ export class PrimeiraEntrevistaPage {
 
   atualizarRelato(event, q: Pergunta) {
 
+
+    
+    console.log(event.key, q);
     q.manual = true;
 
 
