@@ -14,7 +14,14 @@ export class ProcuracaoPage {
 
   public usuario: Usuario;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
     this.usuario = this.navParams.get('usuario') as Usuario;
+    console.log(this.usuario);
+  }
+
+
+  ionViewDidLoad() {
+
   }
   goToAssinatura(params) {
     this.navCtrl.push(AssinaturaPage, { usuario: this.usuario });

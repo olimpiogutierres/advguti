@@ -30,7 +30,7 @@ export class DadosPessoaisPage {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      nome: new FormControl((this.usuario.Nome!=null ? this.usuario.Nome :'')),
+      nome: new FormControl((this.usuario.Nome != null ? this.usuario.Nome : '')),
       cpf: new FormControl(),
       cep: new FormControl(),
       numero: new FormControl(),
@@ -60,6 +60,10 @@ export class DadosPessoaisPage {
   buscarCEP() {
 
     if (!isNaN(Number(this.form.value.cep))) {
+
+
+      if (this.form.value.cep.length != 8)
+        return;
 
       var headers = new HttpHeaders();
       headers.append('Access-Control-Allow-Origin', '*');

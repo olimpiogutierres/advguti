@@ -11,14 +11,30 @@
 <ion-content padding id="page8">
   <div id="procuracao-markdown4" class="show-list-numbers-and-dots">
     <h5 ion-text color="dark">
-      OUTORGANTE: a, inscrito no CPF nº xxxxxx, residente e domiciliado na fd, fdfd, SP.OUTORGADOS: xx xx xx, brasileiro, advogado, inscrito na OAB/xx sob o nº xx.xxx, com escritório profissional na Av. (@.br);
+
+<!-- 
+        public Logradouro: string;
+        public Numero: string;
+        public Complemento: string;
+        public Bairro: string; 
+        public Cidade: string;
+        public Estado: string;
+        public Pais: string;
+        public CEP: string; -->
+      OUTORGANTE:  {{usuario.nome}}, inscrito no CPF nº , residente e domiciliado em {{usuario.logradouro}}, {{usuario.numero}} {{usuario.complemento}}, {{usuario.bairro}}, {{usuario.cidade}} - {{usuario.estado}},  ,.OUTORGADOS: xx xx xx, brasileiro, advogado, inscrito na OAB/xx sob o nº xx.xxx, com escritório profissional na Av. (@.br);
       e xx xx xx xx xx, brasileiro, advogado, inscrito na OAB/xx sob o nº xx.xxx, com escritório profissional na Rua  (@.com.br).PODERES
-      Por este instrumento particular de mandato, o outorgante nomeia e constitui seus procuradores outorgados para (i) distribuir uma ação judicial contra a American Airlines Inc. com pedido de indenização por danos morais e/ou materiais nos Juizados
-      Especiais Cíveis por recusa injustificada de embarque, (ii) exercer todos os poderes contidos na cláusula ad judicia, (iii) negociar, transigir e assinar eventual acordo extrajudicial com a American Airlines Inc., (iv) receber valores em nome do
-      outorgante, dar quitação dos respectivos valores e levantar alvarás em nome do outorgante, e (v) substabelecer, com ou sem reserva, no todo ou em parte, os poderes recebidos, com vista ao bom desempenho deste mandato.O outorgante tem plena ciência
-      de que o Contrato de Prestação de Serviços e Honorários Advocatícios firmado estabelece uma atuação limitada dos outorgados, que (i) prestarão seus serviços de forma remota, (ii) não estarão disponíveis para reuniões presenciais, (iii) não lhe acompanharão
-      nas audiências de conciliação, e instrução e julgamento, e (iv) não apresentarão recurso em favor do outorgante após a prolação de sentença, independentemente do seu conteúdo, exceto por embargos de declaração.
+      <br>Por este instrumento particular de mandato, o outorgante nomeia e constitui seus procuradores outorgados para <br>(i) distribuir uma ação judicial contra a American Airlines Inc. com pedido de indenização por danos morais e/ou materiais nos Juizados
+      Especiais Cíveis por recusa injustificada de embarque, <br>(ii) exercer todos os poderes contidos na cláusula ad judicia, <br>(iii) negociar, transigir e assinar eventual acordo extrajudicial com a American Airlines Inc., <br>(iv) receber valores em nome do
+      outorgante, dar quitação dos respectivos valores e levantar alvarás em nome do outorgante, e <br>(v) substabelecer, com ou sem reserva, no todo ou em parte, os poderes recebidos, com vista ao bom desempenho deste mandato.O outorgante tem plena ciência
+      de que o Contrato de Prestação de Serviços e Honorários Advocatícios firmado estabelece uma atuação limitada dos outorgados, que <br>(i) prestarão seus serviços de forma remota, <br>(ii) não estarão disponíveis para reuniões presenciais, <br>(iii) não lhe acompanharão
+      nas audiências de conciliação, e instrução e julgamento, e <br>(iv) não apresentarão recurso em favor do outorgante após a prolação de sentença, independentemente do seu conteúdo, exceto por embargos de declaração.
     </h5>
+
+    <h3></h3>
+
+    <!-- <h2>
+      {{usuario.email}}
+    </h2> -->
   </div>
   <button id="procuracao-button9" ion-button color="positive" block>
     Corrigir
