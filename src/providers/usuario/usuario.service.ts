@@ -75,7 +75,7 @@ export class UsuarioService extends BaseService {
   public inserirDocumentos(usuarioDocumento: UsuarioDocumento) {
     this.optionsHttp.body = { usuarioDocumento };
 
-    //console.log(JSON.stringify(usuarioDocumento));
+    console.log(JSON.stringify(usuarioDocumento));
 
     return this.http.post<UsuarioDocumento>(this.api + '/UsuarioDocumento/', usuarioDocumento, { headers: this.optionsHttp.headers });
 

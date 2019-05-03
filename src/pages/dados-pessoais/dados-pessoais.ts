@@ -24,13 +24,13 @@ export class DadosPessoaisPage {
   public form: FormGroup;
   constructor(private http: HttpClient, public navCtrl: NavController, public navParams: NavParams, public usuarioService: UsuarioService, private formBuilder: FormBuilder) {
     this.usuario = this.navParams.get('usuario') as Usuario;
-    //console.log(this.usuario);
+    console.log(this.usuario);
   }
 
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      nome: new FormControl((this.usuario.Nome != null ? this.usuario.Nome : '')),
+      nome: new FormControl((this.usuario.nome != null ? this.usuario.nome : '')),
       cpf: new FormControl(),
       cep: new FormControl(),
       numero: new FormControl(),

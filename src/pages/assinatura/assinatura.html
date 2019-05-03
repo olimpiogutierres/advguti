@@ -19,21 +19,22 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col size="2" class="imagem" *ngFor="let a of signatureImages">
-        <button class="botao-fechar" item-right (click)="removerAssinatura(a)">
+      <ion-col size="2" class="imagem" *ngFor="let image of signatureImages">
+        <button class="botao-fechar" item-right (click)="removerAssinatura(image)">
           <ion-icon color="secondary" name="close"></ion-icon>
         </button>
-        <img [src]="a" />
+        <img [src]="image" />
 
       </ion-col>
     </ion-row>
   </ion-grid>
 
 
-  <!-- <div *ngIf="signatureImages.length>0"><img [src]="signatureImages[0]" /></div> -->
-  <br>
-  <button id="assinatura-button11"  ion-button color="positive" block on-click="goToDocumentos()">
-    Prosseguir
-  </button>
-
+  <div *ngIf="this.signatureImages.length>0">
+    <br>
+    <button id="assinatura-button11" ion-button color="positive" block
+      on-click="goToDocumentos()">
+      Prosseguir
+    </button> 
+  </div>
 </ion-content>

@@ -1,9 +1,10 @@
 // import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { FeitoPage } from '../feito/feito';
 import { UsuarioService } from '../../providers/usuario/usuario.service';
 import { UsuarioDocumento } from '../../models/usuariodocumento';
+import { Usuario } from '../../models/usuario';
 
 @Component({
   selector: 'page-documentos',
@@ -15,19 +16,21 @@ export class DocumentosPage {
 
   // private camera: Camera = new Camera();
   public documentos: Arquivos[] = [];
-  constructor(public navCtrl: NavController, public usuarioService: UsuarioService) {
+  public usuario: Usuario;
+  constructor(public navCtrl: NavController, public usuarioService: UsuarioService, public navParams: NavParams) {
+    this.usuario = this.navParams.get('usuario') as Usuario;
   }
   goToFeito() {
 
     for (let item of this.documentos) {
       var usuarioDocumento = new UsuarioDocumento();
       usuarioDocumento.IdDocumento = item.tipo;
-      usuarioDocumento.IdUsuario = 1;
+      usuarioDocumento.IdUsuario = Number(this.usuario.id);
       usuarioDocumento.Arquivo = String(item.file);
 
       // console.log('item', item);
-      //console.log('documento', usuarioDocumento);
-      this.usuarioService.inserirDocumentos(usuarioDocumento);
+      console.log('documento', usuarioDocumento);
+      this.usuarioService.inserirDocumentos(usuarioDocumento).subscribe(d => { console.log('returno inserir doc', d) });;
     }
 
 

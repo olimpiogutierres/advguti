@@ -1,3 +1,4 @@
+import { AssinaturaPage } from './../assinatura/assinatura';
 import { AdminProblemasPage } from './../admin-problemas/admin-problemas';
 import { Usuario } from './../../models/usuario';
 import { UsuarioService } from './../../providers/usuario/usuario.service';
@@ -71,28 +72,28 @@ export class LogonPage {
     // console.log('this.usuarioFacebookGoogle ', this.usuarioFacebookGoogle);
     if (this.usuarioFacebookGoogle != null) {
       this.usuario.email = this.usuarioFacebookGoogle.email;
-      this.usuario.Nome = this.usuarioFacebookGoogle.name;// this.usuarioFacebookGoogle.firstName + ' ' + this.usuarioFacebookGoogle.lastName;
-      this.usuario.Logradouro = '';
-      this.usuario.Numero = '';
-      this.usuario.Complemento = '';
-      this.usuario.Bairro = '';
-      this.usuario.Cidade = '';
-      this.usuario.Estado = '';
-      this.usuario.Pais = '';
-      this.usuario.CEP = '';
+      this.usuario.nome = this.usuarioFacebookGoogle.name;// this.usuarioFacebookGoogle.firstName + ' ' + this.usuarioFacebookGoogle.lastName;
+      this.usuario.logradouro = '';
+      this.usuario.numero = '';
+      this.usuario.complemento = '';
+      this.usuario.bairro = '';
+      this.usuario.cidade = '';
+      this.usuario.estado = '';
+      this.usuario.pais = '';
+      this.usuario.cep = '';
       this.usuario.telefone = '';
     }
     else {
       this.usuario = this.signupForm.value;
-      this.usuario.Nome = '';
-      this.usuario.Logradouro = '';
-      this.usuario.Numero = '';
-      this.usuario.Complemento = '';
-      this.usuario.Bairro = '';
-      this.usuario.Cidade = '';
-      this.usuario.Estado = '';
-      this.usuario.Pais = '';
-      this.usuario.CEP = '';
+      this.usuario.nome = '';
+      this.usuario.logradouro = '';
+      this.usuario.numero = '';
+      this.usuario.complemento = '';
+      this.usuario.bairro = '';
+      this.usuario.cidade = '';
+      this.usuario.estado = '';
+      this.usuario.pais = '';
+      this.usuario.cep = '';
       this.usuario.telefone = '';
     }
 
@@ -123,7 +124,7 @@ export class LogonPage {
 
     this.usuario.idDominioSelecionado = dominio.id;
 
-    this.navCtrl.setRoot(ProblemaPage, {
+    this.navCtrl.setRoot(AssinaturaPage, {
       problema: dominio.problema,
       usuario: this.usuario
     });
