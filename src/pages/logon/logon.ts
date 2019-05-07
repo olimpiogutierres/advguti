@@ -24,6 +24,7 @@ import { CompanhiaPage } from '../companhia/companhia';
 @Component({
   selector: 'page-logon',
   templateUrl: 'logon.html',
+  
 })
 export class LogonPage {
 
@@ -33,6 +34,8 @@ export class LogonPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
     public usuarioService: UsuarioService, private dominioService: DominioService, private authService: AuthService) {
+      // this.navCtrl.
+      
     let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     this.signupForm = this.formBuilder.group({
 
