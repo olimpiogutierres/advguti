@@ -7,6 +7,7 @@ import { Observable } from '../../../node_modules/rxjs';
 
 import { UsuarioResposta } from '../../models/usuarioresposta';
 import { UsuarioDocumento } from '../../models/usuariodocumento';
+import { UsuarioCompanhiaAerea } from '../../models/usuariocompanhiaaerea';
 
 /*
   Generated class for the UsuarioProvider provider.
@@ -75,10 +76,12 @@ export class UsuarioService extends BaseService {
   public inserirDocumentos(usuarioDocumento: UsuarioDocumento) {
     this.optionsHttp.body = { usuarioDocumento };
 
-    console.log(JSON.stringify(usuarioDocumento));
-
     return this.http.post<UsuarioDocumento>(this.api + '/UsuarioDocumento/', usuarioDocumento, { headers: this.optionsHttp.headers });
-
   }
 
+  public inserirUsuarioCompanhiaAerea(usuarioCompanhiaAerea: UsuarioCompanhiaAerea) {
+    this.optionsHttp.body = { usuarioCompanhiaAerea };
+
+    return this.http.post<UsuarioCompanhiaAerea>(this.api + '/UsuarioCompanhiaAereas/', usuarioCompanhiaAerea, { headers: this.optionsHttp.headers });
+  }
 }

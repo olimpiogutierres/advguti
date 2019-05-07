@@ -11,6 +11,7 @@ import { AuthService, SocialUser } from "angular4-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
 import { ProblemaPage } from '../problema/problema';
 import { DominioService } from '../../providers/dominio/dominio.service';
+import { CompanhiaPage } from '../companhia/companhia';
 // import { Dominio } from '../../models/dominio';
 /**
  * Generated class for the LogonPage page.
@@ -98,7 +99,7 @@ export class LogonPage {
     }
 
 
- 
+
     console.log('creating', this.usuario);
 
     this.usuarioService.check(this.usuario).subscribe(
@@ -124,7 +125,7 @@ export class LogonPage {
 
     this.usuario.idDominioSelecionado = dominio.id;
 
-    this.navCtrl.setRoot(AssinaturaPage, {
+    this.navCtrl.setRoot(CompanhiaPage, {
       problema: dominio.problema,
       usuario: this.usuario
     });
