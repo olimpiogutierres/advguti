@@ -1,3 +1,4 @@
+import { AssinaturaPage } from './../assinatura/assinatura';
 import { UsuarioService } from './../../providers/usuario/usuario.service';
 import { Component, Directive } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -54,7 +55,7 @@ export class DadosPessoaisPage {
     // this.usuarioService.update(this.usuario);
     // console.log(this.usuario);
     this.usuarioService.update(this.usuario);
-    this.navCtrl.push(ProcuracaoPage, { usuario: this.usuario });
+    this.navCtrl.push(AssinaturaPage, { usuario: this.usuario });
   }
 
   buscarCEP() {
