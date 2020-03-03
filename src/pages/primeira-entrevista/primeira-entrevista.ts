@@ -21,11 +21,12 @@ export class PrimeiraEntrevistaPage {
   public perguntas: Pergunta[] = [];
   public usuarioRespostas: UsuarioResposta[] = [];
   public loginForm: FormGroup;
+  respostasSelecionadas: Resposta[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public perguntaService: PerguntaService, public usuarioService: UsuarioService, public fb: FormBuilder) {
 
     this.usuario = this.navParams.get('usuario') as Usuario;
     this.problemas = this.navParams.get('problema') as Problema[];
-
+    console.log(this.problemas);
     this.loginForm = this.fb.group({
 
       'outroInput': ['', Validators.required]
@@ -40,8 +41,12 @@ export class PrimeiraEntrevistaPage {
             this.perguntas.push(pergunta);
           }
         }
+        
       });
     }
+
+
+    console.log("this.perguntas", this.perguntas);
   }
 
   selecionarRespostas(input: any, pergunta: Pergunta, resposta: Resposta) {
@@ -88,13 +93,32 @@ export class PrimeiraEntrevistaPage {
     this.navCtrl.push(OutrosProblemasPage, { usuario: this.usuario });
   }
 
+
+  escolherRespostas(resposta: Resposta) {
+
+
+
+    resposta.selected = resposta.selected === true ? false : true;
+
+    if (resposta.selected === true) {
+      this.respostasSelecionadas.push(resposta);
+    }
+    else {
+      this.respostasSelecionadas.forEach((item, index) => {
+        if (item === resposta) this.respostasSelecionadas.splice(index, 1);
+      });
+    }
+  }
+
+
   atualizarRelato(event, q: Pergunta, radio: any) {
 
-
+    console.log('q', q);
 
     q.manual = true;
 
 
+    
     var usuarioResposta = this.usuarioRespostas.find(d => d.IdPergunta == q.id);
 
     if (usuarioResposta === undefined || usuarioResposta == null) {
@@ -104,11 +128,11 @@ export class PrimeiraEntrevistaPage {
       usuarioResposta.IdPergunta = q.id;
       usuarioResposta.IdStatus = 1;
       usuarioResposta.IdUsuario = Number(this.usuario.id);
-      usuarioResposta.IdResposta = null;
+      usuarioResposta.IdResposta = null; 
       usuarioResposta.RelatoManual = '';
 
-      radio.value = true;
-      radio.checked = true;
+      // radio.value = true;
+      // radio.checked = true;
       // radio.setFocus();
     }
 
@@ -118,4 +142,6 @@ export class PrimeiraEntrevistaPage {
     this.usuarioRespostas.push(usuarioResposta);
 
   }
+
+
 }

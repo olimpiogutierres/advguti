@@ -1,7 +1,7 @@
 import { UsuarioService } from './../../providers/usuario/usuario.service';
 import { PerguntaService } from './../../providers/pergunta/pergunta.service';
 
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ProblemaPage } from '../problema/problema';
 import { PrimeiraEntrevistaPage } from '../primeira-entrevista/primeira-entrevista';
@@ -29,6 +29,7 @@ export class CompanhiaPage {
   public searchString: string;
   public problemas: Problema[];
   public usuario: Usuario;
+  @ViewChild('content') private content: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public perguntaService: PerguntaService, public usuarioService: UsuarioService) {
 
     this.problemas = this.navParams.get('problema') as Problema[];
@@ -38,8 +39,16 @@ export class CompanhiaPage {
   selecionarRespostas(companhiaAerea: CompanhiaAerea) {
     this.companhiaSelecionada = companhiaAerea;
     console.log(this.usuario);
-  }
+    this.scrollToBottomOnInit();
+  } 
 
+  scrollToBottomOnInit() {
+    setTimeout(() => {
+        if (this.content.scrollToBottom) {
+            this.content.scrollToBottom(300);
+        }
+    }, 300);
+  }
 
   goToProblema() {
 
@@ -58,6 +67,7 @@ export class CompanhiaPage {
       problema: this.problemas,
       usuario: this.usuario
     });
+  //  this.scrollToBottomOnInit();
   }
 
   ionViewDidLoad() {

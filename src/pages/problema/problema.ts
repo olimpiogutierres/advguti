@@ -54,8 +54,8 @@ export class ProblemaPage {
     for (let a of this.problemasSelecionados) {
 
       let b: UsuarioProblema = {} as UsuarioProblema;
-      b.IdProblema = parseInt(a.id);
-      b.IdUsuario = parseInt(this.usuario.id);
+      b.idProblema = parseInt(a.id);
+      b.idUsuario = parseInt(this.usuario.id);
       this.usuario.usuarioProblema.push(b);
       this.usuarioService.inserirProblemaUsuario(b).subscribe((d: UsuarioProblema) => { console.log('ddddd', d) });
 

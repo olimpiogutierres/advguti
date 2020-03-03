@@ -61,6 +61,16 @@ export class UsuarioService extends BaseService {
     return this.http.post<UsuarioProblema>(this.api + '/UsuarioProblemas/', usuario, { headers: this.optionsHttp.headers });
   }
 
+  public listarProblemaUsuario(usuario: Usuario): Observable<UsuarioProblema[]> {
+
+    return this.http.get<UsuarioProblema[]>(this.api + '/UsuarioProblemas' , { headers: this.optionsHttp.headers });
+  }
+
+  public listar(): Observable<Usuario[]> {
+
+    return this.http.get<Usuario[]>(this.api + '/Usuario' , { headers: this.optionsHttp.headers });
+  }
+
   public inserirRespostaUsuario(usuario: UsuarioResposta) {
     this.http.post<UsuarioResposta>(this.api + '/UsuarioRespostas/', usuario, { headers: this.optionsHttp.headers }).subscribe(d => console.log('resposta', d));
   }

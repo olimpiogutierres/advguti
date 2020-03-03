@@ -10,20 +10,26 @@
           <!-- <ion-card-title>Card Title</ion-card-title> -->
         </ion-card-header>
         <ion-card-content>
+          <ng-container *ngIf="pergunta.resposta">
+            <div *ngFor="let a of pergunta.resposta">
+              <!-- <ion-item no-lines> -->
+              <!-- <div > -->
+              <ion-item *ngIf="pergunta.idRespostaTipo===1">
+                <ion-radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, pergunta, a)"
+                  [value]='a.descricaoApp'></ion-radio>
+                <ion-label>{{a.descricaoApp}}</ion-label>
+              </ion-item>
+              <ion-item *ngIf="pergunta.idRespostaTipo==3">
+                <ion-label>{{a.descricaoApp}}</ion-label>
+                <ion-checkbox [checked]="a.selected" color="secondary" (click)="escolherRespostas(a)">
+                </ion-checkbox>
+              </ion-item>
 
-          <div *ngFor="let a of pergunta.resposta">
-            <ion-item no-lines >
-              <ion-radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, pergunta, a)"
-                [value]='a.descricaoApp'></ion-radio>
-              <ion-label>{{a.descricaoApp}}</ion-label>
-            </ion-item> 
-          </div>
-          <div *ngIf="pergunta.manual==true">
-            <ion-item no-lines>
-              <ion-radio #radio item-left color="secondary" (ionSelect)="selecionarRespostas(input, pergunta, null)"
-                [value]=""></ion-radio>
-              <ion-label>Outro(s)</ion-label>
-            </ion-item>
+
+            </div>
+          </ng-container>
+
+          <div *ngIf="pergunta.idRespostaTipo==2">
             <ion-input #input type="input" (keydown)="atualizarRelato($event,pergunta, radio)"
               placeholder="Descreva aqui">
             </ion-input>
@@ -34,8 +40,7 @@
 
     </ion-list>
   </ion-col>
-  <button id="primeiraEntrevista-button6" ion-button color="positive"
-    [disabled]="this.perguntas.length!=this.usuarioRespostas.length" block on-click="goToOutrosProblemas()">
+  <button id="primeiraEntrevista-button6" ion-button color="positive" block on-click="goToOutrosProblemas()">
     Prosseguir
   </button>
 </ion-content>

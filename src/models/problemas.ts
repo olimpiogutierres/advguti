@@ -6,6 +6,7 @@ class Problema {
     public problemaComum: boolean;
     public manual: boolean;
     public selected: boolean = false;
+    public IdRespostaTipo: number;
 }
 
 

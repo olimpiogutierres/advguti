@@ -1,14 +1,6 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      Assinatura
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+
 <ion-content padding>
+  <header-principal [title]="'Assine a procuração'" [progresso]="60"></header-principal>
   <h4>Precisamos da sua autorização.</h4>
   <h6>Assine <ion-text color="secondary">duas vezes</ion-text> abaixo. Pode utilizar seus dedos...</h6>
   <button ion-button full (click)="openSignatureModel()">

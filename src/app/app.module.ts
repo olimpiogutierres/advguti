@@ -50,14 +50,16 @@ import { SignaturePage } from "../pages/assinatura/signature";
 import { Facebook } from '@ionic-native/facebook';
 import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
- 
+import { AdminPage } from '../pages/admin/admin';
+
+
 Pro.init('f07c10f1', {
   appVersion: '1'
 })
 
 
 let config = new AuthServiceConfig([
- 
+
   {
     id: FacebookLoginProvider.PROVIDER_ID,
     provider: new FacebookLoginProvider("2339063683077864")
@@ -67,7 +69,7 @@ let config = new AuthServiceConfig([
     provider: new GoogleLoginProvider("609475360845-4si6ju86gofkn6fb9n5lldgab5avqeo5.apps.googleusercontent.com")
   },
 ]);
- 
+
 // const firebaseAppConfig: FirebaseAppConfig = {
 //   // apiKey: "AIzaSyDxXarH2mUPXXHXiCpWEx_JAH6tTVxU_zk",
 //   // authDomain: "ionic2-firebase-chat-c98bd.firebaseapp.com",
@@ -117,6 +119,7 @@ export class MyErrorHandler implements ErrorHandler {
     FeitoPage,
     MyFilterPipe, LogonPage, DominioPage,
     AdminProblemasPage,
+    AdminPage,
     // ProgressBarComponent,
     // CustomHeaderComponent,
     HeaderPrincipalComponent,
@@ -143,7 +146,7 @@ export class MyErrorHandler implements ErrorHandler {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-
+    AdminPage, 
     CompanhiaPage,
     ProblemaPage,
     PrimeiraEntrevistaPage,
@@ -176,7 +179,8 @@ export class MyErrorHandler implements ErrorHandler {
     RespostaService,
     // <--- Here!
     // ...
-    Facebook
+    Facebook,
+    
     // Camera
     // AuthProvider
   ], schemas: [CUSTOM_ELEMENTS_SCHEMA]

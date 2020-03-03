@@ -17,6 +17,6 @@ class UsuarioProblema {
 
     }
     public id: number;
-    public IdProblema: number;
-    public IdUsuario: number;
+    public idProblema: number;
+    public idUsuario: number; 
 }

@@ -12,6 +12,7 @@ import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-logi
 import { ProblemaPage } from '../problema/problema';
 import { DominioService } from '../../providers/dominio/dominio.service';
 import { CompanhiaPage } from '../companhia/companhia';
+import { AdminPage } from '../admin/admin';
 // import { Dominio } from '../../models/dominio';
 /**
  * Generated class for the LogonPage page.
@@ -24,7 +25,7 @@ import { CompanhiaPage } from '../companhia/companhia';
 @Component({
   selector: 'page-logon',
   templateUrl: 'logon.html',
-  
+
 })
 export class LogonPage {
 
@@ -34,8 +35,8 @@ export class LogonPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
     public usuarioService: UsuarioService, private dominioService: DominioService, private authService: AuthService) {
-      // this.navCtrl.
-      
+    // this.navCtrl.
+
     let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     this.signupForm = this.formBuilder.group({
 
@@ -69,6 +70,44 @@ export class LogonPage {
 
   goToAdminProblema() {
     this.navCtrl.push(AdminProblemasPage);
+  }
+
+  goToAdmin() { 
+
+
+    this.usuario = new Usuario;
+    // console.log('this.usuarioFacebookGoogle ', this.usuarioFacebookGoogle);
+    if (this.usuarioFacebookGoogle != null) {
+      this.usuario.email = this.usuarioFacebookGoogle.email;
+      this.usuario.nome = this.usuarioFacebookGoogle.name;// this.usuarioFacebookGoogle.firstName + ' ' + this.usuarioFacebookGoogle.lastName;
+      this.usuario.logradouro = '';
+      this.usuario.numero = '';
+      this.usuario.complemento = '';
+      this.usuario.bairro = '';
+      this.usuario.cidade = '';
+      this.usuario.estado = '';
+      this.usuario.pais = '';
+      this.usuario.cep = '';
+      this.usuario.telefone = '';
+    }
+    else {
+      this.usuario = this.signupForm.value;
+      this.usuario.nome = '';
+      this.usuario.logradouro = '';
+      this.usuario.numero = '';
+      this.usuario.complemento = '';
+      this.usuario.bairro = '';
+      this.usuario.cidade = '';
+      this.usuario.estado = '';
+      this.usuario.pais = '';
+      this.usuario.cep = '';
+      this.usuario.telefone = '';
+    }
+
+    this.navCtrl.push(AdminPage, {
+
+      usuario: this.usuario
+    });
   }
   async goToDominios() {
 

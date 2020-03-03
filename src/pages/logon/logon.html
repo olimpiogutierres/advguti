@@ -4,74 +4,123 @@
     <!-- <div class="insidediv"> -->
     <ion-list id="login-list5">
       <ion-row>
-        <ion-col col-lg-3></ion-col>
-        <ion-col col-lg-5>
-          <ion-card class="cardconteudo" clear>
-            <!-- <h2 text-center>Informe seu email e telefone</h2> -->
-            <ion-card-header text-center>
-              <!-- <h5>Precisamos desses dados para entrarmos em contato com você</h5> -->
-              <ion-card-title>Direito a indenização? Entre!</ion-card-title>
-            </ion-card-header>
-            <!-- <ion-row> -->
-            <!-- <ion-item-divider> -->
-            <ion-row>
-              <ion-col col-10 text-center>
-                <button ion-button float icon-left color="facebook" (click)='loginFacebook();'>
-                  <ion-icon name="logo-facebook"></ion-icon>Entrar com Facebook
-                </button>
-                <!-- </ion-item-divider> -->
-                <!-- <ion-item-divider> -->
-                <button ion-button float icon-left color="google" (click)='loginGoogle();'>
-                  <ion-icon name="logo-google"></ion-icon>Entrar com Google
-                </button>
-              </ion-col>
-            </ion-row>
-            <!-- </ion-item-divider> -->
+        <ion-col col-lg-5><ion-card class="cardconteudo" clear>
+          <!-- <h2 text-center>Informe seu email e telefone</h2> -->
+          <ion-card-header text-center>
+            <!-- <h5>Precisamos desses dados para entrarmos em contato com você</h5> -->
+            <ion-card-title>Direito a indenização?</ion-card-title>
+            <ion-card-subtitle>Entre e saiba mais...</ion-card-subtitle>
+          </ion-card-header>
+          <!-- <ion-row> -->
+          <!-- <ion-item-divider> -->
+          <ion-row>
+            <ion-col col-10 text-center>
+              <button ion-button  icon-left color="facebook" (click)='loginFacebook();'>
+                <ion-icon name="logo-facebook"></ion-icon>Entrar com Facebook
+              </button>
+              <!-- </ion-item-divider> -->
+              <!-- <ion-item-divider> -->
+              <button ion-button  icon-left color="google" (click)='loginGoogle();'>
+                <ion-icon name="logo-google"></ion-icon>Entrar com Google
+              </button>
+            </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col col-10 text-center>
+              <h2>ou</h2>
+            </ion-col>
+          </ion-row>
 
-            <!-- </ion-row> -->
-            <!-- <div class="row-fluid">
-                <div class="span10 offset1 divisor">
-                    <div class="divisor-horizontal">
-                        <span class="label-divisor">ou</span>
-                    </div>
-                </div>
-            </div> -->
-            <ion-row>
-              <ion-col col-10 text-center>
-                <h2>ou</h2>
-              </ion-col>
-            </ion-row>
+          <ion-row>
+            <ion-col col-10 text-center>
+              <ion-item id="login-input9">
+                <ion-label>
+                  Email
+                </ion-label>
+                <ion-input type="email" placeholder="" formControlName="email"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-10>
+              <ion-item id="login-input10">
+                <ion-label>
+                  Telefone
+                </ion-label>
+                <ion-input type="tel" placeholder="" formControlName="telefone"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <button id="login-button17" color="stable" (click)="goToDominios();" ion-button float>
+                Prosseguir
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+        
+      </ion-row>
+      <ion-row>
+        <ion-col col-lg-5><ion-card class="cardconteudo" clear>
+          <!-- <h2 text-center>Informe seu email e telefone</h2> -->
+          <ion-card-header text-center>
+            <!-- <h5>Precisamos desses dados para entrarmos em contato com você</h5> -->
+            <ion-card-title>Já tem algum processo?</ion-card-title>
+            <!-- <ion-card-subtitle>Entre por aqui...</ion-card-subtitle> -->
+          </ion-card-header>
+          <!-- <ion-row> -->
+          <!-- <ion-item-divider> -->
+          <ion-row>
+            <ion-col col-10 text-center>
+              <button ion-button  icon-left color="facebook" (click)='loginFacebook();'>
+                <ion-icon name="logo-facebook"></ion-icon>Entrar com Facebook
+              </button>
+              <!-- </ion-item-divider> -->
+              <!-- <ion-item-divider> -->
+              <button ion-button  icon-left color="google" (click)='loginGoogle();'>
+                <ion-icon name="logo-google"></ion-icon>Entrar com Google
+              </button>
+            </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col col-10 text-center>
+              <h2>ou</h2>
+            </ion-col>
+          </ion-row>
 
-            <ion-row>
-              <ion-col col-10 text-center>
-                <ion-item id="login-input9">
-                  <ion-label>
-                    Email
-                  </ion-label>
-                  <ion-input type="email" placeholder="" formControlName="email"></ion-input>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col col-10>
-                <ion-item id="login-input10">
-                  <ion-label>
-                    Telefone
-                  </ion-label>
-                  <ion-input type="tel" placeholder="" formControlName="telefone"></ion-input>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col text-center>
-                <button id="login-button17" color="stable" (click)="goToDominios();" ion-button float>
-                  Prosseguir
-                </button>
-              </ion-col>
-            </ion-row>
-          </ion-card>
-        </ion-col>
-        <ion-col col-lg-3></ion-col>
+          <ion-row>
+            <ion-col col-10 text-center>
+              <ion-item id="login-input9">
+                <ion-label>
+                  Email/Telefone
+                </ion-label>
+                <ion-input  placeholder="" formControlName="email"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row> 
+            <ion-col col-10>
+              <ion-item id="login-input10">
+                <ion-label>
+                  Senha
+                </ion-label>
+                <ion-input type="password" placeholder=""></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <button id="login-button17" color="stable" (click)="goToAdmin();" ion-button float>
+                Prosseguir
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
       </ion-row>
     </ion-list>
 
